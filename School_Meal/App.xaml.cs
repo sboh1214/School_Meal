@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
 
 namespace School_Meal
 {
@@ -29,6 +31,7 @@ namespace School_Meal
         public App()
         {
             this.InitializeComponent();
+            AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Analytics));
             this.Suspending += OnSuspending;
         }
 
