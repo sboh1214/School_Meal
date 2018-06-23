@@ -41,17 +41,17 @@
         </NavigationView.MenuItems>
         <!--<NavigationView.AutoSuggestBox>
             <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find"/>
-        </NavigationView.AutoSuggestBox>
+        </NavigationView.AutoSuggestBox>-->
         <NavigationView.PaneFooter>
             <StackPanel Orientation="Vertical">
                 <HyperlinkButton Content="App Website" Margin="54,0,0,0" NavigateUri="https://sites.google.com/view/iasa-meal"/>
-                <HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
+                <!--<HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
                 <HyperlinkButton Content="Android 다운로드" Margin="54,0,0,0"/>
-                <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>
+                <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>-->
 
 
             </StackPanel>
-        </NavigationView.PaneFooter>-->
+        </NavigationView.PaneFooter>
 
         <Frame x:Name="ContentFrame" Background="Transparent" Margin="12,0,12,12">
             <Frame.ContentTransitions>
