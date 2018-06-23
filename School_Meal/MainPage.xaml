@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
-    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
+    <NavigationView IsSettingsVisible="False" AlwaysShowHeader="False" x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Local"/>
             <NavigationViewItem Content="일별 급식" x:Uid="Today_NavPaneItem" x:Name="Today_NavPaneItem" Tag="Today">
@@ -32,14 +32,14 @@
                     <SymbolIcon Symbol="Find"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>-->
-            <NavigationViewItemHeader Content="Web"/>
+            <!--<NavigationViewItemHeader Content="Web"/>
             <NavigationViewItem Content="학교 급식페이지" x:Uid="SchoolWeb_NavPaneItem" x:Name="SchoolWeb_NavPaneItem" Tag="SchoolWeb">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="World"/>
                 </NavigationViewItem.Icon>
-            </NavigationViewItem>
+            </NavigationViewItem>-->
         </NavigationView.MenuItems>
-        <NavigationView.AutoSuggestBox>
+        <!--<NavigationView.AutoSuggestBox>
             <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find"/>
         </NavigationView.AutoSuggestBox>
         <NavigationView.PaneFooter>
@@ -51,7 +51,7 @@
 
 
             </StackPanel>
-        </NavigationView.PaneFooter>
+        </NavigationView.PaneFooter>-->
 
         <Frame x:Name="ContentFrame" Background="Transparent" Margin="12,0,12,12">
             <Frame.ContentTransitions>
