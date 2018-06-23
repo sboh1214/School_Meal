@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="School_Meal.Month"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:School_Meal"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/> <!--0,12-->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <CommandBar Grid.Row="0" DefaultLabelPosition="Right" Background="Transparent">
+            <CommandBar.Content>
+                <TextBlock Text="월별 급식" Margin="6,6,6,6" FontSize="20"/>
+            </CommandBar.Content>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="이전" Icon="Back" x:Name="Back_ABB" Click="Back_ABB_Click"/>
+                <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
+                <AppBarButton Label="다음" Icon="Forward" x:Name="Forward_ABB" Click="Forward_ABB_Click"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+        <ProgressBar IsIndeterminate="True" Grid.Row="1"/>
+        <CalendarView Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
+
+        </CalendarView>
+    </Grid>
+</Page>
