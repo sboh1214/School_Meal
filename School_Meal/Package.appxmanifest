@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/1614/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="410175959034.46781BA11794D" Publisher="CN=0999CD22-14B0-49D6-88E0-EB9625AF4A1E" Version="1806.100.13.0" />
+  <Identity Name="410175959034.46781BA11794D" Publisher="CN=0999CD22-14B0-49D6-88E0-EB9625AF4A1E" Version="1806.100.14.0" />
   <PhoneIdentity xmlns="http://schemas.microsoft.com/appx/2014/phone/manifest" PhoneProductId="5f726555-1e2f-4607-99b9-313a2b5014e2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>IASA 급식</DisplayName>
