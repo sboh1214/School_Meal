@@ -5,7 +5,7 @@
              x:Class="School_Meal_Mobile.MainPage">
 
     <MasterDetailPage.Master>
-        <local:MasterPage/>
+        <local:NavPage/>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
         <NavigationPage>

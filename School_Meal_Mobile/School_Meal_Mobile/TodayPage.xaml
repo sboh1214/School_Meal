@@ -5,9 +5,9 @@
              Title="일별 급식">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Label Text="아침"/>
-            <Label Text="점심"/>
-            <Label Text="저녁"/>
+            <Label Text="아침" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="점심" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+            <Label Text="저녁" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
