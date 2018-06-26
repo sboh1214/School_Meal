@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="School_Meal_Mobile.NavPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"/>
-        </StackLayout>
+        <ListView>
+            
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
