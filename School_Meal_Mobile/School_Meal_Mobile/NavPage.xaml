@@ -21,21 +21,15 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-                    <Label
-              Grid.Column="1"
-              Grid.Row="2"
-              Text="AppName"
-              Style="{DynamicResource SubtitleStyle}"/>
+                    <Label Grid.Column="1" Grid.Row="2" Text="IASA 급식" (Style="{DynamicResource SubtitleStyle}"/>
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-                            <Label VerticalOptions="FillAndExpand" 
-                    VerticalTextAlignment="Center" 
-                    Text="{Binding Title}" 
-                    FontSize="24"/>
+                            <Button VerticalOptions="FillAndExpand" Text="일별 급식" />
+                            <Button VerticalOptions="FillAndExpand" Text="주별 급식"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
