@@ -8,15 +8,17 @@
             <Label Text="아침" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" 
                    Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
             <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
-                   Margin="6,6,6,6" TextColor="Black"/>
+                   Margin="6,6,6,6" TextColor="Black" x:Name="Today_Breakfast_Label"/>
+            
             <Label Text="점심" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
             <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
-                   Margin="6,6,6,6" TextColor="Black"/>
+                   Margin="6,6,6,6" TextColor="Black" x:Name="Today_Lunch_Label"/>
+            
             <Label Text="저녁" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
             <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
-                   Margin="6,6,6,6" TextColor="Black"/>
+                   Margin="6,6,6,6" TextColor="Black" x:Name="Today_Dinner_Label"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
