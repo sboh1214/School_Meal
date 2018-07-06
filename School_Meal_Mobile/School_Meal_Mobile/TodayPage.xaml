@@ -4,21 +4,23 @@
              x:Class="School_Meal_Mobile.TodayPage"
              Title="일별 급식">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Label Text="아침" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" 
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Label Text="아침" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" 
                    Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
-            <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
+                <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
                    Margin="6,6,6,6" TextColor="Black" x:Name="Today_Breakfast_Label"/>
-            
-            <Label Text="점심" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+
+                <Label Text="점심" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
-            <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
+                <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
                    Margin="6,6,6,6" TextColor="Black" x:Name="Today_Lunch_Label"/>
-            
-            <Label Text="저녁" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+
+                <Label Text="저녁" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                    Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
-            <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
+                <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
                    Margin="6,6,6,6" TextColor="Black" x:Name="Today_Dinner_Label"/>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
