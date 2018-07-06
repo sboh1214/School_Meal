@@ -46,25 +46,25 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="일" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
+                    <TextBlock Text="일" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2" x:Name="Sun"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="월" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
+                    <TextBlock Text="월" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2" x:Name="Mon"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="화" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
+                    <TextBlock Text="화" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2" x:Name="Tue"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="수" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
+                    <TextBlock Text="수" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2" x:Name="Wed"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="목" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
+                    <TextBlock Text="목" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2" x:Name="Thu"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="6" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="금" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
+                    <TextBlock Text="금" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2" x:Name="Fri"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="7" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="토" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
+                    <TextBlock Text="토" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2" x:Name="Sat"/>
                 </Border>
 
                 <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightGray">

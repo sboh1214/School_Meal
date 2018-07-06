@@ -128,6 +128,7 @@ namespace School_Meal
             lunchstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "L"].ToString();
             dinnerstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "D"].ToString();
 
+            Sun.Text = WeekPageDateTime.Month.ToString()+ "/" + WeekPageDateTime.Day.ToString() + " (일)";
             SunB.Text = breakfaststr;
             SunL.Text = lunchstr;
             SunD.Text = dinnerstr;
@@ -138,6 +139,7 @@ namespace School_Meal
             lunchstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "L"].ToString();
             dinnerstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "D"].ToString();
 
+            Mon.Text = WeekPageDateTime.Month.ToString() + "/" + WeekPageDateTime.Day.ToString() + " (월)";
             MonB.Text = breakfaststr;
             MonL.Text = lunchstr;
             MonD.Text = dinnerstr;
@@ -148,6 +150,7 @@ namespace School_Meal
             lunchstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "L"].ToString();
             dinnerstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "D"].ToString();
 
+            Tue.Text = WeekPageDateTime.Month.ToString() + "/" + WeekPageDateTime.Day.ToString() + " (화)";
             TueB.Text = breakfaststr;
             TueL.Text = lunchstr;
             TueD.Text = dinnerstr;
@@ -158,6 +161,7 @@ namespace School_Meal
             lunchstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "L"].ToString();
             dinnerstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "D"].ToString();
 
+            Wed.Text = WeekPageDateTime.Month.ToString() + "/" + WeekPageDateTime.Day.ToString() + " (수)";
             WedB.Text = breakfaststr;
             WedL.Text = lunchstr;
             WedD.Text = dinnerstr;
@@ -168,6 +172,7 @@ namespace School_Meal
             lunchstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "L"].ToString();
             dinnerstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "D"].ToString();
 
+            Thu.Text = WeekPageDateTime.Month.ToString() + "/" + WeekPageDateTime.Day.ToString() + " (목)";
             ThuB.Text = breakfaststr;
             ThuL.Text = lunchstr;
             ThuD.Text = dinnerstr;
@@ -178,6 +183,7 @@ namespace School_Meal
             lunchstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "L"].ToString();
             dinnerstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "D"].ToString();
 
+            Fri.Text = WeekPageDateTime.Month.ToString() + "/" + WeekPageDateTime.Day.ToString() + " (금)";
             FriB.Text = breakfaststr;
             FriL.Text = lunchstr;
             FriD.Text = dinnerstr;
@@ -188,9 +194,12 @@ namespace School_Meal
             lunchstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "L"].ToString();
             dinnerstr = localSettings.Values[WeekPageDateTime.Year.ToString() + WeekPageDateTime.Month.ToString() + WeekPageDateTime.Day.ToString() + "D"].ToString();
 
+            Sat.Text = WeekPageDateTime.Month.ToString() + "/" + WeekPageDateTime.Day.ToString() + " (토)";
             SatB.Text = breakfaststr;
             SatL.Text = lunchstr;
             SatD.Text = dinnerstr;
+
+            WeekPageDateTime = WeekPageDateTime.AddDays(-7);
         }
     }
 }
