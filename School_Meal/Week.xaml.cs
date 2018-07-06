@@ -35,14 +35,9 @@ namespace School_Meal
             ShowWeekMenu();
         }
 
-        private void Previous_ABB_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
         {
-            WeekPageDateTime.AddDays(-7);
+            WeekPageDateTime=WeekPageDateTime.AddDays(-7);
             ShowWeekMenu();
         }
 
@@ -54,13 +49,8 @@ namespace School_Meal
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
-            WeekPageDateTime.AddDays(7);
+            WeekPageDateTime=WeekPageDateTime.AddDays(7);
             ShowWeekMenu();
-        }
-
-        private void Next_ABB_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         public bool GetMenu(int Year, int Month)
@@ -199,7 +189,7 @@ namespace School_Meal
             SatL.Text = lunchstr;
             SatD.Text = dinnerstr;
 
-            WeekPageDateTime = WeekPageDateTime.AddDays(-7);
+            WeekPageDateTime = WeekPageDateTime.AddDays(-6);
         }
     }
 }

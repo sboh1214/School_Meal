@@ -19,11 +19,9 @@
                 <TextBlock Text="주별 급식" Margin="6,6,6,6" FontSize="20"/>
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
-                <AppBarButton Label="처음" Icon="Previous" x:Name="Previous_ABB" Click="Previous_ABB_Click"/>
                 <AppBarButton Label="이전" Icon="Back" x:Name="Back_ABB" Click="Back_ABB_Click"/>
                 <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
                 <AppBarButton Label="다음" Icon="Forward" x:Name="Forward_ABB" Click="Forward_ABB_Click"/>
-                <AppBarButton Label="끝" Icon="Next" x:Name="Next_ABB" Click="Next_ABB_Click"/>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1"/>
