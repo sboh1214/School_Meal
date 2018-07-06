@@ -46,101 +46,101 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="일" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="일" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="월" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="월" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="화" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="화" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="수" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="수" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="5" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="목" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="목" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="6" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="금" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="금" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="7" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="토" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="토" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" Margin="2,2,2,2"/>
                 </Border>
 
                 <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="아침" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="아침" VerticalAlignment="Stretch" TextAlignment="DetectFromContent" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="점심" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="점심" VerticalAlignment="Stretch" TextAlignment="DetectFromContent" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" Background="LightGray">
-                    <TextBlock Text="저녁" HorizontalAlignment="Stretch" HorizontalTextAlignment="Center"/>
+                    <TextBlock Text="저녁" VerticalAlignment="Stretch" TextAlignment="DetectFromContent" Margin="2,2,2,2"/>
                 </Border>
 
                 <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SunB"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SunB" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="MonB"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="MonB" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="TueB"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="TueB" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="4" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="WedB"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="WedB" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="ThuB"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="ThuB" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="6" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="FriB"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="FriB" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="1" Grid.Column="7" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SatB"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SatB" Margin="2,2,2,2"/>
                 </Border>
 
                 <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SunL"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SunL" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="MonL"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="MonL" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="3" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="TueL"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="TueL" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="4" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="WedL"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="WedL" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="ThuL"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="ThuL" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="6" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="FriL"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="FriL" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="2" Grid.Column="7" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SatL"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SatL" Margin="2,2,2,2"/>
                 </Border>
 
                 <Border Grid.Row="3" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SunD"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SunD" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="MonD"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="MonD" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="3" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="TueD"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="TueD" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="4" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="WedD"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="WedD" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="5" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="ThuD"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="ThuD" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="6" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="FriD"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="FriD" Margin="2,2,2,2"/>
                 </Border>
                 <Border Grid.Row="3" Grid.Column="7" BorderBrush="Black" BorderThickness="1">
-                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SatD"/>
+                    <TextBlock HorizontalAlignment="Stretch" HorizontalTextAlignment="Center" VerticalAlignment="Stretch" x:Name="SatD" Margin="2,2,2,2"/>
                 </Border>
             </Grid>
         </ScrollViewer>
