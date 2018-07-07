@@ -97,6 +97,14 @@ namespace School_Meal
                     dinnerstr += "\n";
                 }
 
+                int breakfastdotindex = breakfaststr.IndexOf('.');
+                int lunchdotindex = lunchstr.IndexOf('.');
+                int dinnerdotindex = dinnerstr.IndexOf('.');
+
+                breakfaststr = breakfaststr.Substring(0, breakfastdotindex);
+                lunchstr = lunchstr.Substring(0, lunchdotindex);
+                dinnerstr = dinnerstr.Substring(0, dinnerdotindex);
+
                 ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
                 localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
