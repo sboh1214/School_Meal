@@ -6,7 +6,8 @@ using System.Text;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using System.Text.RegularExpressions;
+using Microsoft.AppCenter.Analytics;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -23,6 +24,8 @@ namespace School_Meal
         public Today()
         {
             this.InitializeComponent();
+            Analytics.TrackEvent("Today Page");
+
             TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
             TodayProgressBar_Row.Height = new GridLength(12);
             ShowMenu();
@@ -79,63 +82,72 @@ namespace School_Meal
 
         public bool GetMenu(int Year, int Month)
         {
-            var Url = new Uri("http://schoolmenukr.ml/api/ice/E100002238?year=" + Year.ToString() + "&month=" + Month.ToString()); //사이트 주소
-            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
-            myRequest.Method = "GET";
-            WebResponse myresponse = myRequest.GetResponse();
-            StreamReader sr = new StreamReader(myresponse.GetResponseStream(), Encoding.UTF8);
-            string result = sr.ReadToEnd();
-            sr.Close();
-            myresponse.Close();
-
-            dynamic jObject = JsonConvert.DeserializeObject(result);
-            foreach (var Jitem in jObject)
+            try
             {
-                dynamic jdate = Jitem.GetValue("date");
-                int date = Convert.ToInt32(jdate.Value);
+                var Url = new Uri("http://schoolmenukr.ml/api/ice/E100002238?year=" + Year.ToString() + "&month=" + Month.ToString()); //사이트 주소
+                HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
+                myRequest.Method = "GET";
+                WebResponse myresponse = myRequest.GetResponse();
+                StreamReader sr = new StreamReader(myresponse.GetResponseStream(), Encoding.UTF8);
+                string result = sr.ReadToEnd();
+                sr.Close();
+                myresponse.Close();
 
-                dynamic jbreakfast = Jitem.GetValue("breakfast");
-                var breakfastlist = jbreakfast.Children();
-                string breakfaststr = "";
-                foreach (var BreakfastItem in breakfastlist)
+                dynamic jObject = JsonConvert.DeserializeObject(result);
+                foreach (var Jitem in jObject)
                 {
-                    breakfaststr += BreakfastItem.Value;
-                    breakfaststr += "\n";
+                    dynamic jdate = Jitem.GetValue("date");
+                    int date = Convert.ToInt32(jdate.Value);
+
+                    dynamic jbreakfast = Jitem.GetValue("breakfast");
+                    var breakfastlist = jbreakfast.Children();
+                    string breakfaststr = "";
+                    foreach (var BreakfastItem in breakfastlist)
+                    {
+                        breakfaststr += BreakfastItem.Value;
+                        breakfaststr += "\n";
+                    }
+
+                    dynamic jlunch = Jitem.GetValue("lunch");
+                    var lunchlist = jlunch.Children();
+                    string lunchstr = "";
+                    foreach (var LunchItem in lunchlist)
+                    {
+                        lunchstr += LunchItem.Value;
+                        lunchstr += "\n";
+                    }
+
+                    dynamic jdinner = Jitem.GetValue("dinner");
+                    var dinnerlist = jdinner.Children();
+                    string dinnerstr = "";
+                    foreach (var DinnerItem in dinnerlist)
+                    {
+                        dinnerstr += DinnerItem.Value;
+                        dinnerstr += "\n";
+                    }
+
+                    int breakfastdotindex = breakfaststr.IndexOf('.');
+                    int lunchdotindex = lunchstr.IndexOf('.');
+                    int dinnerdotindex = dinnerstr.IndexOf('.');
+
+                    breakfaststr = breakfaststr.Substring(0, breakfastdotindex);
+                    lunchstr = lunchstr.Substring(0, lunchdotindex);
+                    dinnerstr = dinnerstr.Substring(0, dinnerdotindex);
+
+                    ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+                    localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
+                    localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "L"] = lunchstr;
+                    localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "D"] = dinnerstr;
                 }
-
-                dynamic jlunch = Jitem.GetValue("lunch");
-                var lunchlist = jlunch.Children();
-                string lunchstr = "";
-                foreach (var LunchItem in lunchlist)
-                {
-                    lunchstr += LunchItem.Value;
-                    lunchstr += "\n";
-                }
-
-                dynamic jdinner = Jitem.GetValue("dinner");
-                var dinnerlist = jdinner.Children();
-                string dinnerstr = "";
-                foreach (var DinnerItem in dinnerlist)
-                {
-                    dinnerstr += DinnerItem.Value;
-                    dinnerstr += "\n";
-                }
-
-                int breakfastdotindex = breakfaststr.IndexOf('.');
-                int lunchdotindex = lunchstr.IndexOf('.');
-                int dinnerdotindex = dinnerstr.IndexOf('.');
-
-                breakfaststr = breakfaststr.Substring(0, breakfastdotindex);
-                lunchstr = lunchstr.Substring(0, lunchdotindex);
-                dinnerstr = dinnerstr.Substring(0, dinnerdotindex);
-
-                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "L"] = lunchstr;
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "D"] = dinnerstr;
+                return true;
             }
-            return true;
+            catch(Exception e)
+            {
+                
+                Debug.WriteLine(e);
+                return false;
+            }
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)

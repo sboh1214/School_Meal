@@ -4,4 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:School_Meal">
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <AcrylicBrush x:Key="MyAcrylicBackgroundBrush" TintOpacity="0.1" TintColor="Transparent" FallbackColor="White" BackgroundSource="HostBackdrop"/>
+                    
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Light">
+                    <AcrylicBrush x:Key="MyAcrylicBackgroundBrush" TintOpacity="0.1" TintColor="Transparent" FallbackColor="White" BackgroundSource="HostBackdrop"/>
+                    
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <AcrylicBrush x:Key="MyAcrylicBackgroundBrush" TintOpacity="0.1" TintColor="Transparent" FallbackColor="Black" BackgroundSource="HostBackdrop"/>
+                    
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>

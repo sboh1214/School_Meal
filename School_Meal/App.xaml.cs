@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Push;
 
 namespace School_Meal
 {
@@ -32,6 +23,7 @@ namespace School_Meal
         {
             this.InitializeComponent();
             AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Analytics));
+            AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Push));
             this.Suspending += OnSuspending;
         }
 

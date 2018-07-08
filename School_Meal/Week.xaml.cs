@@ -7,6 +7,7 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using System.Text;
+using Microsoft.AppCenter.Analytics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,6 +23,7 @@ namespace School_Meal
         public Week()
         {
             this.InitializeComponent();
+            Analytics.TrackEvent("Week Page");
 
             DateTime dtToday = DateTime.Now;
             
