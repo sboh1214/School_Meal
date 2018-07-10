@@ -24,6 +24,7 @@ namespace School_Meal
             this.InitializeComponent();
             AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Analytics));
             AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Push));
+            AppCenter.LogLevel = LogLevel.Verbose;
             this.Suspending += OnSuspending;
         }
 

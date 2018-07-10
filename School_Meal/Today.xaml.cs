@@ -48,32 +48,16 @@ namespace School_Meal
                 TodayLunch = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "L"];
                 TodayDinner = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "D"];
             }
-
-            if (TodayBreakfast == null)
-            {
-                Today_Breakfast_TextBlock.Text = "급식 정보 없음";
-            }
-            else
+            try
             {
                 Today_Breakfast_TextBlock.Text = TodayBreakfast.ToString();
-            }
-
-            if (TodayLunch == null)
-            {
-                Today_Lunch_TextBlock.Text = "급식 정보 없음";
-            }
-            else
-            {
                 Today_Lunch_TextBlock.Text = TodayLunch.ToString();
-            }
-
-            if (TodayDinner == null)
-            {
-                Today_Dinner_TextBlock.Text = "급식 정보 없음";
-            }
-            else
-            {
                 Today_Dinner_TextBlock.Text = TodayDinner.ToString();
+
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.WriteLine(e.Message);
             }
 
             TodayProgressBar_Row.Height = new GridLength(0);
@@ -84,6 +68,8 @@ namespace School_Meal
         {
             try
             {
+                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
+
                 var Url = new Uri("http://schoolmenukr.ml/api/ice/E100002238?year=" + Year.ToString() + "&month=" + Month.ToString()); //사이트 주소
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
@@ -130,10 +116,19 @@ namespace School_Meal
                     int lunchdotindex = lunchstr.IndexOf('.');
                     int dinnerdotindex = dinnerstr.IndexOf('.');
 
-                    breakfaststr = breakfaststr.Substring(0, breakfastdotindex);
-                    lunchstr = lunchstr.Substring(0, lunchdotindex);
-                    dinnerstr = dinnerstr.Substring(0, dinnerdotindex);
-
+                    if (breakfastdotindex!=0)
+                    {
+                        breakfaststr = breakfaststr.Substring(0, breakfastdotindex);
+                    }
+                    if (lunchdotindex!=0)
+                    {
+                        lunchstr = lunchstr.Substring(0, lunchdotindex);
+                    }
+                    if (dinnerdotindex!=0)
+                    {
+                        dinnerstr = dinnerstr.Substring(0, dinnerdotindex);
+                    }
+                    
                     ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
                     localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
@@ -143,9 +138,8 @@ namespace School_Meal
                 return true;
             }
             catch(Exception e)
-            {
-                
-                Debug.WriteLine(e);
+            { 
+                Debug.WriteLine(e.Message);
                 return false;
             }
         }
