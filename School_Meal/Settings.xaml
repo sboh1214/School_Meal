@@ -33,8 +33,18 @@
                 <CheckBox Content="저녁메뉴 알림" IsChecked="True" Margin="6,6,6,6"/>
                 <TimePicker Margin="6,6,6,6"/>
 
-                <TextBlock Text="캐시" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6"/>
+                <TextBlock Text="테마" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
+                <RadioButton Content="윈도우 테마 사용" GroupName="ThemeRadio" x:Name="WindowsTheme_Radio" Click="ThemeRadioButton_Click" Margin="6,6,6,6"/>
+                <Button Margin="36,6,6,6" Content="윈도우 테마 설정" x:Name="WindowsTheme_Button" Click="WindowsTheme_Button_Click"/>
+
+                <TextBlock Text="캐시" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
                 <Button x:Name="RemoveCache_Button" Content="삭제" Margin="6,6,6,6" Width="100" Click="RemoveCache_Button_Click"/>
+
+                <TextBlock Text="앱 정보" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
+                <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" Width="100"/>
+                <TextBlock Text="IASA 급식" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="6,6,6,6"/>
+                <TextBlock Text="버전 알 수 없음" x:Name="Version_TextBlock" Margin="6,6,6,6"/>
+                <Button Content="피드백 보내기" x:Name="Feedback_Button" Margin="6,6,6,6" Click="Feedback_Button_Click"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

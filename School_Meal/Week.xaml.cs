@@ -3,10 +3,6 @@ using System.Globalization;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.Storage;
-using System.Net;
-using System.IO;
-using Newtonsoft.Json;
-using System.Text;
 using Microsoft.AppCenter.Analytics;
 using System.Diagnostics;
 
@@ -54,76 +50,6 @@ namespace School_Meal
         {
             WeekPageDateTime=WeekPageDateTime.AddDays(7);
             ShowWeekMenu();
-        }
-
-        public bool GetMenu(int Year, int Month)
-        {
-            var Url = new Uri("http://schoolmenukr.ml/api/ice/E100002238?year=" + Year.ToString() + "&month=" + Month.ToString()); //사이트 주소
-            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
-            myRequest.Method = "GET";
-            WebResponse myresponse = myRequest.GetResponse();
-            StreamReader sr = new StreamReader(myresponse.GetResponseStream(), Encoding.UTF8);
-            string result = sr.ReadToEnd();
-            sr.Close();
-            myresponse.Close();
-
-            dynamic jObject = JsonConvert.DeserializeObject(result);
-            foreach (var Jitem in jObject)
-            {
-                dynamic jdate = Jitem.GetValue("date");
-                int date = Convert.ToInt32(jdate.Value);
-
-                dynamic jbreakfast = Jitem.GetValue("breakfast");
-                var breakfastlist = jbreakfast.Children();
-                string breakfaststr = "";
-                foreach (var BreakfastItem in breakfastlist)
-                {
-                    breakfaststr += BreakfastItem.Value;
-                    breakfaststr += "\n";
-                }
-
-                dynamic jlunch = Jitem.GetValue("lunch");
-                var lunchlist = jlunch.Children();
-                string lunchstr = "";
-                foreach (var LunchItem in lunchlist)
-                {
-                    lunchstr += LunchItem.Value;
-                    lunchstr += "\n";
-                }
-
-                dynamic jdinner = Jitem.GetValue("dinner");
-                var dinnerlist = jdinner.Children();
-                string dinnerstr = "";
-                foreach (var DinnerItem in dinnerlist)
-                {
-                    dinnerstr += DinnerItem.Value;
-                    dinnerstr += "\n";
-                }
-
-                int breakfastdotindex = breakfaststr.IndexOf('.');
-                int lunchdotindex = lunchstr.IndexOf('.');
-                int dinnerdotindex = dinnerstr.IndexOf('.');
-
-                if (breakfastdotindex != 0)
-                {
-                    breakfaststr = breakfaststr.Substring(0, breakfastdotindex);
-                }
-                if (lunchdotindex != 0)
-                {
-                    lunchstr = lunchstr.Substring(0, lunchdotindex);
-                }
-                if (dinnerdotindex != 0)
-                {
-                    dinnerstr = dinnerstr.Substring(0, dinnerdotindex);
-                }
-
-                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "L"] = lunchstr;
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "D"] = dinnerstr;
-            }
-            return true;
         }
 
         public void ShowWeekMenu()

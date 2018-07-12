@@ -21,7 +21,8 @@
                 <TextBlock Text="검색" Margin="6,6,6,6" FontSize="20"/>
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
-                <AppBarButton/>
+                <AppBarButton Content="고급검색"/>
+                <AppBarToggleButton Content="고정" IsChecked="True"/>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar Grid.Row="1" IsIndeterminate="True"/>
@@ -29,17 +30,47 @@
                         TextChanged="AutoSuggestBox_TextChanged" 
                         QuerySubmitted="AutoSuggestBox_QuerySubmitted" 
                         SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
-        <controls:Expander ExpandDirection="Down" x:Name="Search_Expander" Header="고급 검색" Grid.Row="3"
-                           VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <controls:Expander ExpandDirection="Down" x:Name="Search_Expander" 
+                           Grid.Row="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Header="고급 검색">
             <controls:Expander.Content>
-                <Grid>
-                    
-                </Grid>
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="검색 기간"/>
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="3" Text="급식 종류"/>
+                        <CheckBox Grid.Row="3" Grid.Column="0" Content="아침" IsChecked="True"/>
+                        <CheckBox Grid.Row="3" Grid.Column="1" Content="점심" IsChecked="True"/>
+                        <CheckBox Grid.Row="3" Grid.Column="2" Content="저녁" IsChecked="True"/>
+                    </Grid>
+                </ScrollViewer>
             </controls:Expander.Content>
             <controls:Expander.ContentOverlay>
                 <Grid>
-                    <TextBlock Text="검색 결과"/>
-                </Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Margin="6,6,6,6" 
+                                   Text="검색 결과" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Margin="12,24,0,0" 
+                                   Text="총 0건이 검색되었습니다." Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                        <GridView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="FindResult_ListView"/>
+                    </Grid>
             </controls:Expander.ContentOverlay>
         </controls:Expander>
     </Grid>
