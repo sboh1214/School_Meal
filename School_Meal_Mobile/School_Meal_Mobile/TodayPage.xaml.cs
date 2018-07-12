@@ -29,15 +29,15 @@ namespace School_Meal_Mobile
             var date = TodayPageDateTime;
 
             var TodayBreakfast = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B",null);
-            var TodayLunch = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B", null);
-            var TodayDinner = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B", null);
+            var TodayLunch = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "L", null);
+            var TodayDinner = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "D", null);
 
             if (TodayBreakfast == null && TodayLunch == null && TodayDinner == null)
             {
                 GetMenu(date.Year, date.Month);
                 TodayBreakfast = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B", null);
-                TodayLunch = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B", null);
-                TodayDinner = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B", null);
+                TodayLunch = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "L", null);
+                TodayDinner = Preferences.Get(date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "D", null);
 
             }
 
