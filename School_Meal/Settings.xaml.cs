@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using Microsoft.Services.Store.Engagement;
 using System;
+using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Xaml;
@@ -18,7 +19,20 @@ namespace School_Meal
         public Settings()
         {
             this.InitializeComponent();
+
             Analytics.TrackEvent("Settings Page");
+            Version_TextBlock.Text = GetAppVersion();
+        }
+
+        public static string GetAppVersion()
+        {
+
+            Package package = Package.Current;
+            PackageId packageId = package.Id;
+            PackageVersion version = packageId.Version;
+
+            return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+
         }
 
         private void RemoveCache_Button_Click(object sender, RoutedEventArgs e)
