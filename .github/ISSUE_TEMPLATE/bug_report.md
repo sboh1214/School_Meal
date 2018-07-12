@@ -21,10 +21,10 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Device (please complete the following information):**
- - OS: [e.g. Windows 10]
- - OS Version : [e.g. 1803]
+ - Debugging Device OS: [e.g. Windows 10]
+ - Debugging Device OS Version : [e.g. 1803]
+ - Emulator OS :
  - App Version : 
- 
 
 **Additional context**
 Add any other context about the problem here.
