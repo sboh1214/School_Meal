@@ -90,5 +90,7 @@
                 </StackPanel>
             </Button>
         </Grid>
+
+        <Frame x:Name="Main_Frame" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"/>
     </Grid>
 </Window>
