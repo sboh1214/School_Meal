@@ -60,6 +60,9 @@
     <Compile Include="TodayWindow.xaml.cs">
       <DependentUpon>TodayWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WeekWindow.xaml.cs">
+      <DependentUpon>WeekWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +76,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TodayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WeekWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

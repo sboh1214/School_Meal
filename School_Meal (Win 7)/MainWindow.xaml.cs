@@ -15,7 +15,7 @@ namespace School_Meal__Win_7_
             var Date = DateTime.Now;
             TodayDate_TextBlock.Text = Date.Year.ToString() + "년 " + Date.Month.ToString() + "월 " + Date.Day.ToString() + "일";
 
-            Main_Frame.Navigate(content: TodayWindow);
+            //Main_Frame.Navigate(content: TodayWindow);
         }
     }
 }
