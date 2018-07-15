@@ -16,53 +16,77 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0">
+                <Image Source="pack://application:,,,/Assets/Menu_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
+            </Button>
+            <TextBlock Grid.Column="1" Text="" FontSize="20" x:Name="TodayDate_TextBlock" Margin="6,6,6,6"/>
+        </Grid>
         <Grid Grid.Row="1" Grid.Column="0" Background="Aqua" MaxWidth="300">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" x:Name="LocalTitle_RowDef"/> <!--0-->
-                <RowDefinition Height="Auto" x:Name="Day_RowDef"/> <!--1-->
-                <RowDefinition Height="Auto" x:Name="Week_RowDef"/> <!--2-->
-                <RowDefinition Height="Auto" x:Name="Month_RowDef"/> <!--3-->
-                <RowDefinition Height="Auto" x:Name="FindTitle_RowDef"/> <!--4-->
-                <RowDefinition Height="Auto" x:Name="Find_RowDef"/> <!--5-->
-                <RowDefinition Height="Auto" x:Name="WebTitle_RowDef"/> <!--6-->
-                <RowDefinition Height="Auto" x:Name="Web_RowDef"/> <!--7-->
+                <RowDefinition Height="Auto" x:Name="LocalTitle_RowDef"/>
+                <!--0-->
+                <RowDefinition Height="Auto" x:Name="Day_RowDef"/>
+                <!--1-->
+                <RowDefinition Height="Auto" x:Name="Week_RowDef"/>
+                <!--2-->
+                <RowDefinition Height="Auto" x:Name="Month_RowDef"/>
+                <!--3-->
+                <RowDefinition Height="Auto" x:Name="FindTitle_RowDef"/>
+                <!--4-->
+                <RowDefinition Height="Auto" x:Name="Find_RowDef"/>
+                <!--5-->
+                <RowDefinition Height="Auto" x:Name="WebTitle_RowDef"/>
+                <!--6-->
+                <RowDefinition Height="Auto" x:Name="Web_RowDef"/>
+                <!--7-->
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto" x:Name="HyperLink_RowDef"/> <!--9-->
-                <RowDefinition Height="Auto" x:Name="Settings_RowDef"/> <!--10-->
+                <RowDefinition Height="Auto" x:Name="HyperLink_RowDef"/>
+                <!--9-->
+                <RowDefinition Height="Auto" x:Name="Settings_RowDef"/>
+                <!--10-->
             </Grid.RowDefinitions>
-            
-            <TextBlock Text="Local" Grid.Row="0"/>
-            <Button x:Name="DayMeal_DockButton" Grid.Row="1">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="일별 급식"/>
+
+            <TextBlock Text="Local" Grid.Row="0" FontSize="16" Margin="6,6,6,6"/>
+            <Button x:Name="DayMeal_DockButton" Grid.Row="1" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="pack://application:,,,/Assets/Day_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
+                    <TextBlock Text="일별 급식" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="WeekMeal_DockButton" Grid.Row="2">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="주별 급식"/>
+            <Button x:Name="WeekMeal_DockButton" Grid.Row="2" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="pack://application:,,,/Assets/Week_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
+                    <TextBlock Text="주별 급식" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="MonthMeal_DockButton" Grid.Row="3">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="월별 급식"/>
+            <Button x:Name="MonthMeal_DockButton" Grid.Row="3" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="pack://application:,,,/Assets/Month_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
+                    <TextBlock Text="월별 급식" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Button>
 
-            <TextBlock Text="Find" Grid.Row="4"/>
+            <TextBlock Text="Find" Grid.Row="4" FontSize="16" Margin="6,6,6,6"/>
             <StackPanel Orientation="Vertical" Grid.Row="5">
             </StackPanel>
-            
-            <TextBlock Text="Web" Grid.Row="6"/>
+
+            <TextBlock Text="Web" Grid.Row="6" FontSize="16" Margin="6,6,6,6"/>
 
             <StackPanel Orientation="Vertical" Grid.Row="7">
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Row="9">
-                
+
             </StackPanel>
-            <Button x:Name="Settings_DockButton" Grid.Row="10">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="설정"/>
+            <Button x:Name="Settings_DockButton" Grid.Row="10" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="pack://application:,,,/Assets/Settings_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
+                    <TextBlock Text="설정" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Button>
         </Grid>

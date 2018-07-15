@@ -97,5 +97,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Day_Icon.png" />
+    <Resource Include="Assets\Month_Icon.png" />
+    <Resource Include="Assets\Settings_Icon.png" />
+    <Resource Include="Assets\Week_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Menu_Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
