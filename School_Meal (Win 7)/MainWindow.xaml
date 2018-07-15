@@ -21,7 +21,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0">
+            <Button Grid.Column="0" BorderThickness="0">
                 <Image Source="pack://application:,,,/Assets/Menu_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
             </Button>
             <TextBlock Grid.Column="1" Text="" FontSize="20" x:Name="TodayDate_TextBlock" Margin="6,6,6,6"/>
