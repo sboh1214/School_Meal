@@ -17,7 +17,8 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 Using Travis CI
 
 ### Release & Master
-- Master Branch [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=master)](https://travis-ci.org/sboh1214/School_Meal)
+- **Master Branch** [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=master)](https://travis-ci.org/sboh1214/School_Meal)
+- UWP Release [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=UWP_Release)](https://travis-ci.org/sboh1214/School_Meal)
 
 ### Develop & Debug & Hotfix
 
