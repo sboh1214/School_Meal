@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School_Meal_Mobile.iOS", "S
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "School_Meal_Mobile", "School_Meal_Mobile\School_Meal_Mobile\School_Meal_Mobile.shproj", "{8DD914FB-DC28-432F-95D4-F008B7479EC2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA867319-FBEE-4B60-B71B-0893B9BF7563}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		School_Meal_Mobile\School_Meal_Mobile\School_Meal_Mobile.projitems*{0a36e7e6-20b1-44c2-ac7f-bf06df710987}*SharedItemsImports = 4
