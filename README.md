@@ -20,7 +20,7 @@ Using Visual Studio Team Service (VSTS)
 - master (UWP)  ![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/5/badge)
 
 ### Develop & Debug & Hotfix
-
+- Mobile_1807_Debug (Android) ![Build status](https://build.appcenter.ms/v0.1/apps/56e23398-43da-453d-800f-89ca58e1f466/branches/Mobile_1807_Debug/badge)
 
 ## Website
 
