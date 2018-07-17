@@ -17,8 +17,7 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 Using Visual Studio Team Service (VSTS)
 
 ### Release & Master
-- **Master Branch** ![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/4/badge)
-- UWP Release [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=UWP_Release)](https://travis-ci.org/sboh1214/School_Meal)
+- master (UWP)  ![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/5/badge)
 
 ### Develop & Debug & Hotfix
 
