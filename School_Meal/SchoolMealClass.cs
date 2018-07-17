@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using Windows.Data.Json;
 using Windows.Storage;
+using Xamarin.Essentials;
 
 namespace School_Meal
 {
@@ -13,7 +14,7 @@ namespace School_Meal
     {
         private DateTime DateCursor;
 
-        public bool LoadMenu(int Year, int Month)
+        public bool LoadMenu(int Year, int Month, string DeviceType) //DeviceType : "Win10", "Win7", "XF"
         {
             try
             {
@@ -36,8 +37,9 @@ namespace School_Meal
                     {
                         break;
                     }
+                    var JValue = JItem_Temp.Value;
                     
-                    s
+                    
 
                     dynamic jbreakfast = Jitem.GetValue("breakfast");
                     var breakfastlist = jbreakfast.Children();
@@ -82,12 +84,29 @@ namespace School_Meal
                     {
                         dinnerstr = dinnerstr.Substring(0, dinnerdotindex);
                     }
+                    
+                    switch(DeviceType)
+                    {
+                        case "Win10":
 
-                    ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+                            localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
+                            localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "L"] = lunchstr;
+                            localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "D"] = dinnerstr;
+                            break;
 
-                    localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
-                    localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "L"] = lunchstr;
-                    localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "D"] = dinnerstr;
+                        case "Win7":
+                            break;
+
+                        case "XF":
+                            Preferences.Set(Year.ToString() + Month.ToString() + date.ToString() + "B", breakfaststr);
+                            Preferences.Set(Year.ToString() + Month.ToString() + date.ToString() + "L", lunchstr);
+                            Preferences.Set(Year.ToString() + Month.ToString() + date.ToString() + "D", dinnerstr);
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
                 return true;
             }
