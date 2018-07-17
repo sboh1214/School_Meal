@@ -2,4 +2,4 @@ language: csharp
 solution: School_Meal.sln
 install:
   - sudo apt-get install -y gtk-sharp2
-  - nuget restore solution-name.sln
+  - nuget restore School_Meal.sln
