@@ -14,10 +14,10 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 2. 다양한 플랫폼을 지원합니다. Windows 7, 8, 8.1, 10 , macOS , iOS , Android 를 모두 지원합니다. (일부 플랫폼 지원 예정)
 
 ## Build Status
-Using Travis CI
+Using Visual Studio Team Service (VSTS)
 
 ### Release & Master
-- **Master Branch** [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=master)](https://travis-ci.org/sboh1214/School_Meal)
+- **Master Branch** ![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/4/badge)
 - UWP Release [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=UWP_Release)](https://travis-ci.org/sboh1214/School_Meal)
 
 ### Develop & Debug & Hotfix
