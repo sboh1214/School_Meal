@@ -14,14 +14,15 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 2. 다양한 플랫폼을 지원합니다. Windows 7, 8, 8.1, 10 , macOS , iOS , Android 를 모두 지원합니다. (일부 플랫폼 지원 예정)
 
 ## Build Status
-Using Travis CI
+Using Visual Studio Team Service (VSTS)
+Using Visual Studio App Center (VSAC)
 
 ### Release & Master
-- **Master Branch** [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=master)](https://travis-ci.org/sboh1214/School_Meal)
-- UWP Release [![Build Status](https://travis-ci.org/sboh1214/School_Meal.svg?branch=UWP_Release)](https://travis-ci.org/sboh1214/School_Meal)
+- master (UWP)  ![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/5/badge)
 
 ### Develop & Debug & Hotfix
-
+- Mobile_1807_Debug (Android) ![Build status](https://build.appcenter.ms/v0.1/apps/56e23398-43da-453d-800f-89ca58e1f466/branches/Mobile_1807_Debug/badge)
+- Mobile_1807_Debug (iOS) ![Build status](https://build.appcenter.ms/v0.1/apps/6d1394c9-8d42-4485-9bee-77d11678e663/branches/Mobile_1807_Debug/badge)
 
 ## Website
 
@@ -35,4 +36,5 @@ Using Travis CI
 ### Others
 - UWP platform : [https://docs.microsoft.com/windows/uwp](https://docs.microsoft.com/windows/uwp)
 - Xamarin.Forms platform : [https://docs.microsoft.com/xamarin/xamarin-forms](https://docs.microsoft.com/xamarin/xamarin-forms)
-- Travis CI HomePage : [https://travis-ci.org/sboh1214/School_Meal](https://travis-ci.org/sboh1214/School_Meal)
+- VSTS
+- AppCenter
