@@ -1,4 +1,4 @@
-#![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/6/badge **School_Meal**
+# **School_Meal**
 인천과학예술영재학교 급식 앱
 Inchoen Academy of Science and Arts (IASA) School Meal Application
 
