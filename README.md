@@ -15,15 +15,19 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 
 ## Build Status
 Using Visual Studio Team Service (VSTS)
-Using Visual Studio App Center (VSAC)
 
-### Release & Master
-- master (UWP)  ![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/5/badge)
-- Release (UWP) ![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/6/badge)
+### Master
 
-### Develop & Debug & Hotfix
-- Mobile_1807_Debug (Android) ![Build status](https://build.appcenter.ms/v0.1/apps/56e23398-43da-453d-800f-89ca58e1f466/branches/Mobile_1807_Debug/badge)
-- Mobile_1807_Debug (iOS) ![Build status](https://build.appcenter.ms/v0.1/apps/6d1394c9-8d42-4485-9bee-77d11678e663/branches/Mobile_1807_Debug/badge)
+|Windows 10|Windows 7|Android|iOS|
+|----------|---------|-------|---|
+|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/5/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/9/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/7/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/8/badge)|
+
+### Release
+
+|Windows 10|Windows 7|Android|iOS|
+|----------|---------|-------|---|
+|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/6/badge)||||
+
 
 ## Website
 
@@ -37,5 +41,5 @@ Using Visual Studio App Center (VSAC)
 ### Others
 - UWP platform : [https://docs.microsoft.com/windows/uwp](https://docs.microsoft.com/windows/uwp)
 - Xamarin.Forms platform : [https://docs.microsoft.com/xamarin/xamarin-forms](https://docs.microsoft.com/xamarin/xamarin-forms)
-- VSTS
+- VSTS : [https://sboh1214.visualstudio.com/School_Meal](https://sboh1214.visualstudio.com/School_Meal)
 - AppCenter
