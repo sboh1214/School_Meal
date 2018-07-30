@@ -2,6 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.AppCenter.Analytics;
+using School_Meal;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -13,49 +14,35 @@ namespace School_Meal
 
     public sealed partial class Today : Page
     {
-        public DateTime TodayPageDateTime = DateTime.Now;
+        public SchoolMealClass TodayClass = new SchoolMealClass();
 
         public Today()
         {
             this.InitializeComponent();
             Analytics.TrackEvent("Today Page");
-
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
-            TodayProgressBar_Row.Height = new GridLength(12);
-            ShowMenu();
-            TodayProgressBar_Row.Height = new GridLength(0);
-        }
-
-        public bool ShowMenu()
-        {
             
-            return true;
+            TodayClass.MoveDateCursorToToday();
+            TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
         {
-            TodayProgressBar_Row.Height = new GridLength(12);
-            TodayPageDateTime = TodayPageDateTime.AddDays(-1);
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
-            ShowMenu();
-            TodayProgressBar_Row.Height = new GridLength(0);
+            TodayClass.MoveDateCursor(-1);
+            TodayClass.GetDayMenu("Win10");
+            TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
         }
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
-            TodayProgressBar_Row.Height = new GridLength(12);
-            ShowMenu();
-            TodayProgressBar_Row.Height = new GridLength(0);
+            TodayClass.LoadMonthMenu("Win10");
+            TodayClass.GetDayMenu("Win10");
         }
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
-            TodayProgressBar_Row.Height = new GridLength(12);
-            TodayPageDateTime = TodayPageDateTime.AddDays(1);
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
-            ShowMenu();
-            TodayProgressBar_Row.Height = new GridLength(0);
+            TodayClass.MoveDateCursor(1);
+            TodayClass.GetDayMenu("Win10");
+            TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)

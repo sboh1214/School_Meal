@@ -11,7 +11,7 @@ using Xamarin.Essentials;
 
 namespace School_Meal
 {
-    class SchoolMealClass
+    public class SchoolMealClass
     {
         private DateTime DateCursor;
         private DateTime WeekCursor;
@@ -20,7 +20,12 @@ namespace School_Meal
         private IJsonValue JItem_Lunch;
         private IJsonValue JItem_Dinner;
 
-        public bool LoadMenu(int Year, int Month, string DeviceType) //DeviceType : "Win10", "Win7", "XF"
+        public bool LoadMonthMenu(string DeviceType)
+        {
+            return LoadMonthMenu(DateCursor.Year, DateCursor.Month, DeviceType);
+        }
+
+        public bool LoadMonthMenu(int Year, int Month, string DeviceType) //DeviceType : "Win10", "Win7", "XF"
         {
             try
             {
@@ -121,7 +126,15 @@ namespace School_Meal
             }
         }
 
-        
+        public Dictionary<string,string> GetDayMenu(string DeviceType)
+        {
+            return GetDayMenu(DateCursor.Year, DateCursor.Month, DateCursor.Day, DeviceType);
+        }
+
+        public Dictionary<string, string> GetDayMenu(DateTime Date,string DeviceType)
+        {
+            return GetDayMenu(Date.Year, Date.Month, Date.Day, DeviceType);
+        }
 
         public Dictionary<string,string> GetDayMenu(int Year, int Month, int Day, string DeviceType)
         {
@@ -355,6 +368,41 @@ namespace School_Meal
         public DateTime GetDateCursor()
         {
             return DateCursor;
+        }
+
+        public string GetDateCursor(string Type)
+        {
+            string Year = DateCursor.Year.ToString();
+            string Month = DateCursor.Month.ToString();
+            string Day = DateCursor.Day.ToString();
+
+            switch (Type)
+            {
+                case "YYYYMMDD": case "yyyymmdd":
+                    return Year + Month + Day;
+                case "YYMMDD": case "yymmdd":
+                    return Year.Substring(2,2) + Month + Day;
+                case "YYYYMM": case "yyyymm":
+                    return Year + Month;
+                case "YYMM": case "yymm":
+                    return Year.Substring(2, 2) + Month;
+                case "MMDD": case "mmdd":
+                    return Month + Day;
+                case "YYYY": case "yyyy":
+                    return Year;
+                case "YY": case "yy":
+                    return Year.Substring(2, 2);
+                case "MM": case "mm":
+                    return Month;
+                case "DD": case "dd":
+                    return Day;
+                case "YYYY년 MM월 DD일": case "yyyy년 mm월 dd일":
+                    return Year + "년 " + Month+ "월 " + Day+"일";
+                case "MM월 DD일": case "mm월 dd일":
+                    return Month+"월 " + Day+"일";
+                default:
+                    return "Error";
+            }
         }
 
         public DateTime GetWeekCursor()
