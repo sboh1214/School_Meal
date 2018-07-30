@@ -45,7 +45,7 @@ namespace School_Meal
             SettingProgressBar_Row.Height = new GridLength(0);
         }
 
-        private async System.Threading.Tasks.Task Feedback_Button_ClickAsync(object sender, RoutedEventArgs e)
+        private async void Feedback_Button_Click(object sender, RoutedEventArgs e)
         {
             if (StoreServicesFeedbackLauncher.IsSupported())
             {
@@ -59,7 +59,7 @@ namespace School_Meal
                 // Set the option to show a warning
                 var promptOptions = new LauncherOptions
                 {
-                    TreatAsUntrusted = true
+                    TreatAsUntrusted = false
                 };
 
                 // Launch the URI
@@ -68,6 +68,11 @@ namespace School_Meal
         }
 
         private void WindowsTheme_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Theme_Radio_Click(object sender, RoutedEventArgs e)
         {
 
         }

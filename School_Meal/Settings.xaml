@@ -34,7 +34,7 @@
                 <TimePicker Margin="6,6,6,6"/>
 
                 <TextBlock Text="테마" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
-                <RadioButton Content="윈도우 테마 사용" GroupName="ThemeRadio" x:Name="WindowsTheme_Radio" Click="ThemeRadioButton_Click" Margin="6,6,6,6"/>
+                <RadioButton Content="윈도우 테마 사용" GroupName="ThemeRadio" x:Name="WindowsTheme_Radio" Click="Theme_Radio_Click" Margin="6,6,6,6"/>
                 <Button Margin="36,6,6,6" Content="윈도우 테마 설정" x:Name="WindowsTheme_Button" Click="WindowsTheme_Button_Click"/>
 
                 <TextBlock Text="캐시" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>

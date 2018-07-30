@@ -42,7 +42,7 @@ namespace School_Meal
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-            GetMenu(WeekPageDateTime.Year, WeekPageDateTime.Month);
+            
             ShowWeekMenu();
         }
 
@@ -139,14 +139,9 @@ namespace School_Meal
 
                 WeekPageDateTime = WeekPageDateTime.AddDays(-6);
             }
-            catch (NullReferenceException e)
-            {
-                Debug.WriteLine(e);
-
-            }
             catch (Exception e)
             {
-
+                Debug.WriteLine(e);
             }
         }
     }
