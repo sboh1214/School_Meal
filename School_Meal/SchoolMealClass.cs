@@ -20,6 +20,58 @@ namespace School_Meal
         private IJsonValue JItem_Lunch;
         private IJsonValue JItem_Dinner;
 
+        public SchoolMealClass()
+        {
+            DateCursor = DateTime.Now;
+            WeekCursor = DateTime.Now;
+        }
+
+        public SchoolMealClass(DateTime Date , DateTime Week)
+        {
+            DateCursor = Date;
+            WeekCursor = Week;
+        }
+
+        public SchoolMealClass(string IsLoad)
+        {
+            DateCursor = DateTime.Now;
+            WeekCursor = DateTime.Now;
+
+            switch(IsLoad)
+            {
+                case "None":
+                    break;
+                case "Day":
+                    break;
+                case "Week":
+                    break;
+                case "Month":
+                    break;
+                default:
+                    throw new Exception("Invaild Parameter");
+            }
+        }
+
+        public SchoolMealClass(DateTime Date, DateTime Week, string IsLoad)
+        {
+            DateCursor = Date;
+            WeekCursor = Week;
+
+            switch (IsLoad)
+            {
+                case "None":
+                    break;
+                case "Day":
+                    break;
+                case "Week":
+                    break;
+                case "Month":
+                    break;
+                default:
+                    throw new Exception("Invaild Parameter");
+            }
+        }
+
         public bool LoadMonthMenu(string DeviceType)
         {
             return LoadMonthMenu(DateCursor.Year, DateCursor.Month, DeviceType);
@@ -178,12 +230,16 @@ namespace School_Meal
 
             return DayMealDictionary;
         }
+    
+        public Dictionary<string,string> GetWeekMenu(string DeviceType)
+        {
+            return GetWeekMenu(WeekCursor, DeviceType);
+        }
 
-        public Dictionary<string,string> GetWeekMenu(int Year, int Month, int Day, string DeviceType)
+        public Dictionary<string,string> GetWeekMenu(DateTime dtToday, string DeviceType)
         {
             var WeekMealDictionary = new Dictionary<string, string>();
 
-            DateTime dtToday = DateTime.Now;
             CultureInfo ciCurrent = System.Threading.Thread.CurrentThread.CurrentCulture;
             DayOfWeek dwFirst = ciCurrent.DateTimeFormat.FirstDayOfWeek;
             DayOfWeek dwToday = ciCurrent.Calendar.GetDayOfWeek(dtToday);
