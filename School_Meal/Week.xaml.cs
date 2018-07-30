@@ -21,17 +21,19 @@ namespace School_Meal
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            WeekClass.MoveWeekCursor(-1);
+            WeekClass.GetWeekMenu("Win10");
         }
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-            
+            WeekClass.GetWeekMenu("Win10");
         }
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
-
+            WeekClass.MoveWeekCursor(1);
+            WeekClass.GetWeekMenu("Win10");
         }
     }
 }
