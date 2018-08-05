@@ -1,6 +1,8 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.AppCenter.Analytics;
+using System;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -16,24 +18,59 @@ namespace School_Meal
             Analytics.TrackEvent("Week Page");
 
             WeekClass.MoveWeekCursorToToday();
-            WeekClass.GetWeekMenu("Win10");
+            ShowMenu();
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
         {
             WeekClass.MoveWeekCursor(-1);
-            WeekClass.GetWeekMenu("Win10");
+            ShowMenu();
         }
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-            WeekClass.GetWeekMenu("Win10");
+            WeekClass.LoadMonthMenu("Win10");
+            ShowMenu();
         }
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
             WeekClass.MoveWeekCursor(1);
-            WeekClass.GetWeekMenu("Win10");
+            ShowMenu();
+        }
+
+        private bool ShowMenu()
+        {
+            try
+            {
+                var Menu = WeekClass.GetWeekMenu("Win10");
+
+                SunB.Text = Menu["SunB"];
+                SunL.Text = Menu["SunL"];
+                SunD.Text = Menu["SunD"];
+                MonB.Text = Menu["MonB"];
+                MonL.Text = Menu["MonL"];
+                MonD.Text = Menu["MonD"];
+                TueB.Text = Menu["TueB"];
+                TueL.Text = Menu["TueL"];
+                TueD.Text = Menu["TueD"];
+                WedB.Text = Menu["WedB"];
+                WedL.Text = Menu["WedL"];
+                WedD.Text = Menu["WedD"];
+                FriB.Text = Menu["FriB"];
+                FriL.Text = Menu["FriL"];
+                FriD.Text = Menu["FriD"];
+                SatB.Text = Menu["SatB"];
+                SatL.Text = Menu["SatL"];
+                SatD.Text = Menu["SatD"];
+                
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }

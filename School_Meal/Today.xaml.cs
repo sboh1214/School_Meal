@@ -2,7 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.AppCenter.Analytics;
-using School_Meal;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -18,26 +18,27 @@ namespace School_Meal
             Analytics.TrackEvent("Today Page");
             
             TodayClass.MoveDateCursorToToday();
+            ShowMenu();
             TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
         {
             TodayClass.MoveDateCursor(-1);
-            TodayClass.GetDayMenu("Win10");
+            ShowMenu();
             TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
         }
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
             TodayClass.LoadMonthMenu("Win10");
-            TodayClass.GetDayMenu("Win10");
+            ShowMenu();
         }
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
             TodayClass.MoveDateCursor(1);
-            TodayClass.GetDayMenu("Win10");
+            ShowMenu();
             TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
         }
 
@@ -60,6 +61,23 @@ namespace School_Meal
                 Today_Breakfast_TextBlock.FontSize = 12;
                 Today_Lunch_TextBlock.FontSize = 12;
                 Today_Dinner_TextBlock.FontSize = 12;
+            }
+        }
+
+        public bool ShowMenu ()
+        {
+            try
+            {
+                var Menu = TodayClass.GetDayMenu("Win10");
+                Today_Breakfast_TextBlock.Text = Menu["Breakfast"];
+                Today_Lunch_TextBlock.Text = Menu["Lunch"];
+                Today_Dinner_TextBlock.Text = Menu["Dinner"];
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return false;
             }
         }
     }

@@ -9,6 +9,7 @@
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
     <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
+        
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Local"/>
             <NavigationViewItem Content="일별 급식" x:Uid="Today_NavPaneItem" x:Name="Today_NavPaneItem" Tag="Today">
@@ -39,17 +40,17 @@
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
         </NavigationView.MenuItems>
+        
         <NavigationView.AutoSuggestBox>
             <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find"/>
         </NavigationView.AutoSuggestBox>
+
         <NavigationView.PaneFooter>
             <StackPanel Orientation="Vertical">
                 <HyperlinkButton Content="App Website" Margin="54,0,0,0" NavigateUri="https://sites.google.com/view/iasa-meal"/>
                 <HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
                 <HyperlinkButton Content="Android 다운로드" Margin="54,0,0,0"/>
                 <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>
-
-
             </StackPanel>
         </NavigationView.PaneFooter>
 

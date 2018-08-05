@@ -4,10 +4,13 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using Windows.Data.Json;
+using Windows.Networking.Connectivity;
 using Windows.Storage;
 using Xamarin.Essentials;
+using System.Linq;
 
 namespace School_Meal
 {
@@ -269,40 +272,185 @@ namespace School_Meal
             var Settings = ApplicationData.Current.LocalSettings;
             string YearMonth = TempWeekCursor.Year.ToString() + TempWeekCursor.Month.ToString();
 
-            WeekMealDictionary.Add("MonB", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"].ToString());
-            WeekMealDictionary.Add("MonL", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"].ToString());
-            WeekMealDictionary.Add("MonD", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"].ToString());
+            var SunB = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"];
+            var SunL = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"];
+            var SunD = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"];
             TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("TueB", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"].ToString());
-            WeekMealDictionary.Add("TueL", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"].ToString());
-            WeekMealDictionary.Add("TueD", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"].ToString());
+            var MonB = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"];
+            var MonL = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"];
+            var MonD = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"];
             TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("WedB", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"].ToString());
-            WeekMealDictionary.Add("WedL", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"].ToString());
-            WeekMealDictionary.Add("WedD", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"].ToString());
+            var TueB = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"];
+            var TueL = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"];
+            var TueD = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"];
             TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("ThuB", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"].ToString());
-            WeekMealDictionary.Add("ThuL", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"].ToString());
-            WeekMealDictionary.Add("ThuD", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"].ToString());
+            var WedB = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"];
+            var WedL = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"];
+            var WedD = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"];
             TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("FriB", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"].ToString());
-            WeekMealDictionary.Add("FriL", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"].ToString());
-            WeekMealDictionary.Add("FriD", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"].ToString());
+            var ThuB = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"];
+            var ThuL = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"];
+            var ThuD = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"];
             TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("SatB", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"].ToString());
-            WeekMealDictionary.Add("SatL", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"].ToString());
-            WeekMealDictionary.Add("SatD", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"].ToString());
+            var FriB = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"];
+            var FriL = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"];
+            var FriD = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"];
             TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("SunB", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"].ToString());
-            WeekMealDictionary.Add("SunL", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"].ToString());
-            WeekMealDictionary.Add("SunD", Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"].ToString());
+            var SatB = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"B"];
+            var SatL = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"L"];
+            var SatD = Settings.Values[YearMonth+TempWeekCursor.Day.ToString()+"D"];
             TempWeekCursor.AddDays(-7);
+
+            if (SunB == null)
+            {
+                WeekMealDictionary.Add("MonB", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("MonB", MonB.ToString());
+            }
+            if (SunB == null)
+            {
+                WeekMealDictionary.Add("MonL", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("MonL", MonL.ToString());
+            }
+            if (SunB == null)
+            {
+                WeekMealDictionary.Add("MonD", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("MonD", MonD.ToString());
+            }
+
+
+            if (TueB == null)
+            {
+                WeekMealDictionary.Add("TueB", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("TueB", TueB.ToString());
+            }
+            if (TueL == null)
+            {
+                WeekMealDictionary.Add("TueL", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("TueL", TueL.ToString());
+            }
+            if (TueD == null)
+            {
+                WeekMealDictionary.Add("TueD", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("TueD", TueD.ToString());
+            }
+
+            if (WedB == null)
+            {
+                WeekMealDictionary.Add("WedB", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("WedB", WedB.ToString());
+            }
+            if (WedL == null)
+            {
+                WeekMealDictionary.Add("WedL", "급식정보없음");
+            }
+            else  
+            {
+                WeekMealDictionary.Add("WedL", WedL.ToString());
+            }
+            if (WedD == null)
+            {
+                WeekMealDictionary.Add("WedD", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("WedD", WedD.ToString());
+            }
+
+            if (ThuB == null)
+            {
+                WeekMealDictionary.Add("ThuB", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("ThuB", ThuB.ToString());
+            }
+            if (ThuL == null)
+            {
+                WeekMealDictionary.Add("ThuL", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("ThuL", ThuL.ToString());
+            }
+            if (ThuD == null)
+            {
+                WeekMealDictionary.Add("ThuD", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("ThuD", ThuD.ToString());
+            }
+
+            if (FriB == null)
+            {
+                WeekMealDictionary.Add("FriB", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("FriB", FriB.ToString());
+            }
+            if (FriL == null)
+            {
+                WeekMealDictionary.Add("FriL", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("FriL", FriL.ToString());
+            }
+            if (FriD == null)
+            {
+                WeekMealDictionary.Add("FriD", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("FriD", FriD.ToString());
+            }
+
+            if (SatB == null)
+            {
+                WeekMealDictionary.Add("SatB", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("SatB", SatL.ToString());
+            }
+            if (SatL == null)
+            {
+                WeekMealDictionary.Add("SatL", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("SatL", SatL.ToString());
+            }
+            if (SatD == null)
+            {
+                WeekMealDictionary.Add("SatD", "급식정보없음");
+            }
+            else
+            {
+                WeekMealDictionary.Add("SatD", SatD.ToString());
+            }
 
             return WeekMealDictionary;
         }
@@ -321,39 +469,39 @@ namespace School_Meal
             var WeekMealDictionary = new Dictionary<string,string>();
             string YearMonth = TempWeekCursor.Year.ToString()+TempWeekCursor.Month.ToString();
 
-            WeekMealDictionary.Add("MonB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B",null));
-            WeekMealDictionary.Add("MonL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L",null));
-            WeekMealDictionary.Add("MonD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D",null));
+            WeekMealDictionary.Add("MonB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B","급식정보없음"));
+            WeekMealDictionary.Add("MonL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L","급식정보없음"));
+            WeekMealDictionary.Add("MonD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D","급식정보없음"));
             TempWeekCursor.AddDays(1);
 
-            WeekMealDictionary.Add("TueB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B",null));
-            WeekMealDictionary.Add("TueL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L",null));
-            WeekMealDictionary.Add("TueD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D",null));
+            WeekMealDictionary.Add("TueB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B","급식정보없음"));
+            WeekMealDictionary.Add("TueL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L","급식정보없음"));
+            WeekMealDictionary.Add("TueD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D","급식정보없음"));
             TempWeekCursor.AddDays(1);
 
-            WeekMealDictionary.Add("WedB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B",null));
-            WeekMealDictionary.Add("WedL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L",null));
-            WeekMealDictionary.Add("WedD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D",null));
+            WeekMealDictionary.Add("WedB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B","급식정보없음"));
+            WeekMealDictionary.Add("WedL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L","급식정보없음"));
+            WeekMealDictionary.Add("WedD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D","급식정보없음"));
             TempWeekCursor.AddDays(1);
 
-            WeekMealDictionary.Add("ThuB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B",null));
-            WeekMealDictionary.Add("ThuL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L",null));
-            WeekMealDictionary.Add("ThuD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D",null));
+            WeekMealDictionary.Add("ThuB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B","급식정보없음"));
+            WeekMealDictionary.Add("ThuL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L","급식정보없음"));
+            WeekMealDictionary.Add("ThuD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D","급식정보없음"));
             TempWeekCursor.AddDays(1);
 
-            WeekMealDictionary.Add("FriB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B",null));
-            WeekMealDictionary.Add("FriL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L",null));
-            WeekMealDictionary.Add("FriD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D",null));
+            WeekMealDictionary.Add("FriB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B","급식정보없음"));
+            WeekMealDictionary.Add("FriL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L","급식정보없음"));
+            WeekMealDictionary.Add("FriD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D","급식정보없음"));
             TempWeekCursor.AddDays(1);
 
-            WeekMealDictionary.Add("SatB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B",null));
-            WeekMealDictionary.Add("SatL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L",null));
-            WeekMealDictionary.Add("SatD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D",null));
+            WeekMealDictionary.Add("SatB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B","급식정보없음"));
+            WeekMealDictionary.Add("SatL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L","급식정보없음"));
+            WeekMealDictionary.Add("SatD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D","급식정보없음"));
             TempWeekCursor.AddDays(1);
 
-            WeekMealDictionary.Add("SunB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B",null));
-            WeekMealDictionary.Add("SunL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L",null));
-            WeekMealDictionary.Add("SunD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D",null));
+            WeekMealDictionary.Add("SunB",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"B","급식정보없음"));
+            WeekMealDictionary.Add("SunL",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"L","급식정보없음"));
+            WeekMealDictionary.Add("SunD",Preferences.Get(YearMonth+TempWeekCursor.Day.ToString()+"D","급식정보없음"));
             TempWeekCursor.AddDays(-7);
 
             return WeekMealDictionary;
@@ -518,6 +666,74 @@ namespace School_Meal
                     return true;
                 default:
                     return false;
+            }
+        }
+
+        public string CheckNetwork(string DeviceType)
+        {
+            switch (DeviceType)
+            {
+                case "Win10":
+                    return CheckNetwork_Win10();
+                case "Win7":
+                    return "Not supported";
+                case "XF":
+                    return CheckNetwork_XF();
+                default:
+                    return "Error";
+            }
+        }
+
+        private string CheckNetwork_Win10()
+        {
+            bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
+
+            var InternetConnectionProfile = NetworkInformation.GetInternetConnectionProfile();
+            bool isWLANConnection = (InternetConnectionProfile == null) ? false : InternetConnectionProfile.IsWlanConnectionProfile;  //Wifi
+            bool isWWANConnection = (InternetConnectionProfile == null) ? false : InternetConnectionProfile.IsWwanConnectionProfile;  //Mobile
+
+            if (isInternetConnected == false)
+            {
+                return "None";
+            }
+            else if (isWLANConnection == true)
+            {
+                return "Wifi";
+            }
+            else if (isWWANConnection == true)
+            {
+                return "Cellular";
+            }
+            else
+            {
+                return "Unkwoun";
+            }
+        }
+
+        private string CheckNetwork_XF()
+        {
+            var current = Connectivity.NetworkAccess;
+            var profiles = Connectivity.Profiles;
+
+            if (current != NetworkAccess.Internet)
+            {
+                return "None";
+            }
+            else if (profiles.Contains(Xamarin.Essentials.ConnectionProfile.WiFi))
+            {
+                return "Wifi";
+            }
+            else if (profiles.Contains(Xamarin.Essentials.ConnectionProfile.Cellular))
+            {
+                return "Cellular";
+            }
+            else if (profiles.Contains(Xamarin.Essentials.ConnectionProfile.Ethernet))
+            {
+                return "Ethernet";
+            }
+            else
+            {
+                return "Unknown";
             }
         }
     }
