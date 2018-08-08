@@ -10,7 +10,7 @@ namespace School_Meal
 {
     public sealed partial class Week : Page
     {
-        public SchoolMealClass WeekClass = new SchoolMealClass();
+        public SchoolMealClass WeekClass = new SchoolMealClass("E100002238");
 
         public Week()
         {
@@ -29,7 +29,7 @@ namespace School_Meal
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-            WeekClass.LoadMonthMenu("Win10");
+            WeekClass.LoadMonthMenu(DeviceType.Win10);
             ShowMenu();
         }
 
@@ -43,7 +43,7 @@ namespace School_Meal
         {
             try
             {
-                var Menu = WeekClass.GetWeekMenu("Win10");
+                var Menu = WeekClass.GetWeekMenu(DeviceType.Win10);
 
                 SunB.Text = Menu["SunB"];
                 SunL.Text = Menu["SunL"];
@@ -63,7 +63,7 @@ namespace School_Meal
                 SatB.Text = Menu["SatB"];
                 SatL.Text = Menu["SatL"];
                 SatD.Text = Menu["SatD"];
-                
+
                 return true;
             }
             catch (Exception e)

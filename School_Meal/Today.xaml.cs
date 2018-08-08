@@ -10,13 +10,13 @@ namespace School_Meal
 {
     public sealed partial class Today : Page
     {
-        public SchoolMealClass TodayClass = new SchoolMealClass();
+        public SchoolMealClass TodayClass = new SchoolMealClass("E100002238");
 
         public Today()
         {
             this.InitializeComponent();
             Analytics.TrackEvent("Today Page");
-            
+
             TodayClass.MoveDateCursorToToday();
             ShowMenu();
             TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
@@ -31,7 +31,7 @@ namespace School_Meal
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-            TodayClass.LoadMonthMenu("Win10");
+            TodayClass.LoadMonthMenu(DeviceType.Win10);
             ShowMenu();
         }
 
@@ -68,7 +68,7 @@ namespace School_Meal
         {
             try
             {
-                var Menu = TodayClass.GetDayMenu("Win10");
+                var Menu = TodayClass.GetDayMenu(DeviceType.Win10);
                 Today_Breakfast_TextBlock.Text = Menu["Breakfast"];
                 Today_Lunch_TextBlock.Text = Menu["Lunch"];
                 Today_Dinner_TextBlock.Text = Menu["Dinner"];

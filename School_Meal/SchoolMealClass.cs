@@ -14,88 +14,42 @@ using System.Linq;
 
 namespace School_Meal
 {
+    public enum NetworkType {None, NotCellular, Wifi, Cellular, Ethernet, NotSupported, Error, Invaild};
+    public enum LoadType {None, Day, Month, Error, Invaild};
+    public enum DeviceType {Win10, Win7, XF, XA, XI};
+
     public class SchoolMealClass
     {
-        private DateTime DateCursor;
-        private DateTime WeekCursor;
+        private string SchoolCode = null;
+        private DateTime DateCursor = DateTime.Now;
+        private DateTime WeekCursor = DateTime.Now;
         private IJsonValue JItem_Day;
         private IJsonValue JItem_Breakfast;
         private IJsonValue JItem_Lunch;
         private IJsonValue JItem_Dinner;
 
-        public SchoolMealClass()
+        public SchoolMealClass(string Code)
         {
-            DateCursor = DateTime.Now;
-            WeekCursor = DateTime.Now;
+            SchoolCode = Code;
         }
 
-        public SchoolMealClass(DateTime Date , DateTime Week)
+        public bool LoadMonthMenu(DeviceType deviceType)
         {
-            DateCursor = Date;
-            WeekCursor = Week;
+            return LoadMonthMenu(DateCursor.Year, DateCursor.Month, deviceType);
         }
 
-        public SchoolMealClass(string IsLoad)
-        {
-            DateCursor = DateTime.Now;
-            WeekCursor = DateTime.Now;
-
-            switch(IsLoad)
-            {
-                case "None":
-                    break;
-                case "Day":
-                    break;
-                case "Week":
-                    break;
-                case "Month":
-                    break;
-                default:
-                    throw new Exception("Invaild Parameter");
-            }
-        }
-
-        public SchoolMealClass(DateTime Date, DateTime Week, string IsLoad)
-        {
-            DateCursor = Date;
-            WeekCursor = Week;
-
-            switch (IsLoad)
-            {
-                case "None":
-                    break;
-                case "Day":
-                    break;
-                case "Week":
-                    break;
-                case "Month":
-                    break;
-                default:
-                    throw new Exception("Invaild Parameter");
-            }
-        }
-
-        public bool LoadMonthMenu(string DeviceType)
-        {
-            return LoadMonthMenu(DateCursor.Year, DateCursor.Month, DeviceType);
-        }
-
-        public bool LoadMonthMenu(int Year, int Month, string DeviceType) //DeviceType : "Win10", "Win7", "XF"
+        public bool LoadMonthMenu(int Year, int Month, DeviceType deviceType)
         {
             try
             {
-                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
+                var Connection = CheckNetwork(deviceType);
+                if (Connection == NetworkType.None)
+                {
 
-                var Url = new Uri("http://schoolmenukr.ml/api/ice/E100002238?year=" + Year.ToString() + "&month=" + Month.ToString()); //사이트 주소
-                HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
-                myRequest.Method = "GET";
-                WebResponse myresponse = myRequest.GetResponse();
-                StreamReader sr = new StreamReader(myresponse.GetResponseStream(), Encoding.UTF8);
-                string result = sr.ReadToEnd();
-                sr.Close();
-                myresponse.Close();
+                }
 
-                var JObject = JsonObject.Parse(result).GetObject();
+                var JObject = HttpRequest(Year,Month,0,LoadType.Month);
+
                 foreach (var JItem_Date in JObject)
                 {
                     if (JItem_Date.Key.Length != 4)
@@ -148,9 +102,9 @@ namespace School_Meal
                         Dinner_String += Dinner_TempString;
                     }
 
-                    switch(DeviceType)
+                    switch(deviceType)
                     {
-                        case "Win10":
+                        case DeviceType.Win10:
 
                             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
                             localSettings.Values[Year.ToString() + Month.ToString() + Day.ToString() + "B"] = Breakfast_String;
@@ -158,11 +112,11 @@ namespace School_Meal
                             localSettings.Values[Year.ToString() + Month.ToString() + Day.ToString() + "D"] = Dinner_String;
                             break;
 
-                        case "Win7":
-                            
+                        case DeviceType.Win7:
+
                             break;
 
-                        case "XF":
+                        case DeviceType.XF:
                             Preferences.Set(Year.ToString() + Month.ToString() + Day.ToString() + "B", Breakfast_String);
                             Preferences.Set(Year.ToString() + Month.ToString() + Day.ToString() + "L", Lunch_String);
                             Preferences.Set(Year.ToString() + Month.ToString() + Day.ToString() + "D", Dinner_String);
@@ -181,23 +135,59 @@ namespace School_Meal
             }
         }
 
-        public Dictionary<string,string> GetDayMenu(string DeviceType)
+        private JsonObject HttpRequest (int Year,int Month,int Day,LoadType Type)
         {
-            return GetDayMenu(DateCursor.Year, DateCursor.Month, DateCursor.Day, DeviceType);
+            try
+            {
+                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
+                Uri Url = null;
+                if (Type == LoadType.Day)
+                {
+                    Url = new Uri("http://schoolmenukr.ml/api/ice/"+SchoolCode+"?year=" + Year.ToString() + "&month=" + Month.ToString() + Day.ToString());
+                }
+                else if (Type == LoadType.Month)
+                {
+                    Url = new Uri("http://schoolmenukr.ml/api/ice/"+SchoolCode+"?year=" + Year.ToString() + "&month=" + Month.ToString());
+                }
+                else
+                {
+                    throw new Exception();
+                }
+                HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
+                myRequest.Method = "GET";
+                WebResponse myresponse = myRequest.GetResponse();
+                StreamReader sr = new StreamReader(myresponse.GetResponseStream(), Encoding.UTF8);
+                string result = sr.ReadToEnd();
+                sr.Close();
+                myresponse.Close();
+                var JObject = JsonObject.Parse(result).GetObject();
+                return JObject;
+            }
+            catch
+            {
+                return null;
+            }
+
         }
 
-        public Dictionary<string, string> GetDayMenu(DateTime Date,string DeviceType)
+        public Dictionary<string,string> GetDayMenu(DeviceType deviceType)
         {
-            return GetDayMenu(Date.Year, Date.Month, Date.Day, DeviceType);
+            return GetDayMenu(DateCursor.Year, DateCursor.Month, DateCursor.Day, deviceType);
         }
 
-        public Dictionary<string,string> GetDayMenu(int Year, int Month, int Day, string DeviceType)
+        public Dictionary<string, string> GetDayMenu(DateTime Date,DeviceType deviceType)
+        {
+            return GetDayMenu(Date.Year, Date.Month, Date.Day, deviceType);
+        }
+
+        public Dictionary<string,string> GetDayMenu(int Year, int Month, int Day, DeviceType deviceType)
         {
             var DayMealDictionary = new Dictionary<string, string>();
+            DayMealDictionary.Add("Connection",CheckNetwork(deviceType).ToString());
 
-            switch (DeviceType)
+            switch (deviceType)
             {
-                case "Win10":
+                case DeviceType.Win10:
 
                     ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
                     string Win10_Breakfast = localSettings.Values[Year.ToString() + Month.ToString() + Day.ToString() + "B"].ToString();
@@ -210,12 +200,12 @@ namespace School_Meal
 
                     break;
 
-                case "Win7":
-                    
+                case DeviceType.Win7:
+
 
                     break;
 
-                case "XF":
+                case DeviceType.XF:
 
                     string XF_Breakfast = Preferences.Get(Year.ToString() + Month.ToString() + Day.ToString() + "B", null);
                     string XF_Lunch = Preferences.Get(Year.ToString() + Month.ToString() + Day.ToString() + "L", null);
@@ -233,13 +223,13 @@ namespace School_Meal
 
             return DayMealDictionary;
         }
-    
-        public Dictionary<string,string> GetWeekMenu(string DeviceType)
+
+        public Dictionary<string,string> GetWeekMenu(DeviceType deviceType)
         {
-            return GetWeekMenu(WeekCursor, DeviceType);
+            return GetWeekMenu(WeekCursor, deviceType);
         }
 
-        public Dictionary<string,string> GetWeekMenu(DateTime dtToday, string DeviceType)
+        public Dictionary<string,string> GetWeekMenu(DateTime dtToday, DeviceType deviceType)
         {
             var WeekMealDictionary = new Dictionary<string, string>();
 
@@ -249,17 +239,17 @@ namespace School_Meal
             int iDiff = dwToday - dwFirst;
             var TempWeekCursor = dtToday.AddDays(-iDiff);
 
-            switch (DeviceType)
+            switch (deviceType)
             {
-                case "Win10":
+                case DeviceType.Win10:
                     WeekMealDictionary = GetWeekMenu_Win10(TempWeekCursor);
                     break;
 
-                case "Win7":
+                case DeviceType.Win7:
                     WeekMealDictionary = GetWeekMenu_Win7(TempWeekCursor);
                     break;
 
-                case "XF":
+                case DeviceType.XF:
                     WeekMealDictionary = GetWeekMenu_XF(TempWeekCursor);
                     break;
             }
@@ -364,7 +354,7 @@ namespace School_Meal
             {
                 WeekMealDictionary.Add("WedL", "급식정보없음");
             }
-            else  
+            else
             {
                 WeekMealDictionary.Add("WedL", WedL.ToString());
             }
@@ -641,7 +631,7 @@ namespace School_Meal
             {
                 return false;
             }
-            
+
             if (Input.Substring(Index, 1) == ".")
             {
                 return true;
@@ -658,7 +648,7 @@ namespace School_Meal
             {
                 return false;
             }
-        
+
             string Word = Input.Substring(Index, 1);
             switch(Word)
             {
@@ -669,22 +659,22 @@ namespace School_Meal
             }
         }
 
-        public string CheckNetwork(string DeviceType)
+        public NetworkType CheckNetwork(DeviceType deviceType)
         {
-            switch (DeviceType)
+            switch (deviceType)
             {
-                case "Win10":
+                case DeviceType.Win10:
                     return CheckNetwork_Win10();
-                case "Win7":
-                    return "Not supported";
-                case "XF":
+                case DeviceType.Win7:
+                    return NetworkType.NotSupported;
+                case DeviceType.XF:
                     return CheckNetwork_XF();
                 default:
-                    return "Error";
+                    return NetworkType.Invaild;
             }
         }
 
-        private string CheckNetwork_Win10()
+        private NetworkType CheckNetwork_Win10()
         {
             bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
 
@@ -694,46 +684,46 @@ namespace School_Meal
 
             if (isInternetConnected == false)
             {
-                return "None";
+                return NetworkType.None;
             }
             else if (isWLANConnection == true)
             {
-                return "Wifi";
+                return NetworkType.NotCellular;
             }
             else if (isWWANConnection == true)
             {
-                return "Cellular";
+                return NetworkType.Cellular;
             }
             else
             {
-                return "Unkwoun";
+                return NetworkType.Error;
             }
         }
 
-        private string CheckNetwork_XF()
+        private NetworkType CheckNetwork_XF()
         {
             var current = Connectivity.NetworkAccess;
             var profiles = Connectivity.Profiles;
 
             if (current != NetworkAccess.Internet)
             {
-                return "None";
+                return NetworkType.None;
             }
             else if (profiles.Contains(Xamarin.Essentials.ConnectionProfile.WiFi))
             {
-                return "Wifi";
+                return NetworkType.Wifi;
             }
             else if (profiles.Contains(Xamarin.Essentials.ConnectionProfile.Cellular))
             {
-                return "Cellular";
+                return NetworkType.Cellular;
             }
             else if (profiles.Contains(Xamarin.Essentials.ConnectionProfile.Ethernet))
             {
-                return "Ethernet";
+                return NetworkType.Ethernet;
             }
             else
             {
-                return "Unknown";
+                return NetworkType.Error;
             }
         }
     }
