@@ -12,10 +12,22 @@ namespace School_Meal__Win_7_
         {
             InitializeComponent();
 
-            var Date = DateTime.Now;
-            TodayDate_TextBlock.Text = Date.Year.ToString() + "년 " + Date.Month.ToString() + "월 " + Date.Day.ToString() + "일";
+            Main_Frame.Navigate(new Uri("TodayPage.xaml",UriKind.Relative));
+        }
 
-            Main_Frame.Navigate(new MainWindow());
+        private void DayMeal_DockButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main_Frame.Navigate(new Uri("TodayPage.xaml", UriKind.Relative));
+        }
+
+        private void WeekMeal_DockButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main_Frame.Navigate(new Uri("WeekPage.xaml", UriKind.Relative));
+        }
+
+        private void Settings_DockButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main_Frame.Navigate(new Uri("SettingsPage.xaml", UriKind.Relative));
         }
     }
 }

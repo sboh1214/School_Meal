@@ -52,13 +52,13 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Local" Grid.Row="0" FontSize="16" Margin="6,6,6,6"/>
-            <Button x:Name="DayMeal_DockButton" Grid.Row="1" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+            <Button x:Name="DayMeal_DockButton" Grid.Row="1" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0" Click="DayMeal_DockButton_Click">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <Image Source="pack://application:,,,/Assets/Day_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
                     <TextBlock Text="일별 급식" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="WeekMeal_DockButton" Grid.Row="2" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+            <Button x:Name="WeekMeal_DockButton" Grid.Row="2" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0" Click="WeekMeal_DockButton_Click">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <Image Source="pack://application:,,,/Assets/Week_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
                     <TextBlock Text="주별 급식" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
@@ -72,18 +72,31 @@
             </Button>
 
             <TextBlock Text="Find" Grid.Row="4" FontSize="16" Margin="6,6,6,6"/>
-            <StackPanel Orientation="Vertical" Grid.Row="5">
-            </StackPanel>
+            <Button x:Name="Find_DockButton" Grid.Row="5" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="pack://application:,,,/Assets/Find_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
+                    <TextBlock Text="검색" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Button>
 
             <TextBlock Text="Web" Grid.Row="6" FontSize="16" Margin="6,6,6,6"/>
 
-            <StackPanel Orientation="Vertical" Grid.Row="7">
-            </StackPanel>
+            <Button x:Name="Web_DockButton" Grid.Row="7" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Image Source="pack://application:,,,/Assets/Web_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
+                    <TextBlock Text="웹 앱" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Button>
 
             <StackPanel Orientation="Vertical" Grid.Row="9">
-
+                <TextBlock Margin="6,6,6,6">
+                    <Hyperlink NavigateUri="">Windows 10 다운로드</Hyperlink><LineBreak/>
+                    <Hyperlink NavigateUri="">macOS 다운로드</Hyperlink><LineBreak/>
+                    <Hyperlink NavigateUri="">Android 다운로드</Hyperlink><LineBreak/>
+                    <Hyperlink NavigateUri="">iOS 다운로드</Hyperlink><LineBreak/>
+                </TextBlock>
             </StackPanel>
-            <Button x:Name="Settings_DockButton" Grid.Row="10" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+            <Button x:Name="Settings_DockButton" Grid.Row="10" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0" Click="Settings_DockButton_Click">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <Image Source="pack://application:,,,/Assets/Settings_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
                     <TextBlock Text="설정" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
@@ -91,6 +104,6 @@
             </Button>
         </Grid>
 
-        <Frame x:Name="Main_Frame" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"/>
+        <Frame x:Name="Main_Frame" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
