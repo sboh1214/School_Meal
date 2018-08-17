@@ -1,8 +1,6 @@
-﻿using System;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.AppCenter.Analytics;
-using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -74,9 +72,8 @@ namespace School_Meal
                 Today_Dinner_TextBlock.Text = Menu["Dinner"];
                 return true;
             }
-            catch (Exception e)
+            catch
             {
-                Debug.WriteLine(e.Message);
                 return false;
             }
         }
