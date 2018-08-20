@@ -8,7 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
-    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
+    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" PaneTitle="IASA 급식" 
+                    x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
         
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Local"/>

@@ -29,8 +29,26 @@
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1"/>
-        <CalendarView Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
-
-        </CalendarView>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <CalendarView Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" 
+                          HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" MaxWidth="500">
+            </CalendarView>
+            <TextBlock Text="아침" Grid.Row="0" Grid.Column="1" Margin="6,6,6,6" FontSize="20" HorizontalTextAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Text="점심" Grid.Row="1" Grid.Column="1" Margin="6,6,6,6" FontSize="20" HorizontalTextAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock Text="저녁" Grid.Row="2" Grid.Column="1" Margin="6,6,6,6" FontSize="20" HorizontalTextAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="Today_Breakfast_TextBlock" Grid.Row="0" Grid.Column="2" Margin="12,12,12,12" FontSize="24"/>
+            <TextBlock x:Name="Today_Lunch_TextBlock" Grid.Row="1" Grid.Column="2" Margin="12,12,12,12" FontSize="24"/>
+            <TextBlock x:Name="Today_Dinner_TextBlock" Grid.Row="2" Grid.Column="2" Margin="12,12,12,12" FontSize="24"/>
+        </Grid>
     </Grid>
 </Page>

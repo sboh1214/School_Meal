@@ -4,9 +4,11 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.ViewManagement;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Push;
+using Windows.Storage;
 
 namespace School_Meal
 {
@@ -25,7 +27,44 @@ namespace School_Meal
             AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Analytics));
             AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Push));
             AppCenter.LogLevel = LogLevel.Verbose;
+
+            ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
+            if (Settings.Values["Theme"]==null)
+            {
+                SystemTheme();
+            }
+            else
+            {
+                string Theme = Settings.Values["Theme"].ToString();
+                if (Theme == "Light")
+                {
+                    App.Current.RequestedTheme = ApplicationTheme.Light;
+                }
+                else if (Theme == "Dark")
+                {
+                    App.Current.RequestedTheme = ApplicationTheme.Dark;
+                }
+                else
+                {
+                    SystemTheme();
+                }
+            }
+
             this.Suspending += OnSuspending;
+        }
+
+        private void SystemTheme()
+        {
+            UISettings DefaultTheme = new UISettings();
+            string uiTheme = DefaultTheme.GetColorValue(UIColorType.Background).ToString();
+            if (uiTheme == "#FF000000")
+            {
+                App.Current.RequestedTheme = ApplicationTheme.Dark;
+            }
+            else if (uiTheme == "#FFFFFFFF")
+            {
+                App.Current.RequestedTheme = ApplicationTheme.Light;
+            }
         }
 
         /// <summary>

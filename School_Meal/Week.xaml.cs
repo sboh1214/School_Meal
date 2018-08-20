@@ -1,9 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.AppCenter.Analytics;
-using System;
-using System.Diagnostics;
-
+using Windows.Storage;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace School_Meal
@@ -17,8 +15,56 @@ namespace School_Meal
             this.InitializeComponent();
             Analytics.TrackEvent("Week Page");
 
+            ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
+            if (Settings.Values["Alignment"] == null)
+            {
+                Settings.Values["Alignment"] = "Left";
+                ChangeAlignment(TextAlignment.Left);
+            }
+            else
+            {
+                string Alignment = Settings.Values["Alignment"].ToString();
+                if (Alignment == "Left")
+                {
+                    ChangeAlignment(TextAlignment.Left);
+                }
+                else if (Alignment == "Middle")
+                {
+                    ChangeAlignment(TextAlignment.Center);
+                }
+                else
+                {
+                    ChangeAlignment(TextAlignment.Right);
+                }
+            }
+
             WeekClass.MoveWeekCursorToToday();
             ShowMenu();
+        }
+
+        private void ChangeAlignment(TextAlignment Alignment)
+        {
+            MonB.TextAlignment = Alignment;
+            MonL.TextAlignment = Alignment;
+            MonD.TextAlignment = Alignment;
+            TueB.TextAlignment = Alignment;
+            TueL.TextAlignment = Alignment;
+            TueD.TextAlignment = Alignment;
+            WedB.TextAlignment = Alignment;
+            WedL.TextAlignment = Alignment;
+            WedD.TextAlignment = Alignment;
+            ThuB.TextAlignment = Alignment;
+            ThuL.TextAlignment = Alignment;
+            ThuD.TextAlignment = Alignment;
+            FriB.TextAlignment = Alignment;
+            FriL.TextAlignment = Alignment;
+            FriD.TextAlignment = Alignment;
+            SatB.TextAlignment = Alignment;
+            SatL.TextAlignment = Alignment;
+            SatD.TextAlignment = Alignment;
+            SunB.TextAlignment = Alignment;
+            SunL.TextAlignment = Alignment;
+            SunD.TextAlignment = Alignment;
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
@@ -41,36 +87,37 @@ namespace School_Meal
 
         private bool ShowMenu()
         {
-            try
-            {
-                var Menu = WeekClass.GetWeekMenu(DeviceType.Win10);
+            var Menu = WeekClass.GetWeekMenu(DeviceType.Win10);
 
-                SunB.Text = Menu["SunB"];
-                SunL.Text = Menu["SunL"];
-                SunD.Text = Menu["SunD"];
-                MonB.Text = Menu["MonB"];
-                MonL.Text = Menu["MonL"];
-                MonD.Text = Menu["MonD"];
-                TueB.Text = Menu["TueB"];
-                TueL.Text = Menu["TueL"];
-                TueD.Text = Menu["TueD"];
-                WedB.Text = Menu["WedB"];
-                WedL.Text = Menu["WedL"];
-                WedD.Text = Menu["WedD"];
-                FriB.Text = Menu["FriB"];
-                FriL.Text = Menu["FriL"];
-                FriD.Text = Menu["FriD"];
-                SatB.Text = Menu["SatB"];
-                SatL.Text = Menu["SatL"];
-                SatD.Text = Menu["SatD"];
+            SunB.Text = Menu["SunB"];
+            SunL.Text = Menu["SunL"];
+            SunD.Text = Menu["SunD"];
 
-                return true;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                return false;
-            }
+            MonB.Text = Menu["MonB"];
+            MonL.Text = Menu["MonL"];
+            MonD.Text = Menu["MonD"];
+
+            TueB.Text = Menu["TueB"];
+            TueL.Text = Menu["TueL"];
+            TueD.Text = Menu["TueD"];
+
+            WedB.Text = Menu["WedB"];
+            WedL.Text = Menu["WedL"];
+            WedD.Text = Menu["WedD"];
+
+            ThuB.Text = Menu["ThuB"];
+            ThuL.Text = Menu["ThuL"];
+            ThuD.Text = Menu["ThuD"];
+
+            FriB.Text = Menu["FriB"];
+            FriL.Text = Menu["FriL"];
+            FriD.Text = Menu["FriD"];
+
+            SatB.Text = Menu["SatB"];
+            SatL.Text = Menu["SatL"];
+            SatD.Text = Menu["SatD"];
+
+            return true;
         }
     }
 }

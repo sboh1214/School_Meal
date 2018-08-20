@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,6 +25,20 @@ namespace School_Meal
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
 
+        }
+
+        private void AdvancedSearch_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (AdvancedSearch_Row.Height == new GridLength(0))
+            {
+                AdvancedSearch_Row.Height = new GridLength(0,GridUnitType.Auto);
+                AdvancedSearch_Icon.Glyph = "\uE971";
+            }
+            else
+            {
+                AdvancedSearch_Row.Height = new GridLength(0);
+                AdvancedSearch_Icon.Glyph = "\uE972";
+            }
         }
     }
 }
