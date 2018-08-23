@@ -19,8 +19,15 @@
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
                 <AppBarButton Label="이전" Icon="Back" x:Name="Back_ABB" Click="Back_ABB_Click"/>
-                <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
                 <AppBarButton Label="다음" Icon="Forward" x:Name="Forward_ABB" Click="Forward_ABB_Click"/>
+                <AppBarSeparator/>
+                <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
+                <AppBarButton Label="이번 주" Icon="GoToToday" x:Name="ThisWeek_ABB"/>
+                <AppBarButton Label="이동" x:Name="Move_ABB">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE13C;"/>
+                    </AppBarButton.Icon>
+                </AppBarButton>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1"/>

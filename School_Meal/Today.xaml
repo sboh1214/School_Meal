@@ -25,8 +25,8 @@
                 <AppBarButton Label="다음" Icon="Forward" x:Name="Forward_ABB" Click="Forward_ABB_Click"/>
                 <AppBarSeparator/>
                 <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
-                <AppBarButton Label="오늘" Icon="Home" x:Name="Today_ABB" Click="Today_ABB_Click"/>
-                <AppBarButton Label="달력" Icon="Calendar" x:Name="Cal_ABB" Click="Cal_ABB_Click"/>
+                <AppBarButton Label="오늘" Icon="GoToToday" x:Name="Today_ABB" Click="Today_ABB_Click"/>
+                <AppBarButton Label="이동" Icon="Calendar" x:Name="Cal_ABB" Click="Cal_ABB_Click"/>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1" Margin="0,0,0,0"/>
