@@ -14,6 +14,11 @@ namespace School_Meal
         public Today()
         {
             this.InitializeComponent();
+            
+
+            TodayClass.MoveDateCursorToToday();
+            ShowMenu();
+
             Analytics.TrackEvent("Today Page");
 
             ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
@@ -46,10 +51,9 @@ namespace School_Meal
                     Today_Dinner_TextBlock.TextAlignment = TextAlignment.Right;
                 }
             }
-
-            TodayClass.MoveDateCursorToToday();
-            ShowMenu();
             TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
+
+            TodayProgressBar_Row.Height = new GridLength(0);
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
@@ -61,8 +65,10 @@ namespace School_Meal
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
+            TodayProgressBar_Row.Height = new GridLength(12);
             TodayClass.LoadMonthMenu(DeviceType.Win10);
             ShowMenu();
+            TodayProgressBar_Row.Height = new GridLength(0);
         }
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
@@ -94,7 +100,7 @@ namespace School_Meal
             }
         }
 
-        public bool ShowMenu ()
+        private bool ShowMenu ()
         {
             try
             {
@@ -102,11 +108,40 @@ namespace School_Meal
                 Today_Breakfast_TextBlock.Text = Menu["Breakfast"];
                 Today_Lunch_TextBlock.Text = Menu["Lunch"];
                 Today_Dinner_TextBlock.Text = Menu["Dinner"];
+                TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
                 return true;
             }
             catch
             {
                 return false;
+            }
+        }
+
+        private void Cal_ABB_Click(object sender, RoutedEventArgs e)
+        {
+            if (Today_Calendar.Visibility == Visibility.Collapsed)
+            {
+                Today_Calendar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Today_Calendar.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Today_ABB_Click(object sender, RoutedEventArgs e)
+        {
+            TodayClass.MoveDateCursorToToday();
+            ShowMenu();
+        }
+
+        private void Today_Calendar_SelectedDatesChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
+        {
+            var dateList = Today_Calendar.SelectedDates;
+            foreach (var item in dateList)
+            {
+                TodayClass.MoveDateCursor(item.Year, item.Month, item.Day);
+                ShowMenu();
             }
         }
     }

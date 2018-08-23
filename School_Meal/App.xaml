@@ -7,12 +7,12 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <AcrylicBrush x:Key="MyAcrylicBackgroundBrush" TintOpacity="0.1" TintColor="Transparent" FallbackColor="White" BackgroundSource="HostBackdrop"/>
-                    <AcrylicBrush x:Key="MyAcrylicAccentBrush" TintOpacity="0.9" TintColor="LightGray" FallbackColor="White" BackgroundSource="HostBackdrop"/>
+                    <AcrylicBrush x:Key="MyAcrylicBackgroundBrush" TintOpacity="0.7" TintColor="White" FallbackColor="White" BackgroundSource="HostBackdrop"/>
+                    <AcrylicBrush x:Key="MyAcrylicAccentBrush" TintOpacity="0.7" TintColor="LightGray" FallbackColor="LightGray" BackgroundSource="Backdrop"/>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
-                    <AcrylicBrush x:Key="MyAcrylicBackgroundBrush" TintOpacity="0.1" TintColor="Transparent" FallbackColor="Black" BackgroundSource="HostBackdrop"/>
-                    <AcrylicBrush x:Key="MyAcrylicAccentBrush" TintOpacity="0.9" TintColor="DimGray" FallbackColor="DarkGray" BackgroundSource="HostBackdrop"/>
+                    <AcrylicBrush x:Key="MyAcrylicBackgroundBrush" TintOpacity="0.7" TintColor="Black" FallbackColor="Black" BackgroundSource="HostBackdrop"/>
+                    <AcrylicBrush x:Key="MyAcrylicAccentBrush" TintOpacity="0.7" TintColor="#303030" FallbackColor="DarkGray" BackgroundSource="HostBackdrop"/>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

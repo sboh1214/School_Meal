@@ -10,19 +10,19 @@
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="12"/> <!--0,12-->
+            <RowDefinition Height="0"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0" DefaultLabelPosition="Right" Background="Transparent">
             <CommandBar.Content>
-                <TextBlock Text="학교 급식사이트" Margin="6,6,6,6" FontSize="20"/>
+                <TextBlock Text="학교 급식사이트" Margin="6,6,6,6" FontSize="20" x:Name="Header_TextBlock"/>
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
-                <AppBarButton/>
+                <AppBarButton Icon="Refresh" Label="새로고침" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1"/>
-        <WebView  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2"
-            Source="http://iasa.icehs.kr/foodlist.do?m=040406s"/>
+        <WebView  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="2" x:Name="Meal_WebView" 
+                  NavigationCompleted="Meal_WebView_NavigationCompleted"/>
     </Grid>
 </Page>

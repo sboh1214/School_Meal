@@ -7,10 +7,10 @@
     mc:Ignorable="d"
     Background="Transparent">
 
-    <Grid Background="Transparent">
+    <Grid Background="Transparent" x:Name="Page_Grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="12"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="0" x:Name="AdvancedSearch_Row"/>
@@ -33,17 +33,21 @@
                 <TextBlock Text="고급 검색 설정" Style="{ThemeResource SubtitleTextBlockStyle}"/>
             </StackPanel>
         </Button>
-        <StackPanel Orientation="Vertical" Grid.Row="4" Background="{ThemeResource MyAcrylicAccentBrush}">
-            <TextBlock Text="검색 기간" Margin="6,6,6,6" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            <StackPanel Orientation="Horizontal">
-                <CalendarDatePicker Margin="6,6,6,6"/>
-                <CalendarDatePicker Margin="6,6,6,6"/>
+        <StackPanel SizeChanged="Advance_StackPanel_SizeChanged" x:Name="Advance_StackPanel" Grid.Row="4" Background="{ThemeResource MyAcrylicAccentBrush}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="검색 기간" Margin="6,6,6,6" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <StackPanel Orientation="Horizontal" Background="Transparent">
+                    <CalendarDatePicker Margin="6,6,6,6"/>
+                    <CalendarDatePicker Margin="6,6,6,6"/>
+                </StackPanel>
             </StackPanel>
-            <TextBlock Text="급식 종류" Margin="6,6,6,6" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-            <StackPanel Orientation="Horizontal">
-                <CheckBox Content="아침" IsChecked="True" Margin="6,6,6,6"/>
-                <CheckBox Content="점심" IsChecked="True" Margin="6,6,6,6"/>
-                <CheckBox Content="저녁" IsChecked="True" Margin="6,6,6,6"/>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="급식 종류" Margin="6,6,6,6" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <StackPanel Orientation="Horizontal" Background="Transparent">
+                    <CheckBox Content="아침" IsChecked="True" Margin="6,6,6,6"/>
+                    <CheckBox Content="점심" IsChecked="True" Margin="6,6,6,6"/>
+                    <CheckBox Content="저녁" IsChecked="True" Margin="6,6,6,6"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <Grid Grid.Row="5">

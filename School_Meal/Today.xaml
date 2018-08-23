@@ -9,24 +9,30 @@
     Background="Transparent"
     SizeChanged="Page_SizeChanged">
 
-    <Grid>
+    <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="12" x:Name="TodayProgressBar_Row"/> <!--0,12-->
+            <RowDefinition Height="0" x:Name="TodayProgressBar_Row"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0" DefaultLabelPosition="Right" Margin="0,0,0,0" Background="Transparent">
             <CommandBar.Content>
-                <TextBlock Text="오늘의 급식" Margin="6,6,6,6" FontSize="20" x:Name="TodayHeader_TextBlock"/>
+                <TextBlock Text="오늘의 급식" Margin="6,6,6,6" FontSize="20" x:Name="TodayHeader_TextBlock" Visibility="Visible"/>
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
                 <AppBarButton Label="이전" Icon="Back" x:Name="Back_ABB" Click="Back_ABB_Click"/>
-                <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
                 <AppBarButton Label="다음" Icon="Forward" x:Name="Forward_ABB" Click="Forward_ABB_Click"/>
+                <AppBarSeparator/>
+                <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
+                <AppBarButton Label="오늘" Icon="Home" x:Name="Today_ABB" Click="Today_ABB_Click"/>
+                <AppBarButton Label="달력" Icon="Calendar" x:Name="Cal_ABB" Click="Cal_ABB_Click"/>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1" Margin="0,0,0,0"/>
-        <Grid Background="Transparent" Grid.Row="2" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Center">
+        <CalendarView Grid.Row="2" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                      x:Name="Today_Calendar" SelectedDatesChanged="Today_Calendar_SelectedDatesChanged" SelectionMode="Single"/>
+        <Grid Background="Transparent" Grid.Row="3" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

@@ -18,8 +18,8 @@ namespace School_Meal
     public class SchoolMealClass
     {
         private readonly string SchoolCode = null;
-        private DateTime DateCursor = DateTime.Now;
-        private DateTime WeekCursor = DateTime.Now;
+        private DateTime DateCursor { get; set; }
+        private DateTime WeekCursor { get; set; }
         private IJsonValue JItem_Day;
         private IJsonValue JItem_Breakfast;
         private IJsonValue JItem_Lunch;
@@ -392,31 +392,30 @@ namespace School_Meal
             var SunB = Settings.Values[MakeDateString(TempWeekCursor) + "B"];
             var SunL = Settings.Values[MakeDateString(TempWeekCursor) + "L"];
             var SunD = Settings.Values[MakeDateString(TempWeekCursor) + "D"];
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
             var MonB = Settings.Values[MakeDateString(TempWeekCursor) + "B"];
             var MonL = Settings.Values[MakeDateString(TempWeekCursor) + "L"];
             var MonD = Settings.Values[MakeDateString(TempWeekCursor) + "D"];
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
             var TueB = Settings.Values[MakeDateString(TempWeekCursor) + "B"];
             var TueL = Settings.Values[MakeDateString(TempWeekCursor) + "L"];
             var TueD = Settings.Values[MakeDateString(TempWeekCursor) + "D"];
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
             var WedB = Settings.Values[MakeDateString(TempWeekCursor) + "B"];
             var WedL = Settings.Values[MakeDateString(TempWeekCursor) + "L"];
             var WedD = Settings.Values[MakeDateString(TempWeekCursor) + "D"];
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
             var ThuB = Settings.Values[MakeDateString(TempWeekCursor) + "B"];
             var ThuL = Settings.Values[MakeDateString(TempWeekCursor) + "L"];
             var ThuD = Settings.Values[MakeDateString(TempWeekCursor) + "D"];
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
             var FriB = Settings.Values[MakeDateString(TempWeekCursor) + "B"];
             var FriL = Settings.Values[MakeDateString(TempWeekCursor) + "L"];
             var FriD = Settings.Values[MakeDateString(TempWeekCursor) + "D"];
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
             var SatB = Settings.Values[MakeDateString(TempWeekCursor) + "B"];
             var SatL = Settings.Values[MakeDateString(TempWeekCursor) + "L"];
             var SatD = Settings.Values[MakeDateString(TempWeekCursor) + "D"];
-            TempWeekCursor.AddDays(-7);
 
             if (SunB == null || SunB.ToString() == "급식이 없습니다.\n")
             {
@@ -424,23 +423,25 @@ namespace School_Meal
             }
             else
             {
-                WeekMealDictionary.Add("SunB", MonB.ToString());
+                WeekMealDictionary.Add("SunB", SunB.ToString());
             }
+
             if (SunL == null || SunL.ToString() == "급식이 없습니다.\n")
             {
                 WeekMealDictionary.Add("SunL", "급식정보없음");
             }
             else
             {
-                WeekMealDictionary.Add("SunL", MonL.ToString());
+                WeekMealDictionary.Add("SunL", SunL.ToString());
             }
+
             if (SunD == null || SunD.ToString() == "급식이 없습니다.\n")
             {
                 WeekMealDictionary.Add("SunD", "급식정보없음");
             }
             else
             {
-                WeekMealDictionary.Add("SunD", MonD.ToString());
+                WeekMealDictionary.Add("SunD", SunD.ToString());
             }
 
             if (MonB == null || MonB.ToString() == "급식이 없습니다.\n")
@@ -613,37 +614,37 @@ namespace School_Meal
             WeekMealDictionary.Add("MonB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
             WeekMealDictionary.Add("MonL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
             WeekMealDictionary.Add("MonD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
 
             WeekMealDictionary.Add("TueB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
             WeekMealDictionary.Add("TueL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
             WeekMealDictionary.Add("TueD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
 
             WeekMealDictionary.Add("WedB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
             WeekMealDictionary.Add("WedL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
             WeekMealDictionary.Add("WedD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
 
             WeekMealDictionary.Add("ThuB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
             WeekMealDictionary.Add("ThuL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
             WeekMealDictionary.Add("ThuD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
 
             WeekMealDictionary.Add("FriB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
             WeekMealDictionary.Add("FriL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
             WeekMealDictionary.Add("FriD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
 
             WeekMealDictionary.Add("SatB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
             WeekMealDictionary.Add("SatL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
             WeekMealDictionary.Add("SatD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor.AddDays(1);
+            TempWeekCursor = TempWeekCursor.AddDays(1);
 
             WeekMealDictionary.Add("SunB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
             WeekMealDictionary.Add("SunL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
             WeekMealDictionary.Add("SunD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor.AddDays(-7);
+            TempWeekCursor = TempWeekCursor.AddDays(-7);
 
             return WeekMealDictionary;
         }
@@ -685,6 +686,19 @@ namespace School_Meal
             try
             {
                 DateCursor = DateCursor.AddDays(Date);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool MoveDateCursor(int Year, int Month, int Day)
+        {
+            try
+            {
+                DateCursor = new DateTime(Year, Month, Day);
                 return true;
             }
             catch

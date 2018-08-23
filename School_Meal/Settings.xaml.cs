@@ -188,5 +188,20 @@ namespace School_Meal
             }
             Theme_TextBlock.Visibility = Visibility.Visible;
         }
+
+        private void Week_Radio_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private async void SystemCal_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool result = await Launcher.LaunchUriAsync(new Uri("ms-settings:dateandtime"));
+        }
+
+        private void SaveCache_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

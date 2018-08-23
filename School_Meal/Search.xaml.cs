@@ -40,5 +40,17 @@ namespace School_Meal
                 AdvancedSearch_Icon.Glyph = "\uE972";
             }
         }
+
+        private void Advance_StackPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (Page_Grid.ActualWidth < 700)
+            {
+                Advance_StackPanel.Orientation = Orientation.Vertical;
+            }
+            else
+            {
+                Advance_StackPanel.Orientation = Orientation.Horizontal;
+            }
+        }
     }
 }
