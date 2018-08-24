@@ -359,15 +359,16 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>410175959034.46781BA11794D</MainPackageIdentityName>
+    <MainPackageIdentityName>410175959034.IASABeta</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>IASA 급식</ReservedName>
+      <ReservedName>IASA 급식 Beta</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
     <MainPackageIdentityName>410175959034.CalculateMatrix</MainPackageIdentityName>
     <MainPackageIdentityName>410175959034.DOCompare</MainPackageIdentityName>
+    <MainPackageIdentityName>410175959034.46781BA11794D</MainPackageIdentityName>
     <MainPackageIdentityName>410175959034.PowerIDE</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9N58P2C3T07Z" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9N6J4V4K0X8Q" />
 </StoreAssociation>
