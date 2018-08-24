@@ -42,4 +42,4 @@ Using Visual Studio Team Service (VSTS)
 - UWP platform : [https://docs.microsoft.com/windows/uwp](https://docs.microsoft.com/windows/uwp)
 - Xamarin.Forms platform : [https://docs.microsoft.com/xamarin/xamarin-forms](https://docs.microsoft.com/xamarin/xamarin-forms)
 - VSTS : [https://sboh1214.visualstudio.com/School_Meal](https://sboh1214.visualstudio.com/School_Meal)
-- AppCenter
+- AppCenter : [https://appcenter.ms/users/sboh1214/applications](https://appcenter.ms/users/sboh1214/applications)
