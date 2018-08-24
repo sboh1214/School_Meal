@@ -92,8 +92,13 @@
                         <StackPanel HorizontalAlignment="Left" Background="Black" Margin="6,6,6,6">
                             <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" Width="100"/>
                         </StackPanel>
-                        <TextBlock Text="IASA 급식" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="6,6,6,6"/>
+                        <TextBlock Text="IASA 급식" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6"/>
                         <TextBlock Text="버전 알 수 없음" x:Name="Version_TextBlock" Margin="6,6,6,6"/>
+                        <TextBlock Text="개발자" Margin="6,48,6,6" Style="{ThemeResource TitleTextBlockStyle}"/>
+                        <TextBlock Text="오승빈, 김승재" Margin="6,6,6,6"/>
+                        <TextBlock Text="소스 코드" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
+                        <HyperlinkButton NavigateUri="https://github.com/sboh1214/School_Meal" Content="https://github.com/sboh1214/School_Meal" Margin="6,6,6,6"/>
+                        <TextBlock Text="피드백" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
                         <Button Content="피드백 보내기" x:Name="Feedback_Button" Margin="6,6,6,6" Click="Feedback_Button_Click"/>
                         <TextBlock x:Name="Feedback_TextBlock" Text="피드백을 보내지 못했습니다." Foreground="Red" Visibility="Collapsed"/>
                         <Button Content="이메일 보내기" x:Name="Email_Button" Margin="6,6,6,6" Click="Email_Button_Click"/>

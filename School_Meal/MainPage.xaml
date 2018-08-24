@@ -34,12 +34,12 @@
                     <SymbolIcon Symbol="Find"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <!--<NavigationViewItemHeader Content="Web"/>
+            <NavigationViewItemHeader Content="Web"/>
             <NavigationViewItem Content="학교 급식페이지" x:Uid="SchoolWeb_NavPaneItem" x:Name="SchoolWeb_NavPaneItem" Tag="SchoolWeb">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="World"/>
                 </NavigationViewItem.Icon>
-            </NavigationViewItem>-->
+            </NavigationViewItem>
         </NavigationView.MenuItems>
         
         <NavigationView.AutoSuggestBox>
