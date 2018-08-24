@@ -1,159 +1,148 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Net;
-using System.Text;
-using Windows.Storage;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.AppCenter.Analytics;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace School_Meal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-
     public sealed partial class Today : Page
     {
-        public DateTime TodayPageDateTime = DateTime.Now;
+        public SchoolMealClass TodayClass = new SchoolMealClass("E100002238");
 
         public Today()
         {
             this.InitializeComponent();
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
-            TodayProgressBar_Row.Height = new GridLength(12);
+            
+
+            TodayClass.MoveDateCursorToToday();
             ShowMenu();
-            TodayProgressBar_Row.Height = new GridLength(0);
-        }
 
-        public bool ShowMenu()
-        {
-            var date = TodayPageDateTime;
+            Analytics.TrackEvent("Today Page");
 
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            var TodayBreakfast = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B"];
-            var TodayLunch = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "L"];
-            var TodayDinner = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "D"];
-
-            if (TodayBreakfast == null && TodayLunch == null && TodayDinner == null)
+            ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
+            if (Settings.Values["Alignment"] == null)
             {
-                GetMenu(date.Year, date.Month);
-                TodayBreakfast = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "B"];
-                TodayLunch = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "L"];
-                TodayDinner = localSettings.Values[date.Year.ToString() + date.Month.ToString() + date.Day.ToString() + "D"];
-            }
-
-            if (TodayBreakfast == null)
-            {
-                Today_Breakfast_TextBlock.Text = "급식 정보 없음";
+                Settings.Values["Alignment"] = "Left";
+                Today_Breakfast_TextBlock.TextAlignment = TextAlignment.Left;
+                Today_Lunch_TextBlock.TextAlignment = TextAlignment.Left;
+                Today_Dinner_TextBlock.TextAlignment = TextAlignment.Left;
             }
             else
             {
-                Today_Breakfast_TextBlock.Text = TodayBreakfast.ToString();
+                string Alignment = Settings.Values["Alignment"].ToString();
+                if (Alignment == "Left")
+                {
+                    Today_Breakfast_TextBlock.TextAlignment = TextAlignment.Left;
+                    Today_Lunch_TextBlock.TextAlignment = TextAlignment.Left;
+                    Today_Dinner_TextBlock.TextAlignment = TextAlignment.Left;
+                }
+                else if (Alignment == "Middle")
+                {
+                    Today_Breakfast_TextBlock.TextAlignment = TextAlignment.Center;
+                    Today_Lunch_TextBlock.TextAlignment = TextAlignment.Center;
+                    Today_Dinner_TextBlock.TextAlignment = TextAlignment.Center;
+                }
+                else
+                {
+                    Today_Breakfast_TextBlock.TextAlignment = TextAlignment.Right;
+                    Today_Lunch_TextBlock.TextAlignment = TextAlignment.Right;
+                    Today_Dinner_TextBlock.TextAlignment = TextAlignment.Right;
+                }
             }
-
-            if (TodayLunch == null)
-            {
-                Today_Lunch_TextBlock.Text = "급식 정보 없음";
-            }
-            else
-            {
-                Today_Lunch_TextBlock.Text = TodayLunch.ToString();
-            }
-
-            if (TodayDinner == null)
-            {
-                Today_Dinner_TextBlock.Text = "급식 정보 없음";
-            }
-            else
-            {
-                Today_Dinner_TextBlock.Text = TodayDinner.ToString();
-            }
+            TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
 
             TodayProgressBar_Row.Height = new GridLength(0);
-            return true;
-        }
-
-        public bool GetMenu(int Year, int Month)
-        {
-            var Url = new Uri("http://schoolmenukr.ml/api/ice/E100002238?year=" + Year.ToString() + "&month=" + Month.ToString()); //사이트 주소
-            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
-            myRequest.Method = "GET";
-            WebResponse myresponse = myRequest.GetResponse();
-            StreamReader sr = new StreamReader(myresponse.GetResponseStream(), Encoding.UTF8);
-            string result = sr.ReadToEnd();
-            sr.Close();
-            myresponse.Close();
-
-            dynamic jObject = JsonConvert.DeserializeObject(result);
-            foreach (var Jitem in jObject)
-            {
-                dynamic jdate = Jitem.GetValue("date");
-                int date = Convert.ToInt32(jdate.Value);
-
-                dynamic jbreakfast = Jitem.GetValue("breakfast");
-                var breakfastlist = jbreakfast.Children();
-                string breakfaststr = "";
-                foreach (var BreakfastItem in breakfastlist)
-                {
-                    breakfaststr += BreakfastItem.Value;
-                    breakfaststr += "\n";
-                }
-
-                dynamic jlunch = Jitem.GetValue("lunch");
-                var lunchlist = jlunch.Children();
-                string lunchstr = "";
-                foreach (var LunchItem in lunchlist)
-                {
-                    lunchstr += LunchItem.Value;
-                    lunchstr += "\n";
-                }
-
-                dynamic jdinner = Jitem.GetValue("dinner");
-                var dinnerlist = jdinner.Children();
-                string dinnerstr = "";
-                foreach (var DinnerItem in dinnerlist)
-                {
-                    dinnerstr += DinnerItem.Value;
-                    dinnerstr += "\n";
-                }
-
-                ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "B"] = breakfaststr;
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "L"] = lunchstr;
-                localSettings.Values[Year.ToString() + Month.ToString() + date.ToString() + "D"] = dinnerstr;
-            }
-            return true;
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
         {
-            TodayProgressBar_Row.Height = new GridLength(12);
-            TodayPageDateTime = TodayPageDateTime.AddDays(-1);
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
+            TodayClass.MoveDateCursor(-1);
             ShowMenu();
-            TodayProgressBar_Row.Height = new GridLength(0);
+            TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
         }
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
             TodayProgressBar_Row.Height = new GridLength(12);
+            TodayClass.LoadMonthMenu(DeviceType.Win10);
             ShowMenu();
             TodayProgressBar_Row.Height = new GridLength(0);
         }
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
-            TodayProgressBar_Row.Height = new GridLength(12);
-            TodayPageDateTime = TodayPageDateTime.AddDays(1);
-            TodayHeader_TextBlock.Text = TodayPageDateTime.Month.ToString()+"월 "+TodayPageDateTime.Day.ToString()+"일 급식";
+            TodayClass.MoveDateCursor(1);
             ShowMenu();
-            TodayProgressBar_Row.Height = new GridLength(0);
+            TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
+        }
+
+        private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (e.NewSize.Width>=1008)
+            {
+                Today_Breakfast_TextBlock.FontSize = 26;
+                Today_Lunch_TextBlock.FontSize = 26;
+                Today_Dinner_TextBlock.FontSize = 26;
+            }
+            else if (e.NewSize.Width>=641)
+            {
+                Today_Breakfast_TextBlock.FontSize = 18;
+                Today_Lunch_TextBlock.FontSize = 18;
+                Today_Dinner_TextBlock.FontSize = 18;
+            }
+            else
+            {
+                Today_Breakfast_TextBlock.FontSize = 12;
+                Today_Lunch_TextBlock.FontSize = 12;
+                Today_Dinner_TextBlock.FontSize = 12;
+            }
+        }
+
+        private bool ShowMenu ()
+        {
+            try
+            {
+                var Menu = TodayClass.GetDayMenu(DeviceType.Win10);
+                Today_Breakfast_TextBlock.Text = Menu["Breakfast"];
+                Today_Lunch_TextBlock.Text = Menu["Lunch"];
+                Today_Dinner_TextBlock.Text = Menu["Dinner"];
+                TodayHeader_TextBlock.Text = TodayClass.GetDateCursor("MM월 DD일");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void Cal_ABB_Click(object sender, RoutedEventArgs e)
+        {
+            if (Today_Calendar.Visibility == Visibility.Collapsed)
+            {
+                Today_Calendar.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Today_Calendar.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Today_ABB_Click(object sender, RoutedEventArgs e)
+        {
+            TodayClass.MoveDateCursorToToday();
+            ShowMenu();
+        }
+
+        private void Today_Calendar_SelectedDatesChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
+        {
+            var dateList = Today_Calendar.SelectedDates;
+            foreach (var item in dateList)
+            {
+                TodayClass.MoveDateCursor(item.Year, item.Month, item.Day);
+                ShowMenu();
+            }
         }
     }
 }

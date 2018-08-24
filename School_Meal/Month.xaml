@@ -2,16 +2,15 @@
     x:Class="School_Meal.Month"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:School_Meal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource MyAcrylicBackgroundBrush}">
 
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="12"/> <!--0,12-->
+            <RowDefinition Height="0"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -24,13 +23,25 @@
             </CommandBar.Content>
             <CommandBar.PrimaryCommands>
                 <AppBarButton Label="이전" Icon="Back" x:Name="Back_ABB" Click="Back_ABB_Click"/>
-                <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
                 <AppBarButton Label="다음" Icon="Forward" x:Name="Forward_ABB" Click="Forward_ABB_Click"/>
+                <AppBarSeparator/>
+                <AppBarToggleButton Label="아침" x:Name="Breakfast_ABB" Click="Breakfast_ABB_Click"/>
+                <AppBarToggleButton Label="점심" x:Name="Lunch_ABB" Click="Lunch_ABB_Click"/>
+                <AppBarToggleButton Label="저녁" x:Name="Dinner_ABB" Click="Dinner_ABB_Click"/>
+                <AppBarSeparator/>
+                <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
+                <AppBarButton Label="이번 달" Icon="GoToToday" x:Name="ThisMonth_ABB"/>
+                <AppBarButton Label="이동" x:Name="Move_ABB">
+                    <AppBarButton.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE13C;"/>
+                    </AppBarButton.Icon>
+                </AppBarButton>
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1"/>
-        <CalendarView Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
-
-        </CalendarView>
+        <ScrollViewer Grid.Row="2">
+            <CalendarView HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent">
+            </CalendarView>
+        </ScrollViewer>
     </Grid>
 </Page>

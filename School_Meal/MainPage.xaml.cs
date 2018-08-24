@@ -17,8 +17,7 @@ namespace School_Meal
             this.InitializeComponent();
 
             var date = DateTime.Now;
-            App_NavigationView.PaneTitle = date.Year.ToString()+"년 "+date.Month.ToString()+"월 "+date.Day.ToString()+"일";
-
+            
             App_NavigationView.SelectedItem = Today_NavPaneItem;
             ContentFrame.Navigate(typeof(Today));
         }
