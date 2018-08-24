@@ -1,25 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace School_Meal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Search : Page
     {
         public Search()
@@ -40,6 +25,32 @@ namespace School_Meal
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
 
+        }
+
+        private void AdvancedSearch_Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (AdvancedSearch_Row.Height == new GridLength(0))
+            {
+                AdvancedSearch_Row.Height = new GridLength(0,GridUnitType.Auto);
+                AdvancedSearch_Icon.Glyph = "\uE971";
+            }
+            else
+            {
+                AdvancedSearch_Row.Height = new GridLength(0);
+                AdvancedSearch_Icon.Glyph = "\uE972";
+            }
+        }
+
+        private void Advance_StackPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (Page_Grid.ActualWidth < 700)
+            {
+                Advance_StackPanel.Orientation = Orientation.Vertical;
+            }
+            else
+            {
+                Advance_StackPanel.Orientation = Orientation.Horizontal;
+            }
         }
     }
 }

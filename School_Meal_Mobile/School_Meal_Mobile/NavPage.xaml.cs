@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace School_Meal_Mobile
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MasterPage : ContentPage
+	public partial class NavPage : ContentPage
 	{
-		public MasterPage ()
+		public NavPage ()
 		{
 			InitializeComponent ();
 		}

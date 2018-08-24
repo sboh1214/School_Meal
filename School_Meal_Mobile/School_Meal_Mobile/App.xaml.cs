@@ -1,11 +1,10 @@
-using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace School_Meal_Mobile
 {
-	public partial class App : Application
+    public partial class App : Application
 	{
 		public App ()
 		{

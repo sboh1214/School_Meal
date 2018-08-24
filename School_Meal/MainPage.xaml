@@ -6,9 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+    Background="{ThemeResource MyAcrylicBackgroundBrush}">
 
-    <NavigationView IsSettingsVisible="False" AlwaysShowHeader="False" x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
+    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" PaneTitle="IASA 급식" 
+                    x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
+        
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Local"/>
             <NavigationViewItem Content="일별 급식" x:Uid="Today_NavPaneItem" x:Name="Today_NavPaneItem" Tag="Today">
@@ -21,13 +23,13 @@
                     <SymbolIcon Symbol="CalendarWeek"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <!--<NavigationViewItem Content="월별 급식" x:Uid="Month_NavPaneItem" x:Name="Month_NavPaneItem" Tag="Month">
+            <NavigationViewItem Content="월별 급식" x:Uid="Month_NavPaneItem" x:Name="Month_NavPaneItem" Tag="Month" Visibility="Collapsed">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="Calendar"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItemHeader Content="Search"/>
-            <NavigationViewItem Content="검색" x:Uid="Search_NavPaneItem" x:Name="Search_NavPaneItem" Tag="Search">
+            <NavigationViewItemHeader Content="Search" Visibility="Collapsed"/>
+            <NavigationViewItem Content="검색" x:Uid="Search_NavPaneItem" x:Name="Search_NavPaneItem" Tag="Search" Visibility="Collapsed">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="Find"/>
                 </NavigationViewItem.Icon>
@@ -39,17 +41,18 @@
                 </NavigationViewItem.Icon>
             </NavigationViewItem>-->
         </NavigationView.MenuItems>
-        <!--<NavigationView.AutoSuggestBox>
-            <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find"/>
-        </NavigationView.AutoSuggestBox>-->
+        
+        <NavigationView.AutoSuggestBox>
+            <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find" Visibility="Collapsed"/>
+        </NavigationView.AutoSuggestBox>
+
         <NavigationView.PaneFooter>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Visibility="Collapsed">
                 <HyperlinkButton Content="App Website" Margin="54,0,0,0" NavigateUri="https://sites.google.com/view/iasa-meal"/>
                 <!--<HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
                 <HyperlinkButton Content="Android 다운로드" Margin="54,0,0,0"/>
-                <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>-->
 
-
+                <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>
             </StackPanel>
         </NavigationView.PaneFooter>
 
