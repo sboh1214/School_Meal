@@ -33,13 +33,13 @@
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="Find"/>
                 </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItemHeader Content="Web"/>
+            </NavigationViewItem>-->
+            <!--<NavigationViewItemHeader Content="Web"/>
             <NavigationViewItem Content="학교 급식페이지" x:Uid="SchoolWeb_NavPaneItem" x:Name="SchoolWeb_NavPaneItem" Tag="SchoolWeb">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="World"/>
                 </NavigationViewItem.Icon>
-            </NavigationViewItem>
+            </NavigationViewItem>-->
         </NavigationView.MenuItems>
         
         <NavigationView.AutoSuggestBox>
@@ -49,8 +49,9 @@
         <NavigationView.PaneFooter>
             <StackPanel Orientation="Vertical" Visibility="Collapsed">
                 <HyperlinkButton Content="App Website" Margin="54,0,0,0" NavigateUri="https://sites.google.com/view/iasa-meal"/>
-                <HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
+                <!--<HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
                 <HyperlinkButton Content="Android 다운로드" Margin="54,0,0,0"/>
+
                 <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>
             </StackPanel>
         </NavigationView.PaneFooter>
