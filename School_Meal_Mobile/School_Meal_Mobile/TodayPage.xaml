@@ -1,12 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="School_Meal_Mobile.TodayPage">
+             x:Class="School_Meal_Mobile.TodayPage"
+             Title="일별 급식">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Label Text="아침" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" 
+                   Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
+                <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
+                   Margin="6,6,6,6" TextColor="Black" x:Name="Today_Breakfast_Label"/>
+
+                <Label Text="점심" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
+                <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
+                   Margin="6,6,6,6" TextColor="Black" x:Name="Today_Lunch_Label"/>
+
+                <Label Text="저녁" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
+                   Style="{DynamicResource TitleStyle}" Margin="6,6,6,6"/>
+                <Label Text="급식 정보 없음" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
+                   Margin="6,6,6,6" TextColor="Black" x:Name="Today_Dinner_Label"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

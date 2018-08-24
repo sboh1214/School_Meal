@@ -2,7 +2,6 @@
     x:Class="School_Meal.Settings"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:School_Meal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -11,7 +10,7 @@
     <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="12" x:Name="SettingProgressBar_Row"/> <!--0,12-->
+            <RowDefinition Height="0" x:Name="SettingProgressBar_Row"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0" DefaultLabelPosition="Right" Background="Transparent">
@@ -23,19 +22,85 @@
             </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1"/>
-        <ScrollViewer Grid.Row="2">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="알람" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6"/>
-                <CheckBox Content="아침메뉴 알림" IsChecked="True" Margin="6,6,6,6"/>
-                <TimePicker Margin="6,6,6,6"/>
-                <CheckBox Content="점심메뉴 알림" IsChecked="True" Margin="6,6,6,6"/>
-                <TimePicker Margin="6,6,6,6"/>
-                <CheckBox Content="저녁메뉴 알림" IsChecked="True" Margin="6,6,6,6"/>
-                <TimePicker Margin="6,6,6,6"/>
+        <Pivot Grid.Row="2">
+            <PivotItem Header="알람" Visibility="Collapsed">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <CheckBox Content="아침메뉴 알림" IsChecked="True" Margin="6,6,6,6" x:Name="Breakfast_CheckBox" />
+                        <TimePicker Margin="6,6,6,6"/>
+                        <CheckBox Content="점심메뉴 알림" IsChecked="True" Margin="6,6,6,6" x:Name="Lunch_CheckBox"/>
+                        <TimePicker Margin="6,6,6,6"/>
+                        <CheckBox Content="저녁메뉴 알림" IsChecked="True" Margin="6,6,6,6" x:Name="Dinner_CheckBox"/>
+                        <TimePicker Margin="6,6,6,6"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
 
-                <TextBlock Text="캐시" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6"/>
-                <Button x:Name="RemoveCache_Button" Content="삭제" Margin="6,6,6,6" Width="100" Click="RemoveCache_Button_Click"/>
-            </StackPanel>
-        </ScrollViewer>
+            <PivotItem Header="스타일">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="테마" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6"/>
+                        <TextBlock x:Name="Theme_TextBlock" Foreground="Red" Text="변경 사항은 다시 시작할 때 적용됩니다." Visibility="Collapsed"/>
+                        <Button Content="윈도우 테마 설정" x:Name="System_Button" Click="SystemTheme_Button_Click"/>
+                        <RadioButton Content="윈도우 테마 사용" GroupName="ThemeRadio" x:Name="System_Radio" Click="Theme_Radio_Click" IsChecked="True"/>
+                        <RadioButton Content="밝게" GroupName="ThemeRadio" x:Name="Light_Radio" Click="Theme_Radio_Click"/>
+                        <RadioButton Content="어둡게" GroupName="ThemeRadio" x:Name="Dark_Radio" Click="Theme_Radio_Click"/>
+
+                        <TextBlock Text="텍스트" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
+                        <RadioButton Content="왼쪽 정렬" x:Name="Left_Radio" Click="Align_Radio_Click" GroupName="AlignRadio" IsChecked="True"/>
+                        <RadioButton Content="가운데 정렬" x:Name="Middle_Radio" Click="Align_Radio_Click" GroupName="AlignRadio"/>
+                        <RadioButton Content="오른쪽 정렬" x:Name="Right_Radio" Click="Align_Radio_Click" GroupName="AlignRadio"/>
+
+                        <TextBlock Text="한 주의 시작" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
+                        <Button Content="윈도우 달력 설정" x:Name="SystemCal_Button" Click="SystemCal_Button_Click" />
+                        <RadioButton Content="윈도우 달력 사용" x:Name="SysCal_Radio" Click="Week_Radio_Click" GroupName="WeekRadio" IsChecked="True"/>
+                        <RadioButton Content="일요일" x:Name="Sun_Radio" Click="Week_Radio_Click" GroupName="WeekRadio" IsEnabled="False"/>
+                        <RadioButton Content="월요일" x:Name="Mon_Radio" Click="Week_Radio_Click" GroupName="WeekRadio" IsEnabled="False"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
+
+            <PivotItem Header="저장">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="불러오기" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6" Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal" Visibility="Collapsed">
+                            <DatePicker Header="시작" Margin="6,6,6,6" DayVisible="False" x:Name="LoadStart_DatePicker"/>
+                            <DatePicker Header="끝" Margin="6,6,6,6" DayVisible="False" x:Name="LoadEnd_DatePicker"/>
+                        </StackPanel>
+                        <Button x:Name="SaveCache_Button" Content="데이터 불러오기" Width="150" Visibility="Collapsed" Click="SaveCache_Button_Click" Margin="6,6,6,6" IsEnabled="False"/>
+
+                        <TextBlock Text="삭제하기" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
+                        <ToggleSwitch Header="모든 데이터 삭제" IsOn="True" Margin="6,6,6,6" IsEnabled="False"/>
+                        <StackPanel Orientation="Vertical" x:Name="AdvancedRemove_StackPanel" Visibility="Collapsed">
+                            <StackPanel Orientation="Horizontal">
+                                <DatePicker Header="시작" Margin="6,6,6,6" x:Name="RemoveStart_DatePicker"/>
+                                <DatePicker Header="끝" Margin="6,6,6,6" x:Name="RemoveEnd_DatePicker"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <Button x:Name="RemoveCache_Button" Content="데이터 삭제" Width="150" Click="RemoveCache_Button_Click" Margin="6,6,6,6"/>
+                        <TextBlock Text="설정 초기화" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6" Visibility="Collapsed"/>
+                        <Button Content="초기화" Width="150" Margin="6,6,6,6" Visibility="Collapsed"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
+
+            <PivotItem Header="앱 정보">
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel HorizontalAlignment="Left" Background="Black" Margin="6,6,6,6">
+                            <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" Width="100"/>
+                        </StackPanel>
+                        <TextBlock Text="IASA 급식" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="6,6,6,6"/>
+                        <TextBlock Text="버전 알 수 없음" x:Name="Version_TextBlock" Margin="6,6,6,6"/>
+                        <Button Content="피드백 보내기" x:Name="Feedback_Button" Margin="6,6,6,6" Click="Feedback_Button_Click"/>
+                        <TextBlock x:Name="Feedback_TextBlock" Text="피드백을 보내지 못했습니다." Foreground="Red" Visibility="Collapsed"/>
+                        <Button Content="이메일 보내기" x:Name="Email_Button" Margin="6,6,6,6" Click="Email_Button_Click"/>
+                        <TextBlock x:Name="Email_Textblock" Text="이메일을 보내지 못했습니다." Foreground="Red" Visibility="Collapsed"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>

@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -39,6 +27,25 @@ namespace School_Meal
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void Breakfast_ABB_Click(object sender, RoutedEventArgs e)
+        {
+            Lunch_ABB.IsChecked = false;
+            Dinner_ABB.IsChecked = false;
+        }
+
+        private void Lunch_ABB_Click(object sender, RoutedEventArgs e)
+        {
+                Breakfast_ABB.IsChecked = false;
+                Dinner_ABB.IsChecked = false;
+        }
+
+        private void Dinner_ABB_Click(object sender, RoutedEventArgs e)
+        {
+            Breakfast_ABB.IsChecked = false;
+            Lunch_ABB.IsChecked = false;
 
         }
     }
