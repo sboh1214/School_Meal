@@ -23,7 +23,7 @@
         </CommandBar>
         <ProgressBar IsIndeterminate="True" Grid.Row="1"/>
         <Pivot Grid.Row="2">
-            <PivotItem Header="알람">
+            <PivotItem Header="알람" Visibility="Collapsed">
                 <ScrollViewer>
                     <StackPanel Orientation="Vertical">
                         <CheckBox Content="아침메뉴 알림" IsChecked="True" Margin="6,6,6,6" x:Name="Breakfast_CheckBox" />
@@ -52,10 +52,10 @@
                         <RadioButton Content="오른쪽 정렬" x:Name="Right_Radio" Click="Align_Radio_Click" GroupName="AlignRadio"/>
 
                         <TextBlock Text="한 주의 시작" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
-                        <Button Content="윈도우 달력 설정" x:Name="SystemCal_Button" Click="SystemCal_Button_Click"/>
+                        <Button Content="윈도우 달력 설정" x:Name="SystemCal_Button" Click="SystemCal_Button_Click" />
                         <RadioButton Content="윈도우 달력 사용" x:Name="SysCal_Radio" Click="Week_Radio_Click" GroupName="WeekRadio" IsChecked="True"/>
-                        <RadioButton Content="일요일" x:Name="Sun_Radio" Click="Week_Radio_Click" GroupName="WeekRadio"/>
-                        <RadioButton Content="월요일" x:Name="Mon_Radio" Click="Week_Radio_Click" GroupName="WeekRadio"/>
+                        <RadioButton Content="일요일" x:Name="Sun_Radio" Click="Week_Radio_Click" GroupName="WeekRadio" IsEnabled="False"/>
+                        <RadioButton Content="월요일" x:Name="Mon_Radio" Click="Week_Radio_Click" GroupName="WeekRadio" IsEnabled="False"/>
                     </StackPanel>
                 </ScrollViewer>
             </PivotItem>
@@ -63,16 +63,16 @@
             <PivotItem Header="저장">
                 <ScrollViewer>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="불러오기" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6"/>
-                        <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="불러오기" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6" Visibility="Collapsed"/>
+                        <StackPanel Orientation="Horizontal" Visibility="Collapsed">
                             <DatePicker Header="시작" Margin="6,6,6,6" DayVisible="False" x:Name="LoadStart_DatePicker"/>
                             <DatePicker Header="끝" Margin="6,6,6,6" DayVisible="False" x:Name="LoadEnd_DatePicker"/>
                         </StackPanel>
-                        <Button x:Name="SaveCache_Button" Content="데이터 불러오기" Width="150" Click="SaveCache_Button_Click" Margin="6,6,6,6"/>
+                        <Button x:Name="SaveCache_Button" Content="데이터 불러오기" Width="150" Visibility="Collapsed" Click="SaveCache_Button_Click" Margin="6,6,6,6" IsEnabled="False"/>
 
                         <TextBlock Text="삭제하기" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
-                        <ToggleSwitch Header="모든 데이터 삭제" IsOn="True" Margin="6,6,6,6"/>
-                        <StackPanel Orientation="Vertical" x:Name="AdvancedRemove_StackPanel">
+                        <ToggleSwitch Header="모든 데이터 삭제" IsOn="True" Margin="6,6,6,6" IsEnabled="False"/>
+                        <StackPanel Orientation="Vertical" x:Name="AdvancedRemove_StackPanel" Visibility="Collapsed">
                             <StackPanel Orientation="Horizontal">
                                 <DatePicker Header="시작" Margin="6,6,6,6" x:Name="RemoveStart_DatePicker"/>
                                 <DatePicker Header="끝" Margin="6,6,6,6" x:Name="RemoveEnd_DatePicker"/>
@@ -80,8 +80,8 @@
                         </StackPanel>
 
                         <Button x:Name="RemoveCache_Button" Content="데이터 삭제" Width="150" Click="RemoveCache_Button_Click" Margin="6,6,6,6"/>
-                        <TextBlock Text="설정 초기화" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
-                        <Button Content="초기화" Width="150" Margin="6,6,6,6"/>
+                        <TextBlock Text="설정 초기화" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6" Visibility="Collapsed"/>
+                        <Button Content="초기화" Width="150" Margin="6,6,6,6" Visibility="Collapsed"/>
                     </StackPanel>
                 </ScrollViewer>
             </PivotItem>
@@ -92,8 +92,13 @@
                         <StackPanel HorizontalAlignment="Left" Background="Black" Margin="6,6,6,6">
                             <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" Width="100"/>
                         </StackPanel>
-                        <TextBlock Text="IASA 급식" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="6,6,6,6"/>
+                        <TextBlock Text="IASA 급식" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,6,6,6"/>
                         <TextBlock Text="버전 알 수 없음" x:Name="Version_TextBlock" Margin="6,6,6,6"/>
+                        <TextBlock Text="개발자" Margin="6,48,6,6" Style="{ThemeResource TitleTextBlockStyle}"/>
+                        <TextBlock Text="오승빈, 김승재" Margin="6,6,6,6"/>
+                        <TextBlock Text="소스 코드" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
+                        <HyperlinkButton NavigateUri="https://github.com/sboh1214/School_Meal" Content="https://github.com/sboh1214/School_Meal" Margin="6,6,6,6"/>
+                        <TextBlock Text="피드백" Style="{ThemeResource TitleTextBlockStyle}" Margin="6,48,6,6"/>
                         <Button Content="피드백 보내기" x:Name="Feedback_Button" Margin="6,6,6,6" Click="Feedback_Button_Click"/>
                         <TextBlock x:Name="Feedback_TextBlock" Text="피드백을 보내지 못했습니다." Foreground="Red" Visibility="Collapsed"/>
                         <Button Content="이메일 보내기" x:Name="Email_Button" Margin="6,6,6,6" Click="Email_Button_Click"/>

@@ -22,8 +22,8 @@
                 <AppBarButton Label="다음" Icon="Forward" x:Name="Forward_ABB" Click="Forward_ABB_Click"/>
                 <AppBarSeparator/>
                 <AppBarButton Label="불러오기" Icon="Refresh" x:Name="Refresh_ABB" Click="Refresh_ABB_Click"/>
-                <AppBarButton Label="이번 주" Icon="GoToToday" x:Name="ThisWeek_ABB"/>
-                <AppBarButton Label="이동" x:Name="Move_ABB">
+                <AppBarButton Label="이번 주" Icon="GoToToday" x:Name="ThisWeek_ABB" Visibility="Collapsed"/>
+                <AppBarButton Label="이동" x:Name="Move_ABB" Visibility="Collapsed">
                     <AppBarButton.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE13C;"/>
                     </AppBarButton.Icon>

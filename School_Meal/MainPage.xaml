@@ -23,13 +23,13 @@
                     <SymbolIcon Symbol="CalendarWeek"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem Content="월별 급식" x:Uid="Month_NavPaneItem" x:Name="Month_NavPaneItem" Tag="Month">
+            <NavigationViewItem Content="월별 급식" x:Uid="Month_NavPaneItem" x:Name="Month_NavPaneItem" Tag="Month" Visibility="Collapsed">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="Calendar"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItemHeader Content="Search"/>
-            <NavigationViewItem Content="검색" x:Uid="Search_NavPaneItem" x:Name="Search_NavPaneItem" Tag="Search">
+            <NavigationViewItemHeader Content="Search" Visibility="Collapsed"/>
+            <NavigationViewItem Content="검색" x:Uid="Search_NavPaneItem" x:Name="Search_NavPaneItem" Tag="Search" Visibility="Collapsed">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="Find"/>
                 </NavigationViewItem.Icon>
@@ -43,14 +43,15 @@
         </NavigationView.MenuItems>
         
         <NavigationView.AutoSuggestBox>
-            <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find"/>
+            <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find" Visibility="Collapsed"/>
         </NavigationView.AutoSuggestBox>
 
         <NavigationView.PaneFooter>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" Visibility="Collapsed">
                 <HyperlinkButton Content="App Website" Margin="54,0,0,0" NavigateUri="https://sites.google.com/view/iasa-meal"/>
                 <HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
                 <HyperlinkButton Content="Android 다운로드" Margin="54,0,0,0"/>
+
                 <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>
             </StackPanel>
         </NavigationView.PaneFooter>
