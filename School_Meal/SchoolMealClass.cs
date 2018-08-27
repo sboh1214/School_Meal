@@ -255,9 +255,9 @@ namespace School_Meal
         {
             try
             {
-                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
+                //https://schoolmenukr.ml/api/HIGH/E100002238?year=2018&month=7
                 
-                var Url = new Uri("http://schoolmenukr.ml/api/ice/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
+                var Url = new Uri("https://schoolmenukr.ml/api/HIGH/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
                 WebResponse myresponse = myRequest.GetResponse();
@@ -265,7 +265,8 @@ namespace School_Meal
                 string result = sr.ReadToEnd();
                 sr.Close();
                 myresponse.Close();
-                return JsonArray.Parse(result);
+                var JObject = JsonObject.Parse(result);
+                return JObject["menu"].GetArray(); 
             }
             catch
             {
