@@ -21,18 +21,18 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>10.3</string>
 	<key>CFBundleDisplayName</key>
 	<string>School_Meal_Mobile</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.School_Meal_Mobile</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>com.DfjM.School-Meal</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>School_Meal_Mobile</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleVersion</key>
+	<string>0.1</string>
 </dict>
 </plist>

@@ -1,142 +1,123 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.AppCenter.Analytics;
 using Windows.Storage;
-using System.Diagnostics;
-
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace School_Meal
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Week : Page
     {
+        public SchoolMealClass WeekClass = new SchoolMealClass("E100002238");
+
         public Week()
         {
             this.InitializeComponent();
+            Analytics.TrackEvent("Week Page");
 
-            DateTime dtToday = DateTime.Now;
+            ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
+            if (Settings.Values["Alignment"] == null)
+            {
+                Settings.Values["Alignment"] = "Left";
+                ChangeAlignment(TextAlignment.Left);
+            }
+            else
+            {
+                string Alignment = Settings.Values["Alignment"].ToString();
+                if (Alignment == "Left")
+                {
+                    ChangeAlignment(TextAlignment.Left);
+                }
+                else if (Alignment == "Middle")
+                {
+                    ChangeAlignment(TextAlignment.Center);
+                }
+                else
+                {
+                    ChangeAlignment(TextAlignment.Right);
+                }
+            }
 
-            CultureInfo ciCurrent = System.Threading.Thread.CurrentThread.CurrentCulture;
-            DayOfWeek dwFirst = ciCurrent.DateTimeFormat.FirstDayOfWeek;
-            DayOfWeek dwToday = ciCurrent.Calendar.GetDayOfWeek(dtToday);
-
-            int iDiff = dwToday - dwFirst;
-            DateTime FirstDay = dtToday.AddDays(-iDiff);
-
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-
-            var breakfaststr = "급식 정보 없음";
-            var lunchstr = "급식 정보 없음";
-            var dinnerstr = "급식 정보 없음";
-
-            breakfaststr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "B"].ToString();
-            lunchstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "L"].ToString();
-            dinnerstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "D"].ToString();
-
-            SunB.Text = breakfaststr;
-            SunL.Text = lunchstr;
-            SunD.Text = dinnerstr;
-
-            FirstDay = FirstDay.AddDays(1);
-
-            breakfaststr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "B"].ToString();
-            lunchstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "L"].ToString();
-            dinnerstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "D"].ToString();
-
-            MonB.Text = breakfaststr;
-            MonL.Text = lunchstr;
-            MonD.Text = dinnerstr;
-
-            FirstDay = FirstDay.AddDays(1);
-
-            breakfaststr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "B"].ToString();
-            lunchstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "L"].ToString();
-            dinnerstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "D"].ToString();
-
-            TueB.Text = breakfaststr;
-            TueL.Text = lunchstr;
-            TueD.Text = dinnerstr;
-
-            FirstDay = FirstDay.AddDays(1);
-
-            breakfaststr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "B"].ToString();
-            lunchstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "L"].ToString();
-            dinnerstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "D"].ToString();
-
-            WedB.Text = breakfaststr;
-            WedL.Text = lunchstr;
-            WedD.Text = dinnerstr;
-
-            FirstDay = FirstDay.AddDays(1);
-
-            breakfaststr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "B"].ToString();
-            lunchstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "L"].ToString();
-            dinnerstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "D"].ToString();
-
-            ThuB.Text = breakfaststr;
-            ThuL.Text = lunchstr;
-            ThuD.Text = dinnerstr;
-
-            FirstDay = FirstDay.AddDays(1);
-
-            breakfaststr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "B"].ToString();
-            lunchstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "L"].ToString();
-            dinnerstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "D"].ToString();
-
-            FriB.Text = breakfaststr;
-            FriL.Text = lunchstr;
-            FriD.Text = dinnerstr;
-
-            FirstDay = FirstDay.AddDays(1);
-
-            breakfaststr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "B"].ToString();
-            lunchstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "L"].ToString();
-            dinnerstr = localSettings.Values[FirstDay.Year.ToString() + FirstDay.Month.ToString() + FirstDay.Day.ToString() + "D"].ToString();
-
-            SatB.Text = breakfaststr;
-            SatL.Text = lunchstr;
-            SatD.Text = dinnerstr;
-
+            WeekClass.MoveWeekCursorToToday();
+            ShowMenu();
         }
 
-        private void Previous_ABB_Click(object sender, RoutedEventArgs e)
+        private void ChangeAlignment(TextAlignment Alignment)
         {
-
+            MonB.TextAlignment = Alignment;
+            MonL.TextAlignment = Alignment;
+            MonD.TextAlignment = Alignment;
+            TueB.TextAlignment = Alignment;
+            TueL.TextAlignment = Alignment;
+            TueD.TextAlignment = Alignment;
+            WedB.TextAlignment = Alignment;
+            WedL.TextAlignment = Alignment;
+            WedD.TextAlignment = Alignment;
+            ThuB.TextAlignment = Alignment;
+            ThuL.TextAlignment = Alignment;
+            ThuD.TextAlignment = Alignment;
+            FriB.TextAlignment = Alignment;
+            FriL.TextAlignment = Alignment;
+            FriD.TextAlignment = Alignment;
+            SatB.TextAlignment = Alignment;
+            SatL.TextAlignment = Alignment;
+            SatD.TextAlignment = Alignment;
+            SunB.TextAlignment = Alignment;
+            SunL.TextAlignment = Alignment;
+            SunD.TextAlignment = Alignment;
         }
 
         private void Back_ABB_Click(object sender, RoutedEventArgs e)
         {
-
+            WeekClass.MoveWeekCursor(-1);
+            ShowMenu();
         }
 
         private void Refresh_ABB_Click(object sender, RoutedEventArgs e)
         {
-
+            WeekClass.LoadMonthMenu(DeviceType.Win10);
+            ShowMenu();
         }
 
         private void Forward_ABB_Click(object sender, RoutedEventArgs e)
         {
-
+            WeekClass.MoveWeekCursor(1);
+            ShowMenu();
         }
 
-        private void Next_ABB_Click(object sender, RoutedEventArgs e)
+        private bool ShowMenu()
         {
+            var Menu = WeekClass.GetWeekMenu(DeviceType.Win10);
 
+            SunB.Text = Menu["SunB"];
+            SunL.Text = Menu["SunL"];
+            SunD.Text = Menu["SunD"];
+
+            MonB.Text = Menu["MonB"];
+            MonL.Text = Menu["MonL"];
+            MonD.Text = Menu["MonD"];
+
+            TueB.Text = Menu["TueB"];
+            TueL.Text = Menu["TueL"];
+            TueD.Text = Menu["TueD"];
+
+            WedB.Text = Menu["WedB"];
+            WedL.Text = Menu["WedL"];
+            WedD.Text = Menu["WedD"];
+
+            ThuB.Text = Menu["ThuB"];
+            ThuL.Text = Menu["ThuL"];
+            ThuD.Text = Menu["ThuD"];
+
+            FriB.Text = Menu["FriB"];
+            FriL.Text = Menu["FriL"];
+            FriD.Text = Menu["FriD"];
+
+            SatB.Text = Menu["SatB"];
+            SatL.Text = Menu["SatL"];
+            SatD.Text = Menu["SatD"];
+
+            return true;
         }
     }
 }

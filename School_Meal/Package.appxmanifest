@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/1614/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="410175959034.46781BA11794D" Publisher="CN=0999CD22-14B0-49D6-88E0-EB9625AF4A1E" Version="1806.6.7.0" />
-  <PhoneIdentity xmlns="http://schemas.microsoft.com/appx/2014/phone/manifest" PhoneProductId="5f726555-1e2f-4607-99b9-313a2b5014e2" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="410175959034.IASABeta" Publisher="CN=0999CD22-14B0-49D6-88E0-EB9625AF4A1E" Version="1807.103.5.0" />
+  <PhoneIdentity xmlns="http://schemas.microsoft.com/appx/2014/phone/manifest" PhoneProductId="d6e94a26-d4f9-4673-92a1-724a5b3c4433" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>IASA 급식</DisplayName>
+    <DisplayName>IASA 급식 Beta</DisplayName>
     <PublisherDisplayName>오승빈</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="School_Meal.App">
-      <uap:VisualElements DisplayName="IASA 급식" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="School_Meal" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="IASA 급식 Beta" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="School_Meal" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png" ShortName="인천과학예술영재학교 급식">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

@@ -2,45 +2,69 @@
     x:Class="School_Meal.Search"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:School_Meal"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="Transparent">
 
-    <Grid Background="Transparent">
+    <Grid Background="Transparent" x:Name="Page_Grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="12"/> <!--0,12-->
+            <RowDefinition Height="0"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0" x:Name="AdvancedSearch_Row"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar Grid.Row="0" DefaultLabelPosition="Right" Background="Transparent">
             <CommandBar.Content>
                 <TextBlock Text="검색" Margin="6,6,6,6" FontSize="20"/>
             </CommandBar.Content>
-            <CommandBar.PrimaryCommands>
-                <AppBarButton/>
-            </CommandBar.PrimaryCommands>
         </CommandBar>
         <ProgressBar Grid.Row="1" IsIndeterminate="True"/>
-        <AutoSuggestBox QueryIcon="Find" Grid.Row="2" MaxWidth="500" 
+        <AutoSuggestBox QueryIcon="Find" Grid.Row="2" MaxWidth="500" Margin="6,6,6,6"
                         TextChanged="AutoSuggestBox_TextChanged" 
                         QuerySubmitted="AutoSuggestBox_QuerySubmitted" 
                         SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
-        <controls:Expander ExpandDirection="Down" x:Name="Search_Expander" Header="고급 검색" Grid.Row="3"
-                           VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <controls:Expander.Content>
-                <Grid>
-                    
-                </Grid>
-            </controls:Expander.Content>
-            <controls:Expander.ContentOverlay>
-                <Grid>
-                    <TextBlock Text="검색 결과"/>
-                </Grid>
-            </controls:Expander.ContentOverlay>
-        </controls:Expander>
+        <Button x:Name="AdvancedSearch_Button" Click="AdvancedSearch_Button_Click" Grid.Row="3" 
+                Background="{ThemeResource MyAcrylicAccentBrush}">
+            <StackPanel Orientation="Horizontal">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE972;" Margin="0,0,6,0" x:Name="AdvancedSearch_Icon"/>
+                <TextBlock Text="고급 검색 설정" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            </StackPanel>
+        </Button>
+        <StackPanel SizeChanged="Advance_StackPanel_SizeChanged" x:Name="Advance_StackPanel" Grid.Row="4" Background="{ThemeResource MyAcrylicAccentBrush}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="검색 기간" Margin="6,6,6,6" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <StackPanel Orientation="Horizontal" Background="Transparent">
+                    <CalendarDatePicker Margin="6,6,6,6"/>
+                    <CalendarDatePicker Margin="6,6,6,6"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="급식 종류" Margin="6,6,6,6" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <StackPanel Orientation="Horizontal" Background="Transparent">
+                    <CheckBox Content="아침" IsChecked="True" Margin="6,6,6,6"/>
+                    <CheckBox Content="점심" IsChecked="True" Margin="6,6,6,6"/>
+                    <CheckBox Content="저녁" IsChecked="True" Margin="6,6,6,6"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="6,6,6,6" 
+                                   Text="검색 결과" Style="{ThemeResource TitleTextBlockStyle}"/>
+            <TextBlock Grid.Row="0" Grid.Column="2" Margin="6,6,6,6" VerticalAlignment="Bottom"
+                                   Text="총 0건이 검색되었습니다." Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <GridView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="FindResult_ListView"/>
+        </Grid>
     </Grid>
 </Page>
