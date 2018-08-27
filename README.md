@@ -31,12 +31,8 @@ Using Visual Studio Team Service (VSTS)
 
 ## Website
 
-### Official
-- 공식 웹사이트 : [https://sites.google.com/view/iasa-meal](https://sites.google.com/view/iasa-meal)
-
 ### Download
-- Windows 10 : [Microsoft Store](https://www.microsoft.com/store/productId/9N58P2C3T07Z)
-- Android (Beta) : [Google Play Store](https://play.google.com/store/apps/details?id=com.sboh1214.IASA_Meal)
+- Github Release : [https://github.com/sboh1214/School_Meal/releases](https://github.com/sboh1214/School_Meal/releases)
 
 ### Others
 - UWP platform : [https://docs.microsoft.com/windows/uwp](https://docs.microsoft.com/windows/uwp)
