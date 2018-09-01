@@ -13,8 +13,14 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 1. 다양한 보기를 제공합니다. 오늘 급식실에 내려가기 10분전 먹을 급식이 궁금하다면 일별 급식을, 일주일 동안 내가 좋아하는 급식을 보고 싶다면 주별 급식을 볼 수 있습니다.
 2. 다양한 플랫폼을 지원합니다. Windows 7, 8, 8.1, 10 , macOS , iOS , Android 를 모두 지원합니다. (일부 플랫폼 지원 예정)
 
+## Download
+- Windows 10 : [Microsoft Store](https://www.microsoft.com/store/apps/9N58P2C3T07Z)
+- Android : [Google Play Store](https://play.google.com/store/apps/details?id=com.sboh1214.IASA_Meal)
+- Github Release : [https://github.com/sboh1214/School_Meal/releases](https://github.com/sboh1214/School_Meal/releases)
+
 ## Build Status
-Using Visual Studio Team Service (VSTS)
+- VSTS : [https://sboh1214.visualstudio.com/School_Meal](https://sboh1214.visualstudio.com/School_Meal)
+- AppCenter : [https://appcenter.ms/users/sboh1214/applications](https://appcenter.ms/users/sboh1214/applications)
 
 ### Master
 
@@ -27,15 +33,3 @@ Using Visual Studio Team Service (VSTS)
 |Windows 10|Windows 7|Android|iOS|
 |----------|---------|-------|---|
 |![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/6/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/12/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/10/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/11/badge)|
-
-
-## Website
-
-### Download
-- Github Release : [https://github.com/sboh1214/School_Meal/releases](https://github.com/sboh1214/School_Meal/releases)
-
-### Others
-- UWP platform : [https://docs.microsoft.com/windows/uwp](https://docs.microsoft.com/windows/uwp)
-- Xamarin.Forms platform : [https://docs.microsoft.com/xamarin/xamarin-forms](https://docs.microsoft.com/xamarin/xamarin-forms)
-- VSTS : [https://sboh1214.visualstudio.com/School_Meal](https://sboh1214.visualstudio.com/School_Meal)
-- AppCenter : [https://appcenter.ms/users/sboh1214/applications](https://appcenter.ms/users/sboh1214/applications)
