@@ -15,7 +15,7 @@ namespace School_Meal
     public enum NetworkType { None,Connected, Wifi, Cellular, Ethernet, Error };
     public enum DeviceType { Win10, Win7, XF, XA, XI };
 
-    public class SchoolMealClass
+    public partial class SchoolMealClass_UWP
     {
         private readonly string SchoolCode = null;
         private DateTime DateCursor { get; set; }
@@ -25,7 +25,7 @@ namespace School_Meal
         private IJsonValue JItem_Lunch;
         private IJsonValue JItem_Dinner;
 
-        public SchoolMealClass(string Code)
+        public SchoolMealClass_UWP(string Code)
         {
             SchoolCode = Code;
         }
@@ -143,7 +143,7 @@ namespace School_Meal
                         break;
 
                     case DeviceType.Win7:
-
+                        
                         break;
 
                     case DeviceType.XF:
@@ -236,7 +236,6 @@ namespace School_Meal
                     break;
 
                 case DeviceType.Win7:
-
                     break;
 
                 case DeviceType.XF:
@@ -257,7 +256,7 @@ namespace School_Meal
             {
                 //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
                 
-                var Url = new Uri("http://schoolmenukr.ml/api/ice/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
+                var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
                 WebResponse myresponse = myRequest.GetResponse();
@@ -280,7 +279,7 @@ namespace School_Meal
             {
                 //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=8&date=17
 
-                var Url = new Uri("http://schoolmenukr.ml/api/ice/" + SchoolCode + 
+                var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + 
                     "?year=" + Year.ToString() + "&month=" + Month.ToString() + "&date=" + Day.ToString());
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
@@ -318,13 +317,34 @@ namespace School_Meal
                 case DeviceType.Win10:
 
                     ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-                    string Win10_Breakfast = localSettings.Values[MakeDateString(Year, Month, Day) + "B"].ToString();
-                    string Win10_Lunch = localSettings.Values[MakeDateString(Year, Month, Day) + "L"].ToString();
-                    string Win10_Dinner = localSettings.Values[MakeDateString(Year, Month, Day) + "D"].ToString();
+                    var Win10_Breakfast = localSettings.Values[MakeDateString(Year, Month, Day) + "B"];
+                    var Win10_Lunch = localSettings.Values[MakeDateString(Year, Month, Day) + "L"];
+                    var Win10_Dinner = localSettings.Values[MakeDateString(Year, Month, Day) + "D"];
 
-                    DayMealDictionary.Add("Breakfast", Win10_Breakfast);
-                    DayMealDictionary.Add("Lunch", Win10_Lunch);
-                    DayMealDictionary.Add("Dinner", Win10_Dinner);
+                    if (Win10_Breakfast == null)
+                    {
+                        DayMealDictionary.Add("Breakfast","급식정보없음");
+                    }
+                    else
+                    {
+                        DayMealDictionary.Add("Breakfast", Win10_Breakfast.ToString());
+                    }
+                    if (Win10_Lunch == null)
+                    {
+                        DayMealDictionary.Add("Lunch", "급식정보없음");
+                    }
+                    else
+                    {
+                        DayMealDictionary.Add("Lunch", Win10_Lunch.ToString());
+                    }
+                    if (Win10_Dinner == null)
+                    {
+                        DayMealDictionary.Add("Dinner", "급식정보없음");
+                    }
+                    else
+                    {
+                        DayMealDictionary.Add("Dinner", Win10_Dinner.ToString());
+                    }
 
                     break;
 

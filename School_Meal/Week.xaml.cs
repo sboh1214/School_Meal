@@ -8,7 +8,7 @@ namespace School_Meal
 {
     public sealed partial class Week : Page
     {
-        public SchoolMealClass WeekClass = new SchoolMealClass("E100002238");
+        public SchoolMealClass_UWP WeekClass = new SchoolMealClass_UWP("E100002238");
 
         public Week()
         {

@@ -9,7 +9,7 @@ namespace School_Meal
 {
     public sealed partial class Today : Page
     {
-        public SchoolMealClass TodayClass = new SchoolMealClass("E100002238");
+        public SchoolMealClass_UWP TodayClass = new SchoolMealClass_UWP("E100002238");
 
         public Today()
         {

@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace School_Meal__Win_7_
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -28,6 +25,11 @@ namespace School_Meal__Win_7_
         private void Settings_DockButton_Click(object sender, RoutedEventArgs e)
         {
             Main_Frame.Navigate(new Uri("SettingsPage.xaml", UriKind.Relative));
+        }
+
+        private void Web_DockButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main_Frame.Navigate(new Uri("SchoolWebPage.xaml", UriKind.Relative));
         }
     }
 }

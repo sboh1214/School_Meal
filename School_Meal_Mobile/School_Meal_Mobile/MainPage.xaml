@@ -8,7 +8,7 @@
         <local:NavPage/>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage>
+        <NavigationPage x:Name="ContentPage">
             <x:Arguments>
                 <local:TodayPage/>
             </x:Arguments>

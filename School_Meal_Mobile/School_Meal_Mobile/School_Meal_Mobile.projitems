@@ -23,6 +23,7 @@
       <DependentUpon>NavPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SchoolMealClass_Xamarin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SchoolWebPage.xaml.cs">
       <DependentUpon>SchoolWebPage.xaml</DependentUpon>
       <SubType>Code</SubType>

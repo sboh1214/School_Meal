@@ -148,8 +148,12 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Json" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="Windows.Foundation.UniversalApiContract">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\References\10.0.17134.0\Windows.Foundation.UniversalApiContract\6.0.0.0\Windows.Foundation.UniversalApiContract.winmd</HintPath>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>

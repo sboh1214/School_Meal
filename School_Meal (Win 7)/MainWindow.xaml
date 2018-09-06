@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:School_Meal__Win_7_"
         mc:Ignorable="d"
         Title="IASA 급식">
 
@@ -21,12 +20,12 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" BorderThickness="0">
+            <Button Grid.Column="0" BorderThickness="0" Background="Gray">
                 <Image Source="pack://application:,,,/Assets/Menu_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
             </Button>
-            <TextBlock Grid.Column="1" Text="" FontSize="20" x:Name="TodayDate_TextBlock" Margin="6,6,6,6"/>
+            <TextBlock Grid.Column="1" FontSize="24" Margin="6,6,6,6" x:Name="PaneTitle_TextBlock"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="0" Background="Aqua" MaxWidth="300">
+        <Grid Grid.Row="1" Grid.Column="0" Background="Gray" MaxWidth="300">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" x:Name="LocalTitle_RowDef"/>
                 <!--0-->
@@ -81,10 +80,10 @@
 
             <TextBlock Text="Web" Grid.Row="6" FontSize="16" Margin="6,6,6,6"/>
 
-            <Button x:Name="Web_DockButton" Grid.Row="7" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0">
+            <Button x:Name="Web_DockButton" Grid.Row="7" Background="Transparent" HorizontalAlignment="Stretch" BorderThickness="0" Click="Web_DockButton_Click">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <Image Source="pack://application:,,,/Assets/Web_Icon.png" Height="24" Margin="6,6,6,6" HorizontalAlignment="Left"/>
-                    <TextBlock Text="웹 앱" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+                    <TextBlock Text="학교 급식페이지" Margin="6,6,6,6" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
                 </StackPanel>
             </Button>
 
