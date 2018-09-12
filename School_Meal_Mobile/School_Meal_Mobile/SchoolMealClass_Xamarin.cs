@@ -46,9 +46,9 @@ namespace School_Meal_Mobile
                 return false;
             }
 
-            foreach (JsonValue JItem_Temp1 in JObject)
+            foreach (var JItem_Temp1 in JObject)
             {
-                var JItem_Date = JItem_Temp1;
+                var JItem_Date = (JsonObject)JItem_Temp1;
                 if (JItem_Date.Count != 4)
                 {
                     continue;
@@ -57,13 +57,13 @@ namespace School_Meal_Mobile
                 JItem_Day = JItem_Date["date"];
                 JItem_Breakfast = JItem_Date["breakfast"];
                 JItem_Lunch = JItem_Date["lunch"];
-                JItem_Dinner = JItem_Date["Dinner"];
+                JItem_Dinner = JItem_Date["dinner"];
 
                 if (JItem_Day.JsonType != JsonType.String)
                 {
                     continue;
                 }
-                bool IsDay = int.TryParse(JItem_Day.ToString(), out var Day);
+                bool IsDay = int.TryParse(JItem_Day, out var Day);
                 if (IsDay == false)
                 {
                     continue;
@@ -83,7 +83,7 @@ namespace School_Meal_Mobile
                     for (int i = 0; i < Breakfast_Array.Count; i++)
                     {
                         string Breakfast_TempString = Breakfast_Array[i].ToString();
-                        Breakfast_String += RemoveAllergyInfo(Breakfast_TempString);
+                        Breakfast_String += RemoveAllergyInfo(RemoveQuote(Breakfast_TempString));
                         Breakfast_String += "\n";
                     }
                 }
@@ -98,7 +98,7 @@ namespace School_Meal_Mobile
                     for (int j = 0; j < Lunch_Array.Count; j++)
                     {
                         string Lunch_TempString = Lunch_Array[j].ToString();
-                        Lunch_String += RemoveAllergyInfo(Lunch_TempString);
+                        Lunch_String += RemoveAllergyInfo(RemoveQuote(Lunch_TempString));
                         Lunch_String += "\n";
                     }
                 }
@@ -113,10 +113,14 @@ namespace School_Meal_Mobile
                     for (int k = 0; k < Dinner_Array.Count; k++)
                     {
                         string Dinner_TempString = Dinner_Array[k].ToString();
-                        Dinner_String += RemoveAllergyInfo(Dinner_TempString);
+                        Dinner_String += RemoveAllergyInfo(RemoveQuote(Dinner_TempString));
                         Dinner_String += "\n";
                     }
                 }
+
+                Breakfast_String = RemoveQuote(Breakfast_String);
+                Lunch_String = RemoveQuote(Lunch_String);
+                Dinner_String = RemoveQuote(Dinner_String);
 
                 switch (deviceType)
                 {
@@ -215,13 +219,13 @@ namespace School_Meal_Mobile
         //    return true;
         //}
 
-        private JsonValue RequestMonthMenu(int Year, int Month)
+        private JsonArray RequestMonthMenu(int Year, int Month)
         {
             try
             {
-                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
+                //http://schoolmenukr.ml/api/high/E100002238?year=2018&month=7
 
-                var Url = new Uri("http://schoolmenukr.ml/api/ice/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
+                var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
                 WebResponse myresponse = myRequest.GetResponse();
@@ -229,7 +233,7 @@ namespace School_Meal_Mobile
                 string result = sr.ReadToEnd();
                 sr.Close();
                 myresponse.Close();
-                return JsonValue.Parse(result);
+                return (JsonArray)JsonValue.Parse(result)["menu"];
             }
             catch
             {
@@ -238,7 +242,7 @@ namespace School_Meal_Mobile
 
         }
 
-        
+
 
         public Dictionary<string, string> GetDayMenu(DeviceType deviceType)
         {
@@ -263,6 +267,14 @@ namespace School_Meal_Mobile
                     string XF_Breakfast = Preferences.Get(MakeDateString(Year, Month, Day) + "B", "급식정보없음");
                     string XF_Lunch = Preferences.Get(MakeDateString(Year, Month, Day) + "L", "급식정보없음");
                     string XF_Dinner = Preferences.Get(MakeDateString(Year, Month, Day) + "D", "급식정보없음");
+
+                    if (XF_Breakfast == "급식정보없음" && XF_Lunch == "급식정보없음" && XF_Dinner == "급식정보없음")
+                    {
+                        LoadMonthMenu(DeviceType.XF);
+                        XF_Breakfast = Preferences.Get(MakeDateString(Year, Month, Day) + "B", "급식정보없음");
+                        XF_Lunch = Preferences.Get(MakeDateString(Year, Month, Day) + "L", "급식정보없음");
+                        XF_Dinner = Preferences.Get(MakeDateString(Year, Month, Day) + "D", "급식정보없음");
+                    }
 
                     DayMealDictionary.Add("Breakfast", XF_Breakfast);
                     DayMealDictionary.Add("Lunch", XF_Lunch);
@@ -300,7 +312,7 @@ namespace School_Meal_Mobile
             }
             return WeekMealDictionary;
         }
-     
+
 
         private Dictionary<string, string> GetWeekMenu_XF(DateTime TempWeekCursor)
         {
@@ -471,6 +483,19 @@ namespace School_Meal_Mobile
             return WeekCursor;
         }
 
+        private string RemoveQuote(string Input)
+        {
+            if (Input[0]=='\"')
+            {
+                Input.Substring(1, Input.Length - 1);
+            }
+            if (Input[Input.Length-1]=='\"')
+            {
+                Input.Substring(0, Input.Length - 1);
+            }
+            return Input;
+        }
+
         private string RemoveAllergyInfo(string Input)
         {
             while (true)
@@ -524,18 +549,7 @@ namespace School_Meal_Mobile
             }
         }
 
-        public NetworkType CheckNetwork(DeviceType deviceType)
-        {
-            switch (deviceType)
-            {
-                case DeviceType.XF:
-                    return CheckNetwork_XF();
-                default:
-                    return NetworkType.Error;
-            }
-        }
-
-        private NetworkType CheckNetwork_XF()
+        private NetworkType CheckNetwork(DeviceType deviceType)
         {
             var current = Connectivity.NetworkAccess;
             var profiles = Connectivity.Profiles;

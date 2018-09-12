@@ -3,6 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="School_Meal_Mobile.TodayPage"
              Title="일별 급식">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Priority="0" Order="Primary" Icon="Previous_Icon.png" Text="이전" x:Name="Previous" Activated="Previous_Activated"/>
+        <ToolbarItem Priority="0" Order="Primary" Icon="Next_Icon.png" Text="다음" x:Name="Next" Activated="Next_Activated"/>
+
+        <ToolbarItem Order="Secondary" Icon="Refresh_Icon.png" Text="불러오기" x:Name="Refresh_Item" Activated="Refresh_Item_Activated"/>
+        <ToolbarItem Order="Secondary" Icon="Today_Icon.png" Text="오늘" x:Name="Today_Item" Activated="Today_Item_Activated"/>
+        <ToolbarItem Order="Secondary" Icon="Move_Icon.png" Text="이동" x:Name="Move_Item" Activated="Move_Item_Activated"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
@@ -22,5 +30,6 @@
                    Margin="6,6,6,6" TextColor="Black" x:Name="Today_Dinner_Label"/>
             </StackLayout>
         </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

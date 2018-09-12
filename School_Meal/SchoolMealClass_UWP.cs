@@ -55,25 +55,11 @@ namespace School_Meal
                 {
                     continue;
                 }
-                foreach (var JItem_Temp2 in JItem_Date)
-                {
-                    switch (JItem_Temp2.Key)
-                    {
-                        case "date":
-                            JItem_Day = JItem_Temp2.Value;
-                            break;
-                        case "breakfast":
-                            JItem_Breakfast = JItem_Temp2.Value;
-                            break;
-                        case "lunch":
-                            JItem_Lunch = JItem_Temp2.Value;
-                            break;
-                        case "dinner":
-                            JItem_Dinner = JItem_Temp2.Value;
-                            break;
-                    }
-                }
-                
+                JItem_Day = JItem_Temp1.GetObject()["date"];
+                JItem_Breakfast = JItem_Temp1.GetObject()["breakfast"];
+                JItem_Lunch = JItem_Temp1.GetObject()["lunch"];
+                JItem_Dinner = JItem_Temp1.GetObject()["dinner"];
+
                 if (JItem_Day.ValueType != JsonValueType.String)
                 {
                     continue;
@@ -140,16 +126,6 @@ namespace School_Meal
                         localSettings.Values[MakeDateString(Year, Month, Day) + "B"] = Breakfast_String;
                         localSettings.Values[MakeDateString(Year, Month, Day) + "L"] = Lunch_String;
                         localSettings.Values[MakeDateString(Year, Month, Day) + "D"] = Dinner_String;
-                        break;
-
-                    case DeviceType.Win7:
-                        
-                        break;
-
-                    case DeviceType.XF:
-                        Preferences.Set(MakeDateString(Year, Month, Day) + "B", Breakfast_String);
-                        Preferences.Set(MakeDateString(Year, Month, Day) + "L", Lunch_String);
-                        Preferences.Set(MakeDateString(Year, Month, Day) + "D", Dinner_String);
                         break;
 
                     default:
@@ -234,18 +210,6 @@ namespace School_Meal
                     localSettings.Values[MakeDateString(Year, Month, Day) + "L"] = Lunch_String;
                     localSettings.Values[MakeDateString(Year, Month, Day) + "D"] = Dinner_String;
                     break;
-
-                case DeviceType.Win7:
-                    break;
-
-                case DeviceType.XF:
-                    Preferences.Set(MakeDateString(Year, Month, Day) + "B", Breakfast_String);
-                    Preferences.Set(MakeDateString(Year, Month, Day) + "L", Lunch_String);
-                    Preferences.Set(MakeDateString(Year, Month, Day) + "D", Dinner_String);
-                    break;
-
-                default:
-                    break;
             }
             return true;
         }
@@ -254,7 +218,7 @@ namespace School_Meal
         {
             try
             {
-                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
+                //http://schoolmenukr.ml/api/high/E100002238?year=2018&month=7
                 
                 var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
@@ -264,7 +228,7 @@ namespace School_Meal
                 string result = sr.ReadToEnd();
                 sr.Close();
                 myresponse.Close();
-                return JsonArray.Parse(result);
+                return JsonObject.Parse(result)["menu"].GetArray();
             }
             catch
             {
@@ -277,7 +241,7 @@ namespace School_Meal
         {
             try
             {
-                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=8&date=17
+                //http://schoolmenukr.ml/api/high/E100002238?year=2018&month=8&date=17
 
                 var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + 
                     "?year=" + Year.ToString() + "&month=" + Month.ToString() + "&date=" + Day.ToString());
@@ -398,7 +362,6 @@ namespace School_Meal
                     break;
 
                 case DeviceType.XF:
-                    WeekMealDictionary = GetWeekMenu_XF(TempWeekCursor);
                     break;
             }
             return WeekMealDictionary;
@@ -627,47 +590,7 @@ namespace School_Meal
             return WeekMealDictionary;
         }
 
-        private Dictionary<string, string> GetWeekMenu_XF(DateTime TempWeekCursor)
-        {
-            var WeekMealDictionary = new Dictionary<string, string>();
-
-            WeekMealDictionary.Add("MonB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
-            WeekMealDictionary.Add("MonL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
-            WeekMealDictionary.Add("MonD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor = TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("TueB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
-            WeekMealDictionary.Add("TueL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
-            WeekMealDictionary.Add("TueD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor = TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("WedB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
-            WeekMealDictionary.Add("WedL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
-            WeekMealDictionary.Add("WedD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor = TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("ThuB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
-            WeekMealDictionary.Add("ThuL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
-            WeekMealDictionary.Add("ThuD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor = TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("FriB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
-            WeekMealDictionary.Add("FriL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
-            WeekMealDictionary.Add("FriD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor = TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("SatB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
-            WeekMealDictionary.Add("SatL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
-            WeekMealDictionary.Add("SatD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor = TempWeekCursor.AddDays(1);
-
-            WeekMealDictionary.Add("SunB", Preferences.Get(MakeDateString(TempWeekCursor) + "B", "급식정보없음"));
-            WeekMealDictionary.Add("SunL", Preferences.Get(MakeDateString(TempWeekCursor) + "L", "급식정보없음"));
-            WeekMealDictionary.Add("SunD", Preferences.Get(MakeDateString(TempWeekCursor) + "D", "급식정보없음"));
-            TempWeekCursor = TempWeekCursor.AddDays(-7);
-
-            return WeekMealDictionary;
-        }
+        
 
         public bool MoveDateCursorToToday()
         {

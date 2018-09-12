@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Json;
+using School_Meal__Win_7_.Properties;
 
 namespace School_Meal__Win_7_
 {
@@ -33,20 +34,15 @@ namespace School_Meal__Win_7_
 
         public bool LoadMonthMenu(int Year, int Month, DeviceType deviceType)
         {
-            //var Connection = CheckNetwork(deviceType);
-            //if (Connection == NetworkType.None || Connection == NetworkType.Error)
-            //{
-            //    return false;
-            //}
             var JObject = RequestMonthMenu(Year, Month);
-            //if (JObject == null)
-            //{
-            //    return false;
-            //}
-
-            foreach (JsonValue JItem_Temp1 in JObject)
+            if (JObject == null)
             {
-                var JItem_Date = JItem_Temp1;
+                return false;
+            }
+
+            foreach (var JItem_Temp1 in JObject)
+            {
+                var JItem_Date = (JsonObject)JItem_Temp1;
                 if (JItem_Date.Count != 4)
                 {
                     continue;
@@ -55,13 +51,13 @@ namespace School_Meal__Win_7_
                 JItem_Day = JItem_Date["date"];
                 JItem_Breakfast = JItem_Date["breakfast"];
                 JItem_Lunch = JItem_Date["lunch"];
-                JItem_Dinner = JItem_Date["Dinner"];
+                JItem_Dinner = JItem_Date["dinner"];
 
                 if (JItem_Day.JsonType != JsonType.String)
                 {
                     continue;
                 }
-                bool IsDay = int.TryParse(JItem_Day.ToString(), out var Day);
+                bool IsDay = int.TryParse(JItem_Day, out var Day);
                 if (IsDay == false)
                 {
                     continue;
@@ -115,16 +111,10 @@ namespace School_Meal__Win_7_
                         Dinner_String += "\n";
                     }
                 }
-
-                switch (deviceType)
-                {
-                    case DeviceType.Win7:
-
-                        break;
-
-                    default:
-                        break;
-                }
+                
+                Settings.Default[MakeDateString(Year, Month, Day) + "B"] = Breakfast_String;
+                Settings.Default[MakeDateString(Year, Month, Day) + "L"] = Lunch_String;
+                Settings.Default[MakeDateString(Year, Month, Day) + "D"] = Dinner_String;
             }
             return true;
         }
@@ -203,7 +193,7 @@ namespace School_Meal__Win_7_
         //    return true;
         //}
 
-        private JsonValue RequestMonthMenu(int Year, int Month)
+        private JsonArray RequestMonthMenu(int Year, int Month)
         {
             try
             {
@@ -217,7 +207,7 @@ namespace School_Meal__Win_7_
                 string result = sr.ReadToEnd();
                 sr.Close();
                 myresponse.Close();
-                return JsonValue.Parse(result);
+                return (JsonArray)JsonValue.Parse(result)["menu"];
             }
             catch
             {
@@ -263,12 +253,39 @@ namespace School_Meal__Win_7_
         public Dictionary<string, string> GetDayMenu(int Year, int Month, int Day, DeviceType deviceType)
         {
             var DayMealDictionary = new Dictionary<string, string>();
+            string DateString = MakeDateString(Year, Month, Day);
 
             switch (deviceType)
             {
                 case DeviceType.Win7:
+                    var Breakfast = Settings.Default[DateString + "B"];
+                    var Lunch = Settings.Default[DateString + "L"];
+                    var Dinner = Settings.Default[DateString + "D"];
 
-
+                    if (Breakfast == null)
+                    {
+                        DayMealDictionary.Add("Breakfast", "급식정보없음");
+                    }
+                    else
+                    {
+                        DayMealDictionary.Add("Breakfast", Breakfast.ToString());
+                    }
+                    if (Lunch == null)
+                    {
+                        DayMealDictionary.Add("Lunch", "급식정보없음");
+                    }
+                    else
+                    {
+                        DayMealDictionary.Add("Lunch", Lunch.ToString());
+                    }
+                    if (Dinner == null)
+                    {
+                        DayMealDictionary.Add("Dinner", "급식정보없음");
+                    }
+                    else
+                    {
+                        DayMealDictionary.Add("Dinner", Dinner.ToString());
+                    }
                     break;
                     
                 default:
