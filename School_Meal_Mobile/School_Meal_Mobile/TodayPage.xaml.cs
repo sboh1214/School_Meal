@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 namespace School_Meal_Mobile
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TodayPage : ContentPage
+    public partial class TodayPage : ContentPage
 	{
         SchoolMealClass_Xamarin TodayClass = new SchoolMealClass_Xamarin("E100002238");
 

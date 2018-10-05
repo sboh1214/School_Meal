@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace School_Meal_Mobile
@@ -10,5 +11,5 @@ namespace School_Meal_Mobile
 		{
 			InitializeComponent ();
 		}
-	}
+    }
 }

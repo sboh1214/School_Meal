@@ -111,7 +111,7 @@ namespace School_Meal__Win_7_
                         Dinner_String += "\n";
                     }
                 }
-                
+
                 Settings.Default[MakeDateString(Year, Month, Day) + "B"] = Breakfast_String;
                 Settings.Default[MakeDateString(Year, Month, Day) + "L"] = Lunch_String;
                 Settings.Default[MakeDateString(Year, Month, Day) + "D"] = Dinner_String;
@@ -197,9 +197,9 @@ namespace School_Meal__Win_7_
         {
             try
             {
-                //http://schoolmenukr.ml/api/ice/E100002238?year=2018&month=7
+                //http://schoolmenukr.ml/api/high/E100002238?year=2018&month=7
 
-                var Url = new Uri("http://schoolmenukr.ml/api/ice/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
+                var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
                 WebResponse myresponse = myRequest.GetResponse();

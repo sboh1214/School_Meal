@@ -7,7 +7,6 @@ using System.Net.NetworkInformation;
 using System.Text;
 using Windows.Data.Json;
 using Windows.Storage;
-using Xamarin.Essentials;
 using System.Linq;
 
 namespace School_Meal
@@ -309,23 +308,6 @@ namespace School_Meal
                     {
                         DayMealDictionary.Add("Dinner", Win10_Dinner.ToString());
                     }
-
-                    break;
-
-                case DeviceType.Win7:
-
-
-                    break;
-
-                case DeviceType.XF:
-
-                    string XF_Breakfast = Preferences.Get(MakeDateString(Year, Month, Day) + "B", "급식정보없음");
-                    string XF_Lunch = Preferences.Get(MakeDateString(Year, Month, Day) + "L", "급식정보없음");
-                    string XF_Dinner = Preferences.Get(MakeDateString(Year, Month, Day) + "D", "급식정보없음");
-
-                    DayMealDictionary.Add("Breakfast", XF_Breakfast);
-                    DayMealDictionary.Add("Lunch", XF_Lunch);
-                    DayMealDictionary.Add("Dinner", XF_Dinner);
 
                     break;
 
@@ -778,10 +760,6 @@ namespace School_Meal
             {
                 case DeviceType.Win10:
                     return CheckNetwork_Win10();
-                case DeviceType.Win7:
-                    return NetworkType.Error;
-                case DeviceType.XF:
-                    return CheckNetwork_XF();
                 default:
                     return NetworkType.Error;
             }
@@ -804,33 +782,7 @@ namespace School_Meal
                 return NetworkType.Error;
             }
         }
-
-        private NetworkType CheckNetwork_XF()
-        {
-            var current = Connectivity.NetworkAccess;
-            var profiles = Connectivity.Profiles;
-
-            if (current != NetworkAccess.Internet)
-            {
-                return NetworkType.None;
-            }
-            else if (profiles.Contains(ConnectionProfile.WiFi))
-            {
-                return NetworkType.Wifi;
-            }
-            else if (profiles.Contains(ConnectionProfile.Cellular))
-            {
-                return NetworkType.Cellular;
-            }
-            else if (profiles.Contains(ConnectionProfile.Ethernet))
-            {
-                return NetworkType.Ethernet;
-            }
-            else
-            {
-                return NetworkType.Error;
-            }
-        }
+        
 
         private string MakeDateString(DateTime dateTime)
         {

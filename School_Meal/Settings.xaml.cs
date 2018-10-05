@@ -1,11 +1,11 @@
 ﻿using Microsoft.AppCenter.Analytics;
-using Microsoft.Services.Store.Engagement;
 using System;
 using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.Services.Store.Engagement;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -97,7 +97,7 @@ namespace School_Meal
             PackageId packageId = package.Id;
             PackageVersion version = packageId.Version;
 
-            return string.Format("{0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+            return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
 
         }
 
@@ -137,14 +137,14 @@ namespace School_Meal
         private async void Email_Button_Click(object sender, RoutedEventArgs e)
         {
             Email_Textblock.Visibility = Visibility.Collapsed;
-            var MailUri = new Uri(@"mailto:Windowsapp5.korea@gmail.com");
+            var mailUri = new Uri(@"mailto:Windowsapp5.korea@gmail.com");
             // Set the option to show a warning
             var promptOptions = new LauncherOptions
             {
                 TreatAsUntrusted = false
             };
             // Launch the URI
-            var success = await Launcher.LaunchUriAsync(MailUri, promptOptions);
+            var success = await Launcher.LaunchUriAsync(mailUri, promptOptions);
 
             if (success == false)
             {
@@ -154,19 +154,19 @@ namespace School_Meal
 
         private void Align_Radio_Click(object sender, RoutedEventArgs e)
         {
-            ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
-            var Selected = (RadioButton)sender;
-            if (Selected.Name == "Left_Radio")
+            ApplicationDataContainer settings = ApplicationData.Current.LocalSettings;
+            var selected = (RadioButton)sender;
+            if (selected.Name == "Left_Radio")
             {
-                Settings.Values["Alignment"] = "Left";
+                settings.Values["Alignment"] = "Left";
             }
-            else if (Selected.Name == "Right_Radio")
+            else if (selected.Name == "Right_Radio")
             {
-                Settings.Values["Alignment"] = "Right";
+                settings.Values["Alignment"] = "Right";
             }
             else
             {
-                Settings.Values["Alignment"] = "Middle";
+                settings.Values["Alignment"] = "Middle";
             }
         }
 
@@ -202,6 +202,11 @@ namespace School_Meal
         private void SaveCache_Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private async void Source_Button_Click(object sender, RoutedEventArgs e)
+        {
+            bool result = await Launcher.LaunchUriAsync(new Uri(@"https://github.com/sboh1214/School_Meal"));
         }
     }
 }

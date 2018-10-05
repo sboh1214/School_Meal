@@ -52,6 +52,7 @@
     <CodesignKey>iPhone Developer: cubeksj@naver.com (CPDMADZH4C)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -170,7 +171,7 @@
       <Version>0.10.0-preview</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>3.1.0.697729</Version>
+      <Version>3.2.0.839982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.Theme.Base">
       <Version>1.0.0.43-pre1</Version>

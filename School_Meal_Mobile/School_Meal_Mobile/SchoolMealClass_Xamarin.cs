@@ -487,11 +487,11 @@ namespace School_Meal_Mobile
         {
             if (Input[0]=='\"')
             {
-                Input.Substring(1, Input.Length - 1);
+                Input = Input.Substring(1, Input.Length - 1);
             }
             if (Input[Input.Length-1]=='\"')
             {
-                Input.Substring(0, Input.Length - 1);
+                Input = Input.Substring(0, Input.Length - 1);
             }
             return Input;
         }

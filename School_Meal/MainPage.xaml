@@ -2,13 +2,13 @@
     x:Class="School_Meal.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:School_Meal"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Windows10version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
     mc:Ignorable="d"
     Background="{ThemeResource MyAcrylicBackgroundBrush}">
 
-    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" PaneTitle="IASA 급식" 
+    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" Windows10version1803:PaneTitle="IASA 급식"
                     x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
         
         <NavigationView.MenuItems>
@@ -23,13 +23,13 @@
                     <SymbolIcon Symbol="CalendarWeek"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem Content="월별 급식" x:Uid="Month_NavPaneItem" x:Name="Month_NavPaneItem" Tag="Month">
+            <NavigationViewItem Content="월별 급식" x:Uid="Month_NavPaneItem" x:Name="Month_NavPaneItem" Tag="Month" Visibility="Collapsed">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="Calendar"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItemHeader Content="Search"/>
-            <NavigationViewItem Content="검색" x:Uid="Search_NavPaneItem" x:Name="Search_NavPaneItem" Tag="Search">
+            <NavigationViewItemHeader Content="Search" Visibility="Collapsed"/>
+            <NavigationViewItem Content="검색" x:Uid="Search_NavPaneItem" x:Name="Search_NavPaneItem" Tag="Search" Visibility="Collapsed">
                 <NavigationViewItem.Icon>
                     <SymbolIcon Symbol="Find"/>
                 </NavigationViewItem.Icon>
@@ -43,15 +43,14 @@
         </NavigationView.MenuItems>
         
         <NavigationView.AutoSuggestBox>
-            <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find"/>
+            <AutoSuggestBox x:Name="App_ASB" QueryIcon="Find" Visibility="Collapsed"/>
         </NavigationView.AutoSuggestBox>
 
         <NavigationView.PaneFooter>
             <StackPanel Orientation="Vertical">
-                <HyperlinkButton Content="App Website" Margin="54,0,0,0" NavigateUri="https://sites.google.com/view/iasa-meal"/>
-                <HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0"/>
-                <HyperlinkButton Content="Android 다운로드" Margin="54,0,0,0"/>
-                <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0"/>
+                <HyperlinkButton Content="macOS 다운로드" Margin="54,0,0,0" NavigateUri="https://github.com/ksjae/Meals/releases"/>
+                <HyperlinkButton Content="Android 다운로드" Margin="54,0,0,0" Visibility="Collapsed"/>
+                <HyperlinkButton Content="iOS 다운로드" Margin="54,0,0,0" Visibility="Collapsed"/>
             </StackPanel>
         </NavigationView.PaneFooter>
 

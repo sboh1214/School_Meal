@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:local="clr-namespace:School_Meal_Mobile"
                   x:Class="School_Meal_Mobile.MainPage">
 
     <MasterDetailPage.Master>
-        <local:NavPage/>
+        <local:NavPage x:Name="NavPage"/>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage x:Name="ContentPage">
+        <NavigationPage>
             <x:Arguments>
                 <local:TodayPage/>
             </x:Arguments>

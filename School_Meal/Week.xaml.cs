@@ -88,7 +88,6 @@ namespace School_Meal
         private bool ShowMenu()
         {
             var Menu = WeekClass.GetWeekMenu(DeviceType.Win10);
-
             SunB.Text = Menu["SunB"];
             SunL.Text = Menu["SunL"];
             SunD.Text = Menu["SunD"];
@@ -116,6 +115,21 @@ namespace School_Meal
             SatB.Text = Menu["SatB"];
             SatL.Text = Menu["SatL"];
             SatD.Text = Menu["SatD"];
+
+            var Date = WeekClass.GetWeekCursor();
+            Sun.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (일)";
+            Date = Date.AddDays(1);
+            Mon.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (월)";
+            Date = Date.AddDays(1);
+            Tue.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (화)";
+            Date = Date.AddDays(1);
+            Wed.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (수)";
+            Date = Date.AddDays(1);
+            Thu.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (목)";
+            Date = Date.AddDays(1);
+            Fri.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (금)";
+            Date = Date.AddDays(1);
+            Sat.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (토)";
 
             return true;
         }
