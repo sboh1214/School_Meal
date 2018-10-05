@@ -22,14 +22,24 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 - VSTS : [https://sboh1214.visualstudio.com/School_Meal](https://sboh1214.visualstudio.com/School_Meal)
 - AppCenter : [https://appcenter.ms/users/sboh1214/applications](https://appcenter.ms/users/sboh1214/applications)
 
+### Develop ()
+
+Develop_v1.1
+|   |Windows 10|Windows 7|Android|iOS|
+|---|----------|---------|-------|---|
+|VS App Center|[![Build status](https://build.appcenter.ms/v0.1/apps/69805b5f-8e04-4eb7-935a-d147b528fda0/branches/Develop_v1.1/badge)](https://appcenter.ms)|N/A|[![Build status](https://build.appcenter.ms/v0.1/apps/56e23398-43da-453d-800f-89ca58e1f466/branches/Develop_v1.1/badge)](https://appcenter.ms)|[![Build status](https://build.appcenter.ms/v0.1/apps/6d1394c9-8d42-4485-9bee-77d11678e663/branches/Develop_v1.1/badge)](https://appcenter.ms)|
+|Azure DevOps|N/A|N/A|N/A|N/A|
+
 ### Master
 
-|Windows 10|Windows 7|Android|iOS|
-|----------|---------|-------|---|
-|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/5/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/9/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/7/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/8/badge)|
+|   |Windows 10|Windows 7|Android|iOS|
+|---|----------|---------|-------|---|
+|VS App Center|[![Build status](https://build.appcenter.ms/v0.1/apps/69805b5f-8e04-4eb7-935a-d147b528fda0/branches/master/badge)](https://appcenter.ms)|N/A|[![Build status](https://build.appcenter.ms/v0.1/apps/56e23398-43da-453d-800f-89ca58e1f466/branches/master/badge)](https://appcenter.ms)|[![Build status](https://build.appcenter.ms/v0.1/apps/6d1394c9-8d42-4485-9bee-77d11678e663/branches/master/badge)](https://appcenter.ms)|
+|Azure DevOps|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/5/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/9/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/7/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/8/badge)|
 
 ### Release
 
-|Windows 10|Windows 7|Android|iOS|
-|----------|---------|-------|---|
-|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/6/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/12/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/10/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/11/badge)|
+|   |Windows 10|Windows 7|Android|iOS|
+|---|----------|---------|-------|---|
+|VS AppCenter|N/A|N/A|N/A|N/A|
+|Azure DevOps|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/6/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/12/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/10/badge)|![Build Status](https://sboh1214.visualstudio.com/_apis/public/build/definitions/e1842406-ff9a-4e1e-a05b-bf42430e39b6/11/badge)|
