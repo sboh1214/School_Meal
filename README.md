@@ -22,10 +22,9 @@ Inchoen Academy of Science and Arts (IASA) School Meal Application
 - VSTS : [https://sboh1214.visualstudio.com/School_Meal](https://sboh1214.visualstudio.com/School_Meal)
 - AppCenter : [https://appcenter.ms/users/sboh1214/applications](https://appcenter.ms/users/sboh1214/applications)
 
-### Develop ()
+### Develop
 
-Develop_v1.1
-|   |Windows 10|Windows 7|Android|iOS|
+|Develop_v1.1|Windows 10|Windows 7|Android|iOS|
 |---|----------|---------|-------|---|
 |VS App Center|[![Build status](https://build.appcenter.ms/v0.1/apps/69805b5f-8e04-4eb7-935a-d147b528fda0/branches/Develop_v1.1/badge)](https://appcenter.ms)|N/A|[![Build status](https://build.appcenter.ms/v0.1/apps/56e23398-43da-453d-800f-89ca58e1f466/branches/Develop_v1.1/badge)](https://appcenter.ms)|[![Build status](https://build.appcenter.ms/v0.1/apps/6d1394c9-8d42-4485-9bee-77d11678e663/branches/Develop_v1.1/badge)](https://appcenter.ms)|
 |Azure DevOps|N/A|N/A|N/A|N/A|
