@@ -12,7 +12,7 @@ namespace School_Meal
     {
         public Month()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
         
         private void Back_ABB_Click(object sender, RoutedEventArgs e)

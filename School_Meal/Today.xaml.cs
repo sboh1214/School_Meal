@@ -1,7 +1,7 @@
-﻿using Windows.UI.Xaml;
+﻿using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.AppCenter.Analytics;
-using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -13,7 +13,7 @@ namespace School_Meal
 
         public Today()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             
 
             TodayClass.MoveDateCursorToToday();

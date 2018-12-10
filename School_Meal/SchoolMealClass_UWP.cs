@@ -5,18 +5,18 @@ using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using Windows.Data.Json;
 using Windows.Storage;
-using System.Linq;
 
 namespace School_Meal
 {
-    public enum NetworkType { None,Connected, Wifi, Cellular, Ethernet, Error };
-    public enum DeviceType { Win10, Win7, XF, XA, XI };
+    public enum NetworkType { None,Connected, Wifi, Cellular, Ethernet, Error }
+    public enum DeviceType { Win10, Win7, XF, XA, XI }
 
-    public partial class SchoolMealClass_UWP
+    public class SchoolMealClass_UWP
     {
-        private readonly string SchoolCode = null;
+        private readonly string SchoolCode;
         private DateTime DateCursor { get; set; }
         private DateTime WeekCursor { get; set; }
         private IJsonValue JItem_Day;
@@ -126,9 +126,6 @@ namespace School_Meal
                         localSettings.Values[MakeDateString(Year, Month, Day) + "L"] = Lunch_String;
                         localSettings.Values[MakeDateString(Year, Month, Day) + "D"] = Dinner_String;
                         break;
-
-                    default:
-                        break;
                 }
             }
             return true;
@@ -219,7 +216,7 @@ namespace School_Meal
             {
                 //http://schoolmenukr.ml/api/high/E100002238?year=2018&month=7
                 
-                var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + "?year=" + Year.ToString() + "&month=" + Month.ToString());
+                var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + "?year=" + Year + "&month=" + Month);
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
                 WebResponse myresponse = myRequest.GetResponse();
@@ -243,7 +240,7 @@ namespace School_Meal
                 //http://schoolmenukr.ml/api/high/E100002238?year=2018&month=8&date=17
 
                 var Url = new Uri("http://schoolmenukr.ml/api/high/" + SchoolCode + 
-                    "?year=" + Year.ToString() + "&month=" + Month.ToString() + "&date=" + Day.ToString());
+                    "?year=" + Year + "&month=" + Month + "&date=" + Day);
                 HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(Url);
                 myRequest.Method = "GET";
                 WebResponse myresponse = myRequest.GetResponse();
@@ -310,9 +307,6 @@ namespace School_Meal
                     }
 
                     break;
-
-                default:
-                    break;
             }
 
             return DayMealDictionary;
@@ -327,7 +321,7 @@ namespace School_Meal
         {
             var WeekMealDictionary = new Dictionary<string, string>();
 
-            CultureInfo ciCurrent = System.Threading.Thread.CurrentThread.CurrentCulture;
+            CultureInfo ciCurrent = Thread.CurrentThread.CurrentCulture;
             DayOfWeek dwFirst = ciCurrent.DateTimeFormat.FirstDayOfWeek;
             DayOfWeek dwToday = ciCurrent.Calendar.GetDayOfWeek(dtToday);
             int iDiff = dwToday - dwFirst;
@@ -592,7 +586,7 @@ namespace School_Meal
             try
             {
                 DateTime dtToday = DateTime.Now;
-                CultureInfo ciCurrent = System.Threading.Thread.CurrentThread.CurrentCulture;
+                CultureInfo ciCurrent = Thread.CurrentThread.CurrentCulture;
                 DayOfWeek dwFirst = ciCurrent.DateTimeFormat.FirstDayOfWeek;
                 DayOfWeek dwToday = ciCurrent.Calendar.GetDayOfWeek(dtToday);
                 int iDiff = dwToday - dwFirst;
@@ -705,11 +699,11 @@ namespace School_Meal
         {
             while (true)
             {
-                if (IsDot(Input, -1) == true && IsNumber(Input, -2) == true && IsNumber(Input, -3) == true)
+                if (IsDot(Input, -1) && IsNumber(Input, -2) && IsNumber(Input, -3))
                 {
                     Input = Input.Substring(0, Input.Length - 3);
                 }
-                else if (IsDot(Input, -1) == true && IsNumber(Input, -2) == true)
+                else if (IsDot(Input, -1) && IsNumber(Input, -2))
                 {
                     Input = Input.Substring(0, Input.Length - 2);
                 }
@@ -727,10 +721,8 @@ namespace School_Meal
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         private bool IsNumber(string Input, int Index)
@@ -769,18 +761,17 @@ namespace School_Meal
         {
             bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
 
-            if (isInternetConnected==true)
+            if (isInternetConnected)
             {
                 return NetworkType.Connected;
             }
-            else if(isInternetConnected==false)
+
+            if(isInternetConnected==false)
             {
                 return NetworkType.None;
             }
-            else
-            {
-                return NetworkType.Error;
-            }
+
+            return NetworkType.Error;
         }
         
 
@@ -794,19 +785,19 @@ namespace School_Meal
             string DateString = Year.ToString();
             if (Month<10)
             {
-                DateString = DateString + "0" + Month.ToString();
+                DateString = DateString + "0" + Month;
             }
             else
             {
-                DateString = DateString + Month.ToString();
+                DateString = DateString + Month;
             }
             if (Day<10)
             {
-                DateString = DateString + "0" + Day.ToString();
+                DateString = DateString + "0" + Day;
             }
             else
             {
-                DateString = DateString + Day.ToString();
+                DateString = DateString + Day;
             }
             return DateString;
         }

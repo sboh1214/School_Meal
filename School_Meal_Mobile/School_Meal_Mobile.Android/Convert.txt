@@ -1,1 +1,0 @@
-keytool -export -rfc -alias upload -file C:\Users\sboh1\Downloads\upload_certificate.pem -keystore C:\Users\sboh1\Downloads\upload.keystore

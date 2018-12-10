@@ -1,10 +1,10 @@
-﻿using Microsoft.AppCenter.Analytics;
-using System;
+﻿using System;
 using Windows.ApplicationModel;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Microsoft.AppCenter.Analytics;
 using Microsoft.Services.Store.Engagement;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -15,7 +15,7 @@ namespace School_Meal
     {
         public Settings()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             Feedback_TextBlock.Visibility = Visibility.Collapsed;
             Email_Textblock.Visibility = Visibility.Collapsed;

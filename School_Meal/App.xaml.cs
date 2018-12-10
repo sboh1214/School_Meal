@@ -1,13 +1,13 @@
 ﻿using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.ViewManagement;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
-using Windows.Storage;
 
 namespace School_Meal
 {
@@ -22,7 +22,7 @@ namespace School_Meal
         /// </summary>
         public App()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             AppCenter.Start("8498aac8-5a25-4297-a41a-d2308da1ad35", typeof(Analytics));
             AppCenter.LogLevel = LogLevel.Verbose;
 
@@ -36,11 +36,11 @@ namespace School_Meal
                 string Theme = Settings.Values["Theme"].ToString();
                 if (Theme == "Light")
                 {
-                    App.Current.RequestedTheme = ApplicationTheme.Light;
+                    Current.RequestedTheme = ApplicationTheme.Light;
                 }
                 else if (Theme == "Dark")
                 {
-                    App.Current.RequestedTheme = ApplicationTheme.Dark;
+                    Current.RequestedTheme = ApplicationTheme.Dark;
                 }
                 else
                 {
@@ -48,7 +48,7 @@ namespace School_Meal
                 }
             }
 
-            this.Suspending += OnSuspending;
+            Suspending += OnSuspending;
         }
 
         private void SystemTheme()
@@ -57,11 +57,11 @@ namespace School_Meal
             string uiTheme = DefaultTheme.GetColorValue(UIColorType.Background).ToString();
             if (uiTheme == "#FF000000")
             {
-                App.Current.RequestedTheme = ApplicationTheme.Dark;
+                Current.RequestedTheme = ApplicationTheme.Dark;
             }
             else if (uiTheme == "#FFFFFFFF")
             {
-                App.Current.RequestedTheme = ApplicationTheme.Light;
+                Current.RequestedTheme = ApplicationTheme.Light;
             }
         }
 

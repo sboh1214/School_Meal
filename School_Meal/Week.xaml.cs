@@ -1,7 +1,8 @@
-﻿using Windows.UI.Xaml;
+﻿using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.AppCenter.Analytics;
-using Windows.Storage;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace School_Meal
@@ -12,7 +13,7 @@ namespace School_Meal
 
         public Week()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             Analytics.TrackEvent("Week Page");
 
             ApplicationDataContainer Settings = ApplicationData.Current.LocalSettings;
@@ -117,19 +118,19 @@ namespace School_Meal
             SatD.Text = Menu["SatD"];
 
             var Date = WeekClass.GetWeekCursor();
-            Sun.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (일)";
+            Sun.Text = Date.Month + "/" + Date.Day + " (일)";
             Date = Date.AddDays(1);
-            Mon.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (월)";
+            Mon.Text = Date.Month + "/" + Date.Day + " (월)";
             Date = Date.AddDays(1);
-            Tue.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (화)";
+            Tue.Text = Date.Month + "/" + Date.Day + " (화)";
             Date = Date.AddDays(1);
-            Wed.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (수)";
+            Wed.Text = Date.Month + "/" + Date.Day + " (수)";
             Date = Date.AddDays(1);
-            Thu.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (목)";
+            Thu.Text = Date.Month + "/" + Date.Day + " (목)";
             Date = Date.AddDays(1);
-            Fri.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (금)";
+            Fri.Text = Date.Month + "/" + Date.Day + " (금)";
             Date = Date.AddDays(1);
-            Sat.Text = Date.Month.ToString() + "/" + Date.Day.ToString() + " (토)";
+            Sat.Text = Date.Month + "/" + Date.Day + " (토)";
 
             return true;
         }

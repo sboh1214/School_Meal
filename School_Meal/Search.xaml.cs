@@ -9,7 +9,7 @@ namespace School_Meal
     {
         public Search()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)

@@ -4,12 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Windows10version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
     mc:Ignorable="d"
     Background="{ThemeResource MyAcrylicBackgroundBrush}">
 
-    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" Windows10version1803:PaneTitle="IASA 급식"
-                    x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
+    <NavigationView IsSettingsVisible="True" AlwaysShowHeader="False" x:Name="App_NavigationView" ItemInvoked="App_NavigationView_ItemInvoked">
         
         <NavigationView.MenuItems>
             <NavigationViewItemHeader Content="Local"/>
